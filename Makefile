@@ -8,9 +8,9 @@ all: fortuna
 
 fortuna:
 
-	$(CC) -c -fPIC -I. $(CFLAGS) -g -Wall -Werror ./src/fortuna.c ./src/rijndael.c ./src/sha2.c ./src/px.c
-	$(AR) rvs libfortuna.a fortuna.o rijndael.o sha2.o px.o
-	$(CC) -shared -fPIC -o libfortuna.so fortuna.o rijndael.o sha2.o px.o
+	$(CC) -c -fPIC -I. $(CFLAGS) -g -Wall -Werror ./src/fortuna.c ./src/rijndael.c ./src/sha2.c ./src/px.c ./src/random.c
+	$(AR) rvs libfortuna.a fortuna.o rijndael.o sha2.o px.o random.o
+	$(CC) -shared -fPIC -o libfortuna.so fortuna.o rijndael.o sha2.o px.o random.o
 
 clean:
 	rm -f *.a
