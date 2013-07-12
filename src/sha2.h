@@ -38,6 +38,8 @@
 #ifndef _SHA2_H
 #define _SHA2_H
 
+#include "c.h"
+
 /* avoid conflict with OpenSSL */
 #define SHA256_Init pg_SHA256_Init
 #define SHA256_Update pg_SHA256_Update
