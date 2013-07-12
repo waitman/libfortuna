@@ -1,0 +1,13 @@
+#libfortuna
+
+status- currently untested. (new/work in progress)
+
+This library uses code from the PostgreSQL database project.
+http://www.postgres.org/
+
+The original source location (in the postgres source tree) is
+contrib/pgcrypto. Also, parts of src/include/postgres.h and 
+src/include/c.h
+
+Waitman Gobble <waitman@waitman.net> 2013-07-12
+
