@@ -137,31 +137,31 @@ typedef struct fortuna_state FState;
  * - No memory allocations.
  */
 
-static void
+void
 ciph_init(CIPH_CTX * ctx, const uint8 *key, int klen)
 {
 	rijndael_set_key(ctx, (const uint32 *) key, klen, 1);
 }
 
-static void
+void
 ciph_encrypt(CIPH_CTX * ctx, const uint8 *in, uint8 *out)
 {
 	rijndael_encrypt(ctx, (const uint32 *) in, (uint32 *) out);
 }
 
-static void
+void
 md_init(MD_CTX * ctx)
 {
 	SHA256_Init(ctx);
 }
 
-static void
+void
 md_update(MD_CTX * ctx, const uint8 *data, int len)
 {
 	SHA256_Update(ctx, data, len);
 }
 
-static void
+void
 md_result(MD_CTX * ctx, uint8 *dst)
 {
 	SHA256_CTX	tmp;
@@ -174,7 +174,7 @@ md_result(MD_CTX * ctx, uint8 *dst)
 /*
  * initialize state
  */
-static void
+void
 init_state(FState *st)
 {
 	int			i;
@@ -188,7 +188,7 @@ init_state(FState *st)
  * Endianess does not matter.
  * It just needs to change without repeating.
  */
-static void
+void
 inc_counter(FState *st)
 {
 	uint32	   *val = (uint32 *) st->counter;
@@ -205,7 +205,7 @@ inc_counter(FState *st)
 /*
  * This is called 'cipher in counter mode'.
  */
-static void
+void
 encrypt_counter(FState *st, uint8 *dst)
 {
 	ciph_encrypt(&st->ciph, st->counter, dst);
@@ -217,7 +217,7 @@ encrypt_counter(FState *st, uint8 *dst)
  * The time between reseed must be at least RESEED_INTERVAL
  * microseconds.
  */
-static int
+int
 enough_time_passed(FState *st)
 {
 	int			ok;
@@ -250,7 +250,7 @@ enough_time_passed(FState *st)
 /*
  * generate new key from all the pools
  */
-static void
+void
 reseed(FState *st)
 {
 	unsigned	k;
@@ -296,7 +296,7 @@ reseed(FState *st)
 /*
  * Pick a random pool.	This uses key bytes as random source.
  */
-static unsigned
+unsigned
 get_rand_pool(FState *st)
 {
 	unsigned	rnd;
@@ -316,7 +316,7 @@ get_rand_pool(FState *st)
 /*
  * update pools
  */
-static void
+void
 add_entropy(FState *st, const uint8 *data, unsigned len)
 {
 	unsigned	pos;
@@ -347,7 +347,7 @@ add_entropy(FState *st, const uint8 *data, unsigned len)
 /*
  * Just take 2 next blocks as new key
  */
-static void
+void
 rekey(FState *st)
 {
 	encrypt_counter(st, st->key);
@@ -361,7 +361,7 @@ rekey(FState *st)
  * This can also be viewed as spreading the startup
  * entropy over all of the components.
  */
-static void
+void
 startup_tricks(FState *st)
 {
 	int			i;
@@ -386,7 +386,7 @@ startup_tricks(FState *st)
 	st->tricks_done = 1;
 }
 
-static void
+void
 extract_data(FState *st, unsigned count, uint8 *dst)
 {
 	unsigned	n;
@@ -431,8 +431,8 @@ extract_data(FState *st, unsigned count, uint8 *dst)
  * public interface
  */
 
-static FState main_state;
-static int	init_done = 0;
+FState main_state;
+int	init_done = 0;
 
 void
 fortuna_add_entropy(const uint8 *data, unsigned len)

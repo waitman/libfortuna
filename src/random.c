@@ -48,7 +48,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-static int
+int
 safe_read(int fd, void *buf, size_t count)
 {
 	int			done = 0;
@@ -71,7 +71,7 @@ safe_read(int fd, void *buf, size_t count)
 	return done;
 }
 
-static uint8 *
+uint8 *
 try_dev_random(uint8 *dst)
 {
 	int			fd;

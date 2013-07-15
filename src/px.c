@@ -38,7 +38,7 @@ struct error_desc
 	const char *desc;
 };
 
-static const struct error_desc px_err_list[] = {
+const struct error_desc px_err_list[] = {
 	{PXE_OK, "Everything ok"},
 	{PXE_ERR_GENERIC, "Some PX error (not specified)"},
 	{PXE_NO_HASH, "No such hash algorithm"},
@@ -116,7 +116,7 @@ px_resolve_alias(const PX_Alias *list, const char *name)
 	return name;
 }
 
-static void (*debug_handler) (const char *) = NULL;
+void (*debug_handler) (const char *) = NULL;
 
 void
 px_set_debug_handler(void (*handler) (const char *))
@@ -144,19 +144,19 @@ px_debug(const char *fmt,...)
  * combo - cipher + padding (+ checksum)
  */
 
-static unsigned
+unsigned
 combo_encrypt_len(PX_Combo *cx, unsigned dlen)
 {
 	return dlen + 512;
 }
 
-static unsigned
+unsigned
 combo_decrypt_len(PX_Combo *cx, unsigned dlen)
 {
 	return dlen;
 }
 
-static int
+int
 combo_init(PX_Combo *cx, const uint8 *key, unsigned klen,
 		   const uint8 *iv, unsigned ivlen)
 {
@@ -195,7 +195,7 @@ combo_init(PX_Combo *cx, const uint8 *key, unsigned klen,
 	return err;
 }
 
-static int
+int
 combo_encrypt(PX_Combo *cx, const uint8 *data, unsigned dlen,
 			  uint8 *res, unsigned *rlen)
 {
@@ -264,7 +264,7 @@ out:
 	return err;
 }
 
-static int
+int
 combo_decrypt(PX_Combo *cx, const uint8 *data, unsigned dlen,
 			  uint8 *res, unsigned *rlen)
 {
@@ -321,7 +321,7 @@ block_error:
 	return PXE_NOTBLOCKSIZE;
 }
 
-static void
+void
 combo_free(PX_Combo *cx)
 {
 	if (cx->cipher)
@@ -332,7 +332,7 @@ combo_free(PX_Combo *cx)
 
 /* PARSER */
 
-static int
+int
 parse_cipher_name(char *full, char **cipher, char **pad)
 {
 	char	   *p,

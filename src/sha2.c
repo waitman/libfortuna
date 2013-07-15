@@ -128,14 +128,14 @@
  * library -- they are intended for private internal visibility/use
  * only.
  */
-static void SHA512_Last(SHA512_CTX *);
-static void SHA256_Transform(SHA256_CTX *, const uint8 *);
-static void SHA512_Transform(SHA512_CTX *, const uint8 *);
+void SHA512_Last(SHA512_CTX *);
+void SHA256_Transform(SHA256_CTX *, const uint8 *);
+void SHA512_Transform(SHA512_CTX *, const uint8 *);
 
 
 /*** SHA-XYZ INITIAL HASH VALUES AND CONSTANTS ************************/
 /* Hash constant words K for SHA-256: */
-static const uint32 K256[64] = {
+const uint32 K256[64] = {
 	0x428a2f98UL, 0x71374491UL, 0xb5c0fbcfUL, 0xe9b5dba5UL,
 	0x3956c25bUL, 0x59f111f1UL, 0x923f82a4UL, 0xab1c5ed5UL,
 	0xd807aa98UL, 0x12835b01UL, 0x243185beUL, 0x550c7dc3UL,
@@ -155,7 +155,7 @@ static const uint32 K256[64] = {
 };
 
 /* Initial hash value H for SHA-224: */
-static const uint32 sha224_initial_hash_value[8] = {
+const uint32 sha224_initial_hash_value[8] = {
 	0xc1059ed8UL,
 	0x367cd507UL,
 	0x3070dd17UL,
@@ -167,7 +167,7 @@ static const uint32 sha224_initial_hash_value[8] = {
 };
 
 /* Initial hash value H for SHA-256: */
-static const uint32 sha256_initial_hash_value[8] = {
+const uint32 sha256_initial_hash_value[8] = {
 	0x6a09e667UL,
 	0xbb67ae85UL,
 	0x3c6ef372UL,
@@ -179,7 +179,7 @@ static const uint32 sha256_initial_hash_value[8] = {
 };
 
 /* Hash constant words K for SHA-384 and SHA-512: */
-static const uint64 K512[80] = {
+const uint64 K512[80] = {
 	0x428a2f98d728ae22ULL, 0x7137449123ef65cdULL,
 	0xb5c0fbcfec4d3b2fULL, 0xe9b5dba58189dbbcULL,
 	0x3956c25bf348b538ULL, 0x59f111f1b605d019ULL,
@@ -223,7 +223,7 @@ static const uint64 K512[80] = {
 };
 
 /* Initial hash value H for SHA-384 */
-static const uint64 sha384_initial_hash_value[8] = {
+const uint64 sha384_initial_hash_value[8] = {
 	0xcbbb9d5dc1059ed8ULL,
 	0x629a292a367cd507ULL,
 	0x9159015a3070dd17ULL,
@@ -235,7 +235,7 @@ static const uint64 sha384_initial_hash_value[8] = {
 };
 
 /* Initial hash value H for SHA-512 */
-static const uint64 sha512_initial_hash_value[8] = {
+const uint64 sha512_initial_hash_value[8] = {
 	0x6a09e667f3bcc908ULL,
 	0xbb67ae8584caa73bULL,
 	0x3c6ef372fe94f82bULL,
@@ -284,7 +284,7 @@ SHA256_Init(SHA256_CTX *context)
 	j++;									\
 } while(0)
 
-static void
+void
 SHA256_Transform(SHA256_CTX *context, const uint8 *data)
 {
 	uint32		a,
@@ -355,7 +355,7 @@ SHA256_Transform(SHA256_CTX *context, const uint8 *data)
 }
 #else							/* SHA2_UNROLL_TRANSFORM */
 
-static void
+void
 SHA256_Transform(SHA256_CTX *context, const uint8 *data)
 {
 	uint32		a,
@@ -498,7 +498,7 @@ SHA256_Update(SHA256_CTX *context, const uint8 *data, size_t len)
 	usedspace = freespace = 0;
 }
 
-static void
+void
 SHA256_Last(SHA256_CTX *context)
 {
 	unsigned int usedspace;
@@ -613,7 +613,7 @@ SHA512_Init(SHA512_CTX *context)
 	j++;									\
 } while(0)
 
-static void
+void
 SHA512_Transform(SHA512_CTX *context, const uint8 *data)
 {
 	uint64		a,
@@ -681,7 +681,7 @@ SHA512_Transform(SHA512_CTX *context, const uint8 *data)
 }
 #else							/* SHA2_UNROLL_TRANSFORM */
 
-static void
+void
 SHA512_Transform(SHA512_CTX *context, const uint8 *data)
 {
 	uint64		a,
@@ -824,7 +824,7 @@ SHA512_Update(SHA512_CTX *context, const uint8 *data, size_t len)
 	usedspace = freespace = 0;
 }
 
-static void
+void
 SHA512_Last(SHA512_CTX *context)
 {
 	unsigned int usedspace;
