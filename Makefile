@@ -8,9 +8,9 @@ all: fortuna
 
 fortuna:
 
-	$(CC) -c -fPIC -I. $(CFLAGS) -g -Wall -Werror ./src/fortuna.c ./src/rijndael.c ./src/sha2.c ./src/px.c ./src/random.c ./src/internal.c ./src/blf.c ./src/sha1.c
-	$(AR) rvs libfortuna.a fortuna.o rijndael.o px.o sha2.o random.o internal.o blf.o sha1.o
-	$(CC) -shared -fPIC -o libfortuna.so fortuna.o rijndael.o px.o sha2.o random.o internal.o blf.o sha1.o
+	$(CC) -c -fPIC -I. $(CFLAGS) -g -Wall -Werror ./src/fortuna.c ./src/rijndael.c ./src/sha2.c ./src/px.c ./src/random.c ./src/internal.c ./src/blf.c ./src/sha1.c ./src/md5.c
+	$(AR) rvs libfortuna.a fortuna.o rijndael.o px.o sha2.o random.o internal.o blf.o sha1.o md5.o
+	$(CC) -shared -fPIC -o libfortuna.so fortuna.o rijndael.o px.o sha2.o random.o internal.o blf.o sha1.o md5.o
 
 clean:
 	rm -f *.a
@@ -27,6 +27,7 @@ install:
 	$(INSTALL) -m 644 ./src/blf.h $(PREFIX)/include/fortuna/
 	$(INSTALL) -m 644 ./src/sha1.h $(PREFIX)/include/fortuna/
 	$(INSTALL) -m 644 ./src/internal.h $(PREFIX)/include/fortuna/
+	$(INSTALL) -m 644 ./src/md5.h $(PREFIX)/include/fortuna/
 	$(INSTALL) -m 644 ./libfortuna.a $(PREFIX)/lib/
 	$(INSTALL) -m 644 ./libfortuna.so $(PREFIX)/lib/
 

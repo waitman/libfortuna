@@ -172,7 +172,7 @@ combo_init(PX_Combo *cx, const uint8 *key, unsigned klen,
 	ivs = px_cipher_iv_size(c);
 	if (ivs > 0)
 	{
-		ivbuf = px_alloc(ivs);
+		ivbuf = malloc(ivs);
 		memset(ivbuf, 0, ivs);
 		if (ivlen > ivs)
 			memcpy(ivbuf, iv, ivs);
@@ -182,15 +182,15 @@ combo_init(PX_Combo *cx, const uint8 *key, unsigned klen,
 
 	if (klen > ks)
 		klen = ks;
-	keybuf = px_alloc(ks);
+	keybuf = malloc(ks);
 	memset(keybuf, 0, ks);
 	memcpy(keybuf, key, klen);
 
 	err = px_cipher_init(c, keybuf, klen, ivbuf);
 
 	if (ivbuf)
-		px_free(ivbuf);
-	px_free(keybuf);
+		free(ivbuf);
+	free(keybuf);
 
 	return err;
 }
@@ -214,7 +214,7 @@ combo_encrypt(PX_Combo *cx, const uint8 *data, unsigned dlen,
 	/* encrypt */
 	if (bs > 1)
 	{
-		bbuf = px_alloc(bs * 4);
+		bbuf = malloc(bs * 4);
 		bpos = dlen % bs;
 		*rlen = dlen - bpos;
 		memcpy(bbuf, data + *rlen, bpos);
@@ -259,7 +259,7 @@ combo_encrypt(PX_Combo *cx, const uint8 *data, unsigned dlen,
 	}
 out:
 	if (bbuf)
-		px_free(bbuf);
+		free(bbuf);
 
 	return err;
 }
@@ -327,7 +327,7 @@ combo_free(PX_Combo *cx)
 	if (cx->cipher)
 		px_cipher_free(cx->cipher);
 	memset(cx, 0, sizeof(*cx));
-	px_free(cx);
+	free(cx);
 }
 
 /* PARSER */
@@ -384,17 +384,17 @@ px_find_combo(const char *name, PX_Combo **res)
 
 	PX_Combo   *cx;
 
-	cx = px_alloc(sizeof(*cx));
+	cx = malloc(sizeof(*cx));
 	memset(cx, 0, sizeof(*cx));
 
-	buf = px_alloc(strlen(name) + 1);
+	buf = malloc(strlen(name) + 1);
 	strcpy(buf, name);
 
 	err = parse_cipher_name(buf, &s_cipher, &s_pad);
 	if (err)
 	{
-		px_free(buf);
-		px_free(cx);
+		free(buf);
+		free(cx);
 		return err;
 	}
 
@@ -421,7 +421,7 @@ px_find_combo(const char *name, PX_Combo **res)
 	cx->decrypt_len = combo_decrypt_len;
 	cx->free = combo_free;
 
-	px_free(buf);
+	free(buf);
 
 	*res = cx;
 
@@ -430,7 +430,7 @@ px_find_combo(const char *name, PX_Combo **res)
 err1:
 	if (cx->cipher)
 		px_cipher_free(cx->cipher);
-	px_free(cx);
-	px_free(buf);
+	free(cx);
+	free(buf);
 	return PXE_NO_CIPHER;
 }

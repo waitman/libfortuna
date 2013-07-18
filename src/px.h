@@ -32,16 +32,15 @@
 #ifndef __PX_H
 #define __PX_H
 
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/param.h>
+#include <malloc_np.h>
 #include "c.h"
 
 /* keep debug messages? */
 #define PX_DEBUG
 
-void	   *px_alloc(size_t s);
-void	   *px_realloc(void *p, size_t s);
-void		px_free(void *p);
 
 /* max len of 'type' parms */
 #define PX_MAX_NAMELEN		128

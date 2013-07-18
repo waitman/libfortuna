@@ -32,6 +32,8 @@
 #ifndef __INTERNAL_H
 #define __INTERNAL_H
 
+#include <stdlib.h>
+#include <malloc_np.h>
 #include <time.h>
 
 #include "px.h"
@@ -83,22 +85,6 @@ void		init_sha256(PX_MD *h);
 void		init_sha384(PX_MD *h);
 void		init_sha512(PX_MD *h);
 
-struct int_digest
-{
-	char	   *name;
-	void		(*init) (PX_MD *h);
-};
-
-const struct int_digest
-			int_digest_list[] = {
-	{"md5", init_md5},
-	{"sha1", init_sha1},
-	{"sha224", init_sha224},
-	{"sha256", init_sha256},
-	{"sha384", init_sha384},
-	{"sha512", init_sha512},
-	{NULL, NULL}
-};
 
 /* MD5 */
 
@@ -160,41 +146,11 @@ PX_Cipher *rj_128_cbc(void);
 PX_Cipher *bf_ecb_load(void);
 PX_Cipher *bf_cbc_load(void);
 
-struct int_cipher
-{
-	char	   *name;
-	PX_Cipher  *(*load) (void);
-};
-
-const struct int_cipher
-			int_ciphers[] = {
-	{"bf-cbc", bf_cbc_load},
-	{"bf-ecb", bf_ecb_load},
-	{"aes-128-cbc", rj_128_cbc},
-	{"aes-128-ecb", rj_128_ecb},
-	{NULL, NULL}
-};
-
-const PX_Alias int_aliases[] = {
-	{"bf", "bf-cbc"},
-	{"blowfish", "bf-cbc"},
-	{"aes", "aes-128-cbc"},
-	{"aes-ecb", "aes-128-ecb"},
-	{"aes-cbc", "aes-128-cbc"},
-	{"aes-128", "aes-128-cbc"},
-	{"rijndael", "aes-128-cbc"},
-	{"rijndael-128", "aes-128-cbc"},
-	{NULL, NULL}
-};
-
 int px_find_digest(const char *name, PX_MD **res);
 
 int px_find_cipher(const char *name, PX_Cipher **res);
 
 int px_get_pseudo_random_bytes(uint8 *dst, unsigned count);
-
-time_t seed_time = 0;
-time_t check_time = 0;
 
 void system_reseed(void);
 

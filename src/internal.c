@@ -41,6 +41,54 @@
 #include "internal.h"
 
 
+static time_t seed_time = 0;
+static time_t check_time = 0;
+
+
+struct int_cipher
+{
+	char	   *name;
+	PX_Cipher  *(*load) (void);
+};
+
+const struct int_cipher
+			int_ciphers[] = {
+	{"bf-cbc", bf_cbc_load},
+	{"bf-ecb", bf_ecb_load},
+	{"aes-128-cbc", rj_128_cbc},
+	{"aes-128-ecb", rj_128_ecb},
+	{NULL, NULL}
+};
+
+const PX_Alias int_aliases[] = {
+	{"bf", "bf-cbc"},
+	{"blowfish", "bf-cbc"},
+	{"aes", "aes-128-cbc"},
+	{"aes-ecb", "aes-128-ecb"},
+	{"aes-cbc", "aes-128-cbc"},
+	{"aes-128", "aes-128-cbc"},
+	{"rijndael", "aes-128-cbc"},
+	{"rijndael-128", "aes-128-cbc"},
+	{NULL, NULL}
+};
+
+struct int_digest
+{
+	char	   *name;
+	void		(*init) (PX_MD *h);
+};
+
+const struct int_digest
+			int_digest_list[] = {
+	{"md5", init_md5},
+	{"sha1", init_sha1},
+	{"sha224", init_sha224},
+	{"sha256", init_sha256},
+	{"sha384", init_sha384},
+	{"sha512", init_sha512},
+	{NULL, NULL}
+};
+
 /* MD5 */
 
 unsigned
@@ -85,8 +133,8 @@ int_md5_free(PX_MD *h)
 	MD5_CTX    *ctx = (MD5_CTX *) h->p.ptr;
 
 	memset(ctx, 0, sizeof(*ctx));
-	px_free(ctx);
-	px_free(h);
+	free(ctx);
+	free(h);
 }
 
 /* SHA1 */
@@ -133,8 +181,8 @@ int_sha1_free(PX_MD *h)
 	SHA1_CTX   *ctx = (SHA1_CTX *) h->p.ptr;
 
 	memset(ctx, 0, sizeof(*ctx));
-	px_free(ctx);
-	px_free(h);
+	free(ctx);
+	free(h);
 }
 
 /* init functions */
@@ -144,7 +192,7 @@ init_md5(PX_MD *md)
 {
 	MD5_CTX    *ctx;
 
-	ctx = px_alloc(sizeof(*ctx));
+	ctx = malloc(sizeof(*ctx));
 	memset(ctx, 0, sizeof(*ctx));
 
 	md->p.ptr = ctx;
@@ -164,7 +212,7 @@ init_sha1(PX_MD *md)
 {
 	SHA1_CTX   *ctx;
 
-	ctx = px_alloc(sizeof(*ctx));
+	ctx = malloc(sizeof(*ctx));
 	memset(ctx, 0, sizeof(*ctx));
 
 	md->p.ptr = ctx;
@@ -191,9 +239,9 @@ intctx_free(PX_Cipher *c)
 	if (cx)
 	{
 		memset(cx, 0, sizeof *cx);
-		px_free(cx);
+		free(cx);
 	}
-	px_free(c);
+	free(c);
 }
 
 /*
@@ -315,7 +363,7 @@ rj_load(int mode)
 	PX_Cipher  *c;
 	struct int_ctx *cx;
 
-	c = px_alloc(sizeof *c);
+	c = malloc(sizeof *c);
 	memset(c, 0, sizeof *c);
 
 	c->block_size = rj_block_size;
@@ -326,7 +374,7 @@ rj_load(int mode)
 	c->decrypt = rj_decrypt;
 	c->free = intctx_free;
 
-	cx = px_alloc(sizeof *cx);
+	cx = malloc(sizeof *cx);
 	memset(cx, 0, sizeof *cx);
 	cx->mode = mode;
 
@@ -424,7 +472,7 @@ bf_load(int mode)
 	PX_Cipher  *c;
 	struct int_ctx *cx;
 
-	c = px_alloc(sizeof *c);
+	c = malloc(sizeof *c);
 	memset(c, 0, sizeof *c);
 
 	c->block_size = bf_block_size;
@@ -435,7 +483,7 @@ bf_load(int mode)
 	c->decrypt = bf_decrypt;
 	c->free = intctx_free;
 
-	cx = px_alloc(sizeof *cx);
+	cx = malloc(sizeof *cx);
 	memset(cx, 0, sizeof *cx);
 	cx->mode = mode;
 	c->ptr = cx;
@@ -477,7 +525,7 @@ px_find_digest(const char *name, PX_MD **res)
 	for (p = int_digest_list; p->name; p++)
 		if (strcasecmp(p->name, name) == 0)
 		{
-			h = px_alloc(sizeof(*h));
+			h = malloc(sizeof(*h));
 			p->init(h);
 
 			*res = h;
@@ -614,8 +662,8 @@ int_sha224_free(PX_MD *h)
 	SHA224_CTX *ctx = (SHA224_CTX *) h->p.ptr;
 
 	memset(ctx, 0, sizeof(*ctx));
-	px_free(ctx);
-	px_free(h);
+	free(ctx);
+	free(h);
 }
 
 /* SHA256 */
@@ -662,8 +710,8 @@ int_sha256_free(PX_MD *h)
 	SHA256_CTX *ctx = (SHA256_CTX *) h->p.ptr;
 
 	memset(ctx, 0, sizeof(*ctx));
-	px_free(ctx);
-	px_free(h);
+	free(ctx);
+	free(h);
 }
 
 /* SHA384 */
@@ -710,8 +758,8 @@ int_sha384_free(PX_MD *h)
 	SHA384_CTX *ctx = (SHA384_CTX *) h->p.ptr;
 
 	memset(ctx, 0, sizeof(*ctx));
-	px_free(ctx);
-	px_free(h);
+	free(ctx);
+	free(h);
 }
 
 /* SHA512 */
@@ -758,8 +806,8 @@ int_sha512_free(PX_MD *h)
 	SHA512_CTX *ctx = (SHA512_CTX *) h->p.ptr;
 
 	memset(ctx, 0, sizeof(*ctx));
-	px_free(ctx);
-	px_free(h);
+	free(ctx);
+	free(h);
 }
 
 /* init functions */
@@ -769,7 +817,7 @@ init_sha224(PX_MD *md)
 {
 	SHA224_CTX *ctx;
 
-	ctx = px_alloc(sizeof(*ctx));
+	ctx = malloc(sizeof(*ctx));
 	memset(ctx, 0, sizeof(*ctx));
 
 	md->p.ptr = ctx;
@@ -789,7 +837,7 @@ init_sha256(PX_MD *md)
 {
 	SHA256_CTX *ctx;
 
-	ctx = px_alloc(sizeof(*ctx));
+	ctx = malloc(sizeof(*ctx));
 	memset(ctx, 0, sizeof(*ctx));
 
 	md->p.ptr = ctx;
@@ -809,7 +857,7 @@ init_sha384(PX_MD *md)
 {
 	SHA384_CTX *ctx;
 
-	ctx = px_alloc(sizeof(*ctx));
+	ctx = malloc(sizeof(*ctx));
 	memset(ctx, 0, sizeof(*ctx));
 
 	md->p.ptr = ctx;
@@ -829,7 +877,7 @@ init_sha512(PX_MD *md)
 {
 	SHA512_CTX *ctx;
 
-	ctx = px_alloc(sizeof(*ctx));
+	ctx = malloc(sizeof(*ctx));
 	memset(ctx, 0, sizeof(*ctx));
 
 	md->p.ptr = ctx;
