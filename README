@@ -1,7 +1,5 @@
 #libfortuna
 
-status- currently untested. (new/work in progress)
-
 This library uses code from the PostgreSQL database project.
 http://www.postgres.org/
 
