@@ -1,0 +1,504 @@
+.TH "px.h" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+px.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/param\&.h>\fP
+.br
+\fC#include <malloc_np\&.h>\fP
+.br
+\fC#include 'c\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBpx_digest\fP"
+.br
+.ti -1c
+.RI "struct \fBpx_alias\fP"
+.br
+.ti -1c
+.RI "struct \fBpx_hmac\fP"
+.br
+.ti -1c
+.RI "struct \fBpx_cipher\fP"
+.br
+.ti -1c
+.RI "struct \fBpx_combo\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPX_DEBUG\fP"
+.br
+.ti -1c
+.RI "#define \fBPX_MAX_NAMELEN\fP   128"
+.br
+.ti -1c
+.RI "#define \fBPX_MAX_SALT_LEN\fP   128"
+.br
+.ti -1c
+.RI "#define \fBPXE_OK\fP   0"
+.br
+.ti -1c
+.RI "#define \fBPXE_ERR_GENERIC\fP   -1"
+.br
+.ti -1c
+.RI "#define \fBPXE_NO_HASH\fP   -2"
+.br
+.ti -1c
+.RI "#define \fBPXE_NO_CIPHER\fP   -3"
+.br
+.ti -1c
+.RI "#define \fBPXE_NOTBLOCKSIZE\fP   -4"
+.br
+.ti -1c
+.RI "#define \fBPXE_BAD_OPTION\fP   -5"
+.br
+.ti -1c
+.RI "#define \fBPXE_BAD_FORMAT\fP   -6"
+.br
+.ti -1c
+.RI "#define \fBPXE_KEY_TOO_BIG\fP   -7"
+.br
+.ti -1c
+.RI "#define \fBPXE_CIPHER_INIT\fP   -8"
+.br
+.ti -1c
+.RI "#define \fBPXE_HASH_UNUSABLE_FOR_HMAC\fP   -9"
+.br
+.ti -1c
+.RI "#define \fBPXE_DEV_READ_ERROR\fP   -10"
+.br
+.ti -1c
+.RI "#define \fBPXE_OSSL_RAND_ERROR\fP   -11"
+.br
+.ti -1c
+.RI "#define \fBPXE_BUG\fP   -12"
+.br
+.ti -1c
+.RI "#define \fBPXE_ARGUMENT_ERROR\fP   -13"
+.br
+.ti -1c
+.RI "#define \fBPXE_UNKNOWN_SALT_ALGO\fP   -14"
+.br
+.ti -1c
+.RI "#define \fBPXE_BAD_SALT_ROUNDS\fP   -15"
+.br
+.ti -1c
+.RI "#define \fBPXE_MCRYPT_INTERNAL\fP   -16"
+.br
+.ti -1c
+.RI "#define \fBPXE_NO_RANDOM\fP   -17"
+.br
+.ti -1c
+.RI "#define \fBPXE_DECRYPT_FAILED\fP   -18"
+.br
+.ti -1c
+.RI "#define \fBPXE_MBUF_SHORT_READ\fP   -50"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_CORRUPT_DATA\fP   -100"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_CORRUPT_ARMOR\fP   -101"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_UNSUPPORTED_COMPR\fP   -102"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_UNSUPPORTED_CIPHER\fP   -103"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_UNSUPPORTED_HASH\fP   -104"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_COMPRESSION_ERROR\fP   -105"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_NOT_TEXT\fP   -106"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_UNEXPECTED_PKT\fP   -107"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_NO_BIGNUM\fP   -108"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_MATH_FAILED\fP   -109"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_SHORT_ELGAMAL_KEY\fP   -110"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_RSA_UNSUPPORTED\fP   -111"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_UNKNOWN_PUBALGO\fP   -112"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_WRONG_KEY\fP   -113"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_MULTIPLE_KEYS\fP   -114"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_EXPECT_PUBLIC_KEY\fP   -115"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_EXPECT_SECRET_KEY\fP   -116"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_NOT_V4_KEYPKT\fP   -117"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_KEYPKT_CORRUPT\fP   -118"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_NO_USABLE_KEY\fP   -119"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_NEED_SECRET_PSW\fP   -120"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_BAD_S2K_MODE\fP   -121"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_UNSUPPORTED_PUBALGO\fP   -122"
+.br
+.ti -1c
+.RI "#define \fBPXE_PGP_MULTIPLE_SUBKEYS\fP   -123"
+.br
+.ti -1c
+.RI "#define \fBpx_md_result_size\fP(md)   (md)->result_size(md)"
+.br
+.ti -1c
+.RI "#define \fBpx_md_block_size\fP(md)   (md)->block_size(md)"
+.br
+.ti -1c
+.RI "#define \fBpx_md_reset\fP(md)   (md)->reset(md)"
+.br
+.ti -1c
+.RI "#define \fBpx_md_update\fP(md, data, dlen)   (md)->update(md, data, dlen)"
+.br
+.ti -1c
+.RI "#define \fBpx_md_finish\fP(md, buf)   (md)->finish(md, buf)"
+.br
+.ti -1c
+.RI "#define \fBpx_md_free\fP(md)   (md)->free(md)"
+.br
+.ti -1c
+.RI "#define \fBpx_hmac_result_size\fP(hmac)   (hmac)->result_size(hmac)"
+.br
+.ti -1c
+.RI "#define \fBpx_hmac_block_size\fP(hmac)   (hmac)->block_size(hmac)"
+.br
+.ti -1c
+.RI "#define \fBpx_hmac_reset\fP(hmac)   (hmac)->reset(hmac)"
+.br
+.ti -1c
+.RI "#define \fBpx_hmac_init\fP(hmac, key, klen)   (hmac)->init(hmac, key, klen)"
+.br
+.ti -1c
+.RI "#define \fBpx_hmac_update\fP(hmac, data, dlen)   (hmac)->update(hmac, data, dlen)"
+.br
+.ti -1c
+.RI "#define \fBpx_hmac_finish\fP(hmac, buf)   (hmac)->finish(hmac, buf)"
+.br
+.ti -1c
+.RI "#define \fBpx_hmac_free\fP(hmac)   (hmac)->free(hmac)"
+.br
+.ti -1c
+.RI "#define \fBpx_cipher_key_size\fP(c)   (c)->key_size(c)"
+.br
+.ti -1c
+.RI "#define \fBpx_cipher_block_size\fP(c)   (c)->block_size(c)"
+.br
+.ti -1c
+.RI "#define \fBpx_cipher_iv_size\fP(c)   (c)->iv_size(c)"
+.br
+.ti -1c
+.RI "#define \fBpx_cipher_init\fP(c, k, klen, iv)   (c)->init(c, k, klen, iv)"
+.br
+.ti -1c
+.RI "#define \fBpx_cipher_encrypt\fP(c, data, dlen, res)   (c)->encrypt(c, data, dlen, res)"
+.br
+.ti -1c
+.RI "#define \fBpx_cipher_decrypt\fP(c, data, dlen, res)   (c)->decrypt(c, data, dlen, res)"
+.br
+.ti -1c
+.RI "#define \fBpx_cipher_free\fP(c)   (c)->free(c)"
+.br
+.ti -1c
+.RI "#define \fBpx_combo_encrypt_len\fP(c, dlen)   (c)->encrypt_len(c, dlen)"
+.br
+.ti -1c
+.RI "#define \fBpx_combo_decrypt_len\fP(c, dlen)   (c)->decrypt_len(c, dlen)"
+.br
+.ti -1c
+.RI "#define \fBpx_combo_init\fP(c, key, klen, iv, ivlen)   (c)->init(c, key, klen, iv, ivlen)"
+.br
+.ti -1c
+.RI "#define \fBpx_combo_encrypt\fP(c, data, dlen, res, rlen)   (c)->encrypt(c, data, dlen, res, rlen)"
+.br
+.ti -1c
+.RI "#define \fBpx_combo_decrypt\fP(c, data, dlen, res, rlen)   (c)->decrypt(c, data, dlen, res, rlen)"
+.br
+.ti -1c
+.RI "#define \fBpx_combo_free\fP(c)   (c)->free(c)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBpx_digest\fP \fBPX_MD\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBpx_alias\fP \fBPX_Alias\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBpx_hmac\fP \fBPX_HMAC\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBpx_cipher\fP \fBPX_Cipher\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBpx_combo\fP \fBPX_Combo\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpx_find_digest\fP (const char *name, \fBPX_MD\fP **res)"
+.br
+.ti -1c
+.RI "int \fBpx_find_hmac\fP (const char *name, \fBPX_HMAC\fP **res)"
+.br
+.ti -1c
+.RI "int \fBpx_find_cipher\fP (const char *name, \fBPX_Cipher\fP **res)"
+.br
+.ti -1c
+.RI "int \fBpx_find_combo\fP (const char *name, \fBPX_Combo\fP **res)"
+.br
+.ti -1c
+.RI "int \fBpx_get_random_bytes\fP (\fBuint8\fP *dst, unsigned count)"
+.br
+.ti -1c
+.RI "int \fBpx_get_pseudo_random_bytes\fP (\fBuint8\fP *dst, unsigned count)"
+.br
+.ti -1c
+.RI "int \fBpx_add_entropy\fP (const \fBuint8\fP *data, unsigned count)"
+.br
+.ti -1c
+.RI "unsigned \fBpx_acquire_system_randomness\fP (\fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "const char * \fBpx_strerror\fP (int err)"
+.br
+.ti -1c
+.RI "const char * \fBpx_resolve_alias\fP (const \fBPX_Alias\fP *aliases, const char *name)"
+.br
+.ti -1c
+.RI "void \fBpx_set_debug_handler\fP (void(*handler)(const char *))"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define px_cipher_block_size(c)   (c)->block_size(c)"
+
+.SS "#define px_cipher_decrypt(c, data, dlen, res)   (c)->decrypt(c, data, dlen, res)"
+
+.SS "#define px_cipher_encrypt(c, data, dlen, res)   (c)->encrypt(c, data, dlen, res)"
+
+.SS "#define px_cipher_free(c)   (c)->free(c)"
+
+.SS "#define px_cipher_init(c, k, klen, iv)   (c)->init(c, k, klen, iv)"
+
+.SS "#define px_cipher_iv_size(c)   (c)->iv_size(c)"
+
+.SS "#define px_cipher_key_size(c)   (c)->key_size(c)"
+
+.SS "#define px_combo_decrypt(c, data, dlen, res, rlen)   (c)->decrypt(c, data, dlen, res, rlen)"
+
+.SS "#define px_combo_decrypt_len(c, dlen)   (c)->decrypt_len(c, dlen)"
+
+.SS "#define px_combo_encrypt(c, data, dlen, res, rlen)   (c)->encrypt(c, data, dlen, res, rlen)"
+
+.SS "#define px_combo_encrypt_len(c, dlen)   (c)->encrypt_len(c, dlen)"
+
+.SS "#define px_combo_free(c)   (c)->free(c)"
+
+.SS "#define px_combo_init(c, key, klen, iv, ivlen)   (c)->init(c, key, klen, iv, ivlen)"
+
+.SS "#define PX_DEBUG"
+
+.SS "#define px_hmac_block_size(hmac)   (hmac)->block_size(hmac)"
+
+.SS "#define px_hmac_finish(hmac, buf)   (hmac)->finish(hmac, buf)"
+
+.SS "#define px_hmac_free(hmac)   (hmac)->free(hmac)"
+
+.SS "#define px_hmac_init(hmac, key, klen)   (hmac)->init(hmac, key, klen)"
+
+.SS "#define px_hmac_reset(hmac)   (hmac)->reset(hmac)"
+
+.SS "#define px_hmac_result_size(hmac)   (hmac)->result_size(hmac)"
+
+.SS "#define px_hmac_update(hmac, data, dlen)   (hmac)->update(hmac, data, dlen)"
+
+.SS "#define PX_MAX_NAMELEN   128"
+
+.SS "#define PX_MAX_SALT_LEN   128"
+
+.SS "#define px_md_block_size(md)   (md)->block_size(md)"
+
+.SS "#define px_md_finish(md, buf)   (md)->finish(md, buf)"
+
+.SS "#define px_md_free(md)   (md)->free(md)"
+
+.SS "#define px_md_reset(md)   (md)->reset(md)"
+
+.SS "#define px_md_result_size(md)   (md)->result_size(md)"
+
+.SS "#define px_md_update(md, data, dlen)   (md)->update(md, data, dlen)"
+
+.SS "#define PXE_ARGUMENT_ERROR   -13"
+
+.SS "#define PXE_BAD_FORMAT   -6"
+
+.SS "#define PXE_BAD_OPTION   -5"
+
+.SS "#define PXE_BAD_SALT_ROUNDS   -15"
+
+.SS "#define PXE_BUG   -12"
+
+.SS "#define PXE_CIPHER_INIT   -8"
+
+.SS "#define PXE_DECRYPT_FAILED   -18"
+
+.SS "#define PXE_DEV_READ_ERROR   -10"
+
+.SS "#define PXE_ERR_GENERIC   -1"
+
+.SS "#define PXE_HASH_UNUSABLE_FOR_HMAC   -9"
+
+.SS "#define PXE_KEY_TOO_BIG   -7"
+
+.SS "#define PXE_MBUF_SHORT_READ   -50"
+
+.SS "#define PXE_MCRYPT_INTERNAL   -16"
+
+.SS "#define PXE_NO_CIPHER   -3"
+
+.SS "#define PXE_NO_HASH   -2"
+
+.SS "#define PXE_NO_RANDOM   -17"
+
+.SS "#define PXE_NOTBLOCKSIZE   -4"
+
+.SS "#define PXE_OK   0"
+
+.SS "#define PXE_OSSL_RAND_ERROR   -11"
+
+.SS "#define PXE_PGP_BAD_S2K_MODE   -121"
+
+.SS "#define PXE_PGP_COMPRESSION_ERROR   -105"
+
+.SS "#define PXE_PGP_CORRUPT_ARMOR   -101"
+
+.SS "#define PXE_PGP_CORRUPT_DATA   -100"
+
+.SS "#define PXE_PGP_EXPECT_PUBLIC_KEY   -115"
+
+.SS "#define PXE_PGP_EXPECT_SECRET_KEY   -116"
+
+.SS "#define PXE_PGP_KEYPKT_CORRUPT   -118"
+
+.SS "#define PXE_PGP_MATH_FAILED   -109"
+
+.SS "#define PXE_PGP_MULTIPLE_KEYS   -114"
+
+.SS "#define PXE_PGP_MULTIPLE_SUBKEYS   -123"
+
+.SS "#define PXE_PGP_NEED_SECRET_PSW   -120"
+
+.SS "#define PXE_PGP_NO_BIGNUM   -108"
+
+.SS "#define PXE_PGP_NO_USABLE_KEY   -119"
+
+.SS "#define PXE_PGP_NOT_TEXT   -106"
+
+.SS "#define PXE_PGP_NOT_V4_KEYPKT   -117"
+
+.SS "#define PXE_PGP_RSA_UNSUPPORTED   -111"
+
+.SS "#define PXE_PGP_SHORT_ELGAMAL_KEY   -110"
+
+.SS "#define PXE_PGP_UNEXPECTED_PKT   -107"
+
+.SS "#define PXE_PGP_UNKNOWN_PUBALGO   -112"
+
+.SS "#define PXE_PGP_UNSUPPORTED_CIPHER   -103"
+
+.SS "#define PXE_PGP_UNSUPPORTED_COMPR   -102"
+
+.SS "#define PXE_PGP_UNSUPPORTED_HASH   -104"
+
+.SS "#define PXE_PGP_UNSUPPORTED_PUBALGO   -122"
+
+.SS "#define PXE_PGP_WRONG_KEY   -113"
+
+.SS "#define PXE_UNKNOWN_SALT_ALGO   -14"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBpx_alias\fP \fBPX_Alias\fP"
+
+.SS "typedef struct \fBpx_cipher\fP \fBPX_Cipher\fP"
+
+.SS "typedef struct \fBpx_combo\fP \fBPX_Combo\fP"
+
+.SS "typedef struct \fBpx_hmac\fP \fBPX_HMAC\fP"
+
+.SS "typedef struct \fBpx_digest\fP \fBPX_MD\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "unsigned px_acquire_system_randomness (\fBuint8\fP *dst)"
+
+.SS "int px_add_entropy (const \fBuint8\fP *data, unsignedcount)"
+
+.SS "int px_find_cipher (const char *name, \fBPX_Cipher\fP **res)"
+
+.SS "int px_find_combo (const char *name, \fBPX_Combo\fP **res)"
+
+.SS "int px_find_digest (const char *name, \fBPX_MD\fP **res)"
+
+.SS "int px_find_hmac (const char *name, \fBPX_HMAC\fP **res)"
+
+.SS "int px_get_pseudo_random_bytes (\fBuint8\fP *dst, unsignedcount)"
+
+.SS "int px_get_random_bytes (\fBuint8\fP *dst, unsignedcount)"
+
+.SS "const char* px_resolve_alias (const \fBPX_Alias\fP *aliases, const char *name)"
+
+.SS "void px_set_debug_handler (void(*)(const char *)handler)"
+
+.SS "const char* px_strerror (interr)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

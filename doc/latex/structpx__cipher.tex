@@ -1,0 +1,63 @@
+\hypertarget{structpx__cipher}{\section{px\-\_\-cipher Struct Reference}
+\label{structpx__cipher}\index{px\-\_\-cipher@{px\-\_\-cipher}}
+}
+
+
+{\ttfamily \#include $<$px.\-h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned($\ast$ \hyperlink{structpx__cipher_ae07f901d28bee73ac010f9cf5e0b5542}{block\-\_\-size} )(\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$c)
+\item 
+unsigned($\ast$ \hyperlink{structpx__cipher_abb0e876a446ea3b60312600756c84ba4}{key\-\_\-size} )(\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$c)
+\item 
+unsigned($\ast$ \hyperlink{structpx__cipher_a17865fc83c08e2ec6489bf2ed50230ca}{iv\-\_\-size} )(\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$c)
+\item 
+int($\ast$ \hyperlink{structpx__cipher_a4cc09030530e02a60c81374336ab8cc8}{init} )(\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$c, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, unsigned klen, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$iv)
+\item 
+int($\ast$ \hyperlink{structpx__cipher_a32ab97af8bda85fbf58ac89a33ca831f}{encrypt} )(\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$c, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$res)
+\item 
+int($\ast$ \hyperlink{structpx__cipher_a6d3313430da30c4bc1dd2759aa5828e1}{decrypt} )(\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$c, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$res)
+\item 
+void($\ast$ \hyperlink{structpx__cipher_a3de791a8214f3fbc31ed6dde380482ff}{free} )(\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$c)
+\item 
+void $\ast$ \hyperlink{structpx__cipher_a73945c5645b030ef56f93619fd054fb4}{ptr}
+\item 
+int \hyperlink{structpx__cipher_a38cb7dae8989ea328c191c73d91f6c31}{pstat}
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structpx__cipher_ae07f901d28bee73ac010f9cf5e0b5542}{\index{px\-\_\-cipher@{px\-\_\-cipher}!block\-\_\-size@{block\-\_\-size}}
+\index{block\-\_\-size@{block\-\_\-size}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{block\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-cipher\-::block\-\_\-size)({\bf P\-X\-\_\-\-Cipher} $\ast$c)}}\label{structpx__cipher_ae07f901d28bee73ac010f9cf5e0b5542}
+\hypertarget{structpx__cipher_a6d3313430da30c4bc1dd2759aa5828e1}{\index{px\-\_\-cipher@{px\-\_\-cipher}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{decrypt}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ px\-\_\-cipher\-::decrypt)({\bf P\-X\-\_\-\-Cipher} $\ast$c, const {\bf uint8} $\ast$data, unsigned dlen, {\bf uint8} $\ast$res)}}\label{structpx__cipher_a6d3313430da30c4bc1dd2759aa5828e1}
+\hypertarget{structpx__cipher_a32ab97af8bda85fbf58ac89a33ca831f}{\index{px\-\_\-cipher@{px\-\_\-cipher}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{encrypt}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ px\-\_\-cipher\-::encrypt)({\bf P\-X\-\_\-\-Cipher} $\ast$c, const {\bf uint8} $\ast$data, unsigned dlen, {\bf uint8} $\ast$res)}}\label{structpx__cipher_a32ab97af8bda85fbf58ac89a33ca831f}
+\hypertarget{structpx__cipher_a3de791a8214f3fbc31ed6dde380482ff}{\index{px\-\_\-cipher@{px\-\_\-cipher}!free@{free}}
+\index{free@{free}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{free}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-cipher\-::free)({\bf P\-X\-\_\-\-Cipher} $\ast$c)}}\label{structpx__cipher_a3de791a8214f3fbc31ed6dde380482ff}
+\hypertarget{structpx__cipher_a4cc09030530e02a60c81374336ab8cc8}{\index{px\-\_\-cipher@{px\-\_\-cipher}!init@{init}}
+\index{init@{init}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ px\-\_\-cipher\-::init)({\bf P\-X\-\_\-\-Cipher} $\ast$c, const {\bf uint8} $\ast$key, unsigned klen, const {\bf uint8} $\ast$iv)}}\label{structpx__cipher_a4cc09030530e02a60c81374336ab8cc8}
+\hypertarget{structpx__cipher_a17865fc83c08e2ec6489bf2ed50230ca}{\index{px\-\_\-cipher@{px\-\_\-cipher}!iv\-\_\-size@{iv\-\_\-size}}
+\index{iv\-\_\-size@{iv\-\_\-size}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{iv\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-cipher\-::iv\-\_\-size)({\bf P\-X\-\_\-\-Cipher} $\ast$c)}}\label{structpx__cipher_a17865fc83c08e2ec6489bf2ed50230ca}
+\hypertarget{structpx__cipher_abb0e876a446ea3b60312600756c84ba4}{\index{px\-\_\-cipher@{px\-\_\-cipher}!key\-\_\-size@{key\-\_\-size}}
+\index{key\-\_\-size@{key\-\_\-size}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{key\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-cipher\-::key\-\_\-size)({\bf P\-X\-\_\-\-Cipher} $\ast$c)}}\label{structpx__cipher_abb0e876a446ea3b60312600756c84ba4}
+\hypertarget{structpx__cipher_a38cb7dae8989ea328c191c73d91f6c31}{\index{px\-\_\-cipher@{px\-\_\-cipher}!pstat@{pstat}}
+\index{pstat@{pstat}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{pstat}]{\setlength{\rightskip}{0pt plus 5cm}int px\-\_\-cipher\-::pstat}}\label{structpx__cipher_a38cb7dae8989ea328c191c73d91f6c31}
+\hypertarget{structpx__cipher_a73945c5645b030ef56f93619fd054fb4}{\index{px\-\_\-cipher@{px\-\_\-cipher}!ptr@{ptr}}
+\index{ptr@{ptr}!px_cipher@{px\-\_\-cipher}}
+\subsubsection[{ptr}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ px\-\_\-cipher\-::ptr}}\label{structpx__cipher_a73945c5645b030ef56f93619fd054fb4}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{px_8h}{px.\-h}\end{DoxyCompactItemize}

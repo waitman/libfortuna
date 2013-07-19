@@ -1,0 +1,78 @@
+.TH "px_hmac" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+px_hmac \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <px\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "unsigned(* \fBresult_size\fP )(\fBPX_HMAC\fP *h)"
+.br
+.ti -1c
+.RI "unsigned(* \fBblock_size\fP )(\fBPX_HMAC\fP *h)"
+.br
+.ti -1c
+.RI "void(* \fBreset\fP )(\fBPX_HMAC\fP *h)"
+.br
+.ti -1c
+.RI "void(* \fBupdate\fP )(\fBPX_HMAC\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void(* \fBfinish\fP )(\fBPX_HMAC\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void(* \fBfree\fP )(\fBPX_HMAC\fP *h)"
+.br
+.ti -1c
+.RI "void(* \fBinit\fP )(\fBPX_HMAC\fP *h, const \fBuint8\fP *key, unsigned klen)"
+.br
+.ti -1c
+.RI "\fBPX_MD\fP * \fBmd\fP"
+.br
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   \fBuint8\fP * \fBipad\fP"
+.br
+.ti -1c
+.RI "   \fBuint8\fP * \fBopad\fP"
+.br
+.ti -1c
+.RI "} \fBp\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "unsigned(* px_hmac::block_size)(\fBPX_HMAC\fP *h)"
+
+.SS "void(* px_hmac::finish)(\fBPX_HMAC\fP *h, \fBuint8\fP *dst)"
+
+.SS "void(* px_hmac::free)(\fBPX_HMAC\fP *h)"
+
+.SS "void(* px_hmac::init)(\fBPX_HMAC\fP *h, const \fBuint8\fP *key, unsigned klen)"
+
+.SS "\fBuint8\fP* px_hmac::ipad"
+
+.SS "\fBPX_MD\fP* px_hmac::md"
+
+.SS "\fBuint8\fP* px_hmac::opad"
+
+.SS "struct { \&.\&.\&. } 			 px_hmac::p"
+
+.SS "void(* px_hmac::reset)(\fBPX_HMAC\fP *h)"
+
+.SS "unsigned(* px_hmac::result_size)(\fBPX_HMAC\fP *h)"
+
+.SS "void(* px_hmac::update)(\fBPX_HMAC\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

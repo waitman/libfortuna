@@ -1,0 +1,81 @@
+.TH "sha1.h" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sha1.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBsha1_ctxt\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSHA1Init\fP(x)   \fBsha1_init\fP((x))"
+.br
+.ti -1c
+.RI "#define \fBSHA1Update\fP(x, y, z)   \fBsha1_loop\fP((x), (y), (z))"
+.br
+.ti -1c
+.RI "#define \fBSHA1Final\fP(x, y)   \fBsha1_result\fP((y), (x))"
+.br
+.ti -1c
+.RI "#define \fBSHA1_RESULTLEN\fP   (160/8)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBsha1_ctxt\fP \fBSHA1_CTX\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsha1_init\fP (struct \fBsha1_ctxt\fP *)"
+.br
+.ti -1c
+.RI "void \fBsha1_pad\fP (struct \fBsha1_ctxt\fP *)"
+.br
+.ti -1c
+.RI "void \fBsha1_loop\fP (struct \fBsha1_ctxt\fP *, const \fBuint8\fP *, size_t)"
+.br
+.ti -1c
+.RI "void \fBsha1_result\fP (struct \fBsha1_ctxt\fP *, \fBuint8\fP *)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define SHA1_RESULTLEN   (160/8)"
+
+.SS "#define SHA1Final(x, y)   \fBsha1_result\fP((y), (x))"
+
+.SS "#define SHA1Init(x)   \fBsha1_init\fP((x))"
+
+.SS "#define SHA1Update(x, y, z)   \fBsha1_loop\fP((x), (y), (z))"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBsha1_ctxt\fP \fBSHA1_CTX\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void sha1_init (struct \fBsha1_ctxt\fP *)"
+
+.SS "void sha1_loop (struct \fBsha1_ctxt\fP *, const \fBuint8\fP *, size_t)"
+
+.SS "void sha1_pad (struct \fBsha1_ctxt\fP *)"
+
+.SS "void sha1_result (struct \fBsha1_ctxt\fP *, \fBuint8\fP *)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

@@ -1,0 +1,60 @@
+\hypertarget{structint__ctx}{\section{int\-\_\-ctx Struct Reference}
+\label{structint__ctx}\index{int\-\_\-ctx@{int\-\_\-ctx}}
+}
+
+
+{\ttfamily \#include $<$internal.\-h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{structint__ctx_a896ecf3eb20dd99e750c356fc44825e2}{keybuf} \mbox{[}\hyperlink{internal_8h_a1fe65048b594a3956020028c65e8519b}{I\-N\-T\-\_\-\-M\-A\-X\-\_\-\-K\-E\-Y}\mbox{]}
+\item 
+\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{structint__ctx_ae931dacd2536e5b4ef71871e351cc6da}{iv} \mbox{[}\hyperlink{internal_8h_a1de738986ffa91bfcdf3277ce55e1223}{I\-N\-T\-\_\-\-M\-A\-X\-\_\-\-I\-V}\mbox{]}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\hyperlink{structBlowfishContext}{BlowfishContext} \hyperlink{structint__ctx_aac34653068b3f2179215d2d5cd2ace10}{bf}\\
+\>\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\_ctx} \hyperlink{structint__ctx_ae6455e9eaa34ec09871fa52ec7becb77}{rj}\\
+\} \hyperlink{structint__ctx_a752ea1cbe27058721c7f31696dd440f2}{ctx}\\
+
+\end{tabbing}\item 
+unsigned \hyperlink{structint__ctx_aa09fedf5414ec886700046bb5b52e9ec}{keylen}
+\item 
+int \hyperlink{structint__ctx_a1ec0a9b4938c69f8c3dda43f2df27367}{is\-\_\-init}
+\item 
+int \hyperlink{structint__ctx_a02e9a0634da59d3a196f14dcaed77df7}{mode}
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structint__ctx_aac34653068b3f2179215d2d5cd2ace10}{\index{int\-\_\-ctx@{int\-\_\-ctx}!bf@{bf}}
+\index{bf@{bf}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{bf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blowfish\-Context} int\-\_\-ctx\-::bf}}\label{structint__ctx_aac34653068b3f2179215d2d5cd2ace10}
+\hypertarget{structint__ctx_a752ea1cbe27058721c7f31696dd440f2}{\index{int\-\_\-ctx@{int\-\_\-ctx}!ctx@{ctx}}
+\index{ctx@{ctx}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{ctx}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \} 			 int\-\_\-ctx\-::ctx}}\label{structint__ctx_a752ea1cbe27058721c7f31696dd440f2}
+\hypertarget{structint__ctx_a1ec0a9b4938c69f8c3dda43f2df27367}{\index{int\-\_\-ctx@{int\-\_\-ctx}!is\-\_\-init@{is\-\_\-init}}
+\index{is\-\_\-init@{is\-\_\-init}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{is\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int int\-\_\-ctx\-::is\-\_\-init}}\label{structint__ctx_a1ec0a9b4938c69f8c3dda43f2df27367}
+\hypertarget{structint__ctx_ae931dacd2536e5b4ef71871e351cc6da}{\index{int\-\_\-ctx@{int\-\_\-ctx}!iv@{iv}}
+\index{iv@{iv}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{iv}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} int\-\_\-ctx\-::iv\mbox{[}{\bf I\-N\-T\-\_\-\-M\-A\-X\-\_\-\-I\-V}\mbox{]}}}\label{structint__ctx_ae931dacd2536e5b4ef71871e351cc6da}
+\hypertarget{structint__ctx_a896ecf3eb20dd99e750c356fc44825e2}{\index{int\-\_\-ctx@{int\-\_\-ctx}!keybuf@{keybuf}}
+\index{keybuf@{keybuf}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{keybuf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} int\-\_\-ctx\-::keybuf\mbox{[}{\bf I\-N\-T\-\_\-\-M\-A\-X\-\_\-\-K\-E\-Y}\mbox{]}}}\label{structint__ctx_a896ecf3eb20dd99e750c356fc44825e2}
+\hypertarget{structint__ctx_aa09fedf5414ec886700046bb5b52e9ec}{\index{int\-\_\-ctx@{int\-\_\-ctx}!keylen@{keylen}}
+\index{keylen@{keylen}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{keylen}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int\-\_\-ctx\-::keylen}}\label{structint__ctx_aa09fedf5414ec886700046bb5b52e9ec}
+\hypertarget{structint__ctx_a02e9a0634da59d3a196f14dcaed77df7}{\index{int\-\_\-ctx@{int\-\_\-ctx}!mode@{mode}}
+\index{mode@{mode}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{mode}]{\setlength{\rightskip}{0pt plus 5cm}int int\-\_\-ctx\-::mode}}\label{structint__ctx_a02e9a0634da59d3a196f14dcaed77df7}
+\hypertarget{structint__ctx_ae6455e9eaa34ec09871fa52ec7becb77}{\index{int\-\_\-ctx@{int\-\_\-ctx}!rj@{rj}}
+\index{rj@{rj}!int_ctx@{int\-\_\-ctx}}
+\subsubsection[{rj}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rijndael\-\_\-ctx} int\-\_\-ctx\-::rj}}\label{structint__ctx_ae6455e9eaa34ec09871fa52ec7becb77}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{internal_8h}{internal.\-h}\end{DoxyCompactItemize}

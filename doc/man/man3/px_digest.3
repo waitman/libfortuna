@@ -1,0 +1,68 @@
+.TH "px_digest" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+px_digest \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <px\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "unsigned(* \fBresult_size\fP )(\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned(* \fBblock_size\fP )(\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void(* \fBreset\fP )(\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void(* \fBupdate\fP )(\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void(* \fBfinish\fP )(\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void(* \fBfree\fP )(\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   unsigned \fBcode\fP"
+.br
+.ti -1c
+.RI "   void * \fBptr\fP"
+.br
+.ti -1c
+.RI "} \fBp\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "unsigned(* px_digest::block_size)(\fBPX_MD\fP *h)"
+
+.SS "unsigned px_digest::code"
+
+.SS "void(* px_digest::finish)(\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+
+.SS "void(* px_digest::free)(\fBPX_MD\fP *h)"
+
+.SS "union { \&.\&.\&. } 			 px_digest::p"
+
+.SS "void* px_digest::ptr"
+
+.SS "void(* px_digest::reset)(\fBPX_MD\fP *h)"
+
+.SS "unsigned(* px_digest::result_size)(\fBPX_MD\fP *h)"
+
+.SS "void(* px_digest::update)(\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

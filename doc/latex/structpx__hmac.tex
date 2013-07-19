@@ -1,0 +1,75 @@
+\hypertarget{structpx__hmac}{\section{px\-\_\-hmac Struct Reference}
+\label{structpx__hmac}\index{px\-\_\-hmac@{px\-\_\-hmac}}
+}
+
+
+{\ttfamily \#include $<$px.\-h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned($\ast$ \hyperlink{structpx__hmac_a0cb0b623751c051d891c014c9205d580}{result\-\_\-size} )(\hyperlink{px_8h_a1b911a316581bee8ed722bd30f615d5c}{P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)
+\item 
+unsigned($\ast$ \hyperlink{structpx__hmac_a633309528ca04e35bab8fc502ae96e99}{block\-\_\-size} )(\hyperlink{px_8h_a1b911a316581bee8ed722bd30f615d5c}{P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)
+\item 
+void($\ast$ \hyperlink{structpx__hmac_a64ffc8c49352689a88434c0ebc037714}{reset} )(\hyperlink{px_8h_a1b911a316581bee8ed722bd30f615d5c}{P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)
+\item 
+void($\ast$ \hyperlink{structpx__hmac_a0bb46e1f461f7d0300e0d8d8c9c2f306}{update} )(\hyperlink{px_8h_a1b911a316581bee8ed722bd30f615d5c}{P\-X\-\_\-\-H\-M\-A\-C} $\ast$h, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen)
+\item 
+void($\ast$ \hyperlink{structpx__hmac_a5891604df1dcbc091bca70a4e6b041d8}{finish} )(\hyperlink{px_8h_a1b911a316581bee8ed722bd30f615d5c}{P\-X\-\_\-\-H\-M\-A\-C} $\ast$h, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\item 
+void($\ast$ \hyperlink{structpx__hmac_aaec97ad622d5ef2ac7ab6b166bddc63a}{free} )(\hyperlink{px_8h_a1b911a316581bee8ed722bd30f615d5c}{P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)
+\item 
+void($\ast$ \hyperlink{structpx__hmac_a67b9614118aa8555a07c89c59c5c75ac}{init} )(\hyperlink{px_8h_a1b911a316581bee8ed722bd30f615d5c}{P\-X\-\_\-\-H\-M\-A\-C} $\ast$h, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, unsigned klen)
+\item 
+\hyperlink{px_8h_a21fa22732371ffb7737caceba5e087dd}{P\-X\-\_\-\-M\-D} $\ast$ \hyperlink{structpx__hmac_a03c811c1ae1050bb260e48c10fa87cb0}{md}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$ \hyperlink{structpx__hmac_a234c1fdafd4a075f20669c23a1ccf025}{ipad}\\
+\>\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$ \hyperlink{structpx__hmac_aa16d837ed7c5cd1d54b11bb73a1b9ed6}{opad}\\
+\} \hyperlink{structpx__hmac_a9dc542fa7e54271064310f5d6780bfe7}{p}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structpx__hmac_a633309528ca04e35bab8fc502ae96e99}{\index{px\-\_\-hmac@{px\-\_\-hmac}!block\-\_\-size@{block\-\_\-size}}
+\index{block\-\_\-size@{block\-\_\-size}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{block\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-hmac\-::block\-\_\-size)({\bf P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)}}\label{structpx__hmac_a633309528ca04e35bab8fc502ae96e99}
+\hypertarget{structpx__hmac_a5891604df1dcbc091bca70a4e6b041d8}{\index{px\-\_\-hmac@{px\-\_\-hmac}!finish@{finish}}
+\index{finish@{finish}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{finish}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-hmac\-::finish)({\bf P\-X\-\_\-\-H\-M\-A\-C} $\ast$h, {\bf uint8} $\ast$dst)}}\label{structpx__hmac_a5891604df1dcbc091bca70a4e6b041d8}
+\hypertarget{structpx__hmac_aaec97ad622d5ef2ac7ab6b166bddc63a}{\index{px\-\_\-hmac@{px\-\_\-hmac}!free@{free}}
+\index{free@{free}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{free}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-hmac\-::free)({\bf P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)}}\label{structpx__hmac_aaec97ad622d5ef2ac7ab6b166bddc63a}
+\hypertarget{structpx__hmac_a67b9614118aa8555a07c89c59c5c75ac}{\index{px\-\_\-hmac@{px\-\_\-hmac}!init@{init}}
+\index{init@{init}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-hmac\-::init)({\bf P\-X\-\_\-\-H\-M\-A\-C} $\ast$h, const {\bf uint8} $\ast$key, unsigned klen)}}\label{structpx__hmac_a67b9614118aa8555a07c89c59c5c75ac}
+\hypertarget{structpx__hmac_a234c1fdafd4a075f20669c23a1ccf025}{\index{px\-\_\-hmac@{px\-\_\-hmac}!ipad@{ipad}}
+\index{ipad@{ipad}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{ipad}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8}$\ast$ px\-\_\-hmac\-::ipad}}\label{structpx__hmac_a234c1fdafd4a075f20669c23a1ccf025}
+\hypertarget{structpx__hmac_a03c811c1ae1050bb260e48c10fa87cb0}{\index{px\-\_\-hmac@{px\-\_\-hmac}!md@{md}}
+\index{md@{md}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{md}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\-X\-\_\-\-M\-D}$\ast$ px\-\_\-hmac\-::md}}\label{structpx__hmac_a03c811c1ae1050bb260e48c10fa87cb0}
+\hypertarget{structpx__hmac_aa16d837ed7c5cd1d54b11bb73a1b9ed6}{\index{px\-\_\-hmac@{px\-\_\-hmac}!opad@{opad}}
+\index{opad@{opad}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{opad}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8}$\ast$ px\-\_\-hmac\-::opad}}\label{structpx__hmac_aa16d837ed7c5cd1d54b11bb73a1b9ed6}
+\hypertarget{structpx__hmac_a9dc542fa7e54271064310f5d6780bfe7}{\index{px\-\_\-hmac@{px\-\_\-hmac}!p@{p}}
+\index{p@{p}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{p}]{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \} 			 px\-\_\-hmac\-::p}}\label{structpx__hmac_a9dc542fa7e54271064310f5d6780bfe7}
+\hypertarget{structpx__hmac_a64ffc8c49352689a88434c0ebc037714}{\index{px\-\_\-hmac@{px\-\_\-hmac}!reset@{reset}}
+\index{reset@{reset}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-hmac\-::reset)({\bf P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)}}\label{structpx__hmac_a64ffc8c49352689a88434c0ebc037714}
+\hypertarget{structpx__hmac_a0cb0b623751c051d891c014c9205d580}{\index{px\-\_\-hmac@{px\-\_\-hmac}!result\-\_\-size@{result\-\_\-size}}
+\index{result\-\_\-size@{result\-\_\-size}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{result\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-hmac\-::result\-\_\-size)({\bf P\-X\-\_\-\-H\-M\-A\-C} $\ast$h)}}\label{structpx__hmac_a0cb0b623751c051d891c014c9205d580}
+\hypertarget{structpx__hmac_a0bb46e1f461f7d0300e0d8d8c9c2f306}{\index{px\-\_\-hmac@{px\-\_\-hmac}!update@{update}}
+\index{update@{update}!px_hmac@{px\-\_\-hmac}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-hmac\-::update)({\bf P\-X\-\_\-\-H\-M\-A\-C} $\ast$h, const {\bf uint8} $\ast$data, unsigned dlen)}}\label{structpx__hmac_a0bb46e1f461f7d0300e0d8d8c9c2f306}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{px_8h}{px.\-h}\end{DoxyCompactItemize}

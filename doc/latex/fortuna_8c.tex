@@ -1,0 +1,260 @@
+\hypertarget{fortuna_8c}{\section{fortuna.\-c File Reference}
+\label{fortuna_8c}\index{fortuna.\-c@{fortuna.\-c}}
+}
+{\ttfamily \#include $<$sys/time.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}c.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rijndael.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sha2.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}fortuna.\-h\char`\"{}}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structfortuna__state}{fortuna\-\_\-state}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{fortuna_8c_a2c5a4c46ba326a907d016cc28654e39e}{N\-U\-M\-\_\-\-P\-O\-O\-L\-S}~23
+\item 
+\#define \hyperlink{fortuna_8c_ac784c07c11ecb8dfefb98bc3911fbb38}{R\-E\-S\-E\-E\-D\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}~100000	/$\ast$ 0.\-1 sec $\ast$/
+\item 
+\#define \hyperlink{fortuna_8c_a2630d825f6f41fe703a7e290b84ca648}{R\-E\-S\-E\-E\-D\-\_\-\-B\-Y\-T\-E\-S}~(1024$\ast$1024)
+\item 
+\#define \hyperlink{fortuna_8c_a8b30cef6eddf67772af599c4cd2f284d}{P\-O\-O\-L0\-\_\-\-F\-I\-L\-L}~(256/8)
+\item 
+\#define \hyperlink{fortuna_8c_a52220397ecea855b3a99746e451426e1}{B\-L\-O\-C\-K}~32
+\item 
+\#define \hyperlink{fortuna_8c_a9fe77c3b0290638cb826d1d21ea089f2}{C\-I\-P\-H\-\_\-\-B\-L\-O\-C\-K}~16
+\item 
+\#define \hyperlink{fortuna_8c_a048bfa4110aab2baeb19226a65ac2d65}{M\-D\-\_\-\-C\-T\-X}~\hyperlink{sha2_8h_a0e4ea9b43c30824ef17d9d4a108cb249}{S\-H\-A256\-\_\-\-C\-T\-X}
+\item 
+\#define \hyperlink{fortuna_8c_af34e82ca14c1a5b3552ff1f386b66e18}{C\-I\-P\-H\-\_\-\-C\-T\-X}~\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structfortuna__state}{fortuna\-\_\-state} \hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fortuna_8c_aec287d6d196702a2ed8ede4975254e1c}{ciph\-\_\-init} (\hyperlink{fortuna_8c_af34e82ca14c1a5b3552ff1f386b66e18}{C\-I\-P\-H\-\_\-\-C\-T\-X} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, int klen)
+\item 
+void \hyperlink{fortuna_8c_a1163a960c611810f6b17d61387a83d20}{ciph\-\_\-encrypt} (\hyperlink{fortuna_8c_af34e82ca14c1a5b3552ff1f386b66e18}{C\-I\-P\-H\-\_\-\-C\-T\-X} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$in, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$out)
+\item 
+void \hyperlink{fortuna_8c_a592f7001f27e14a23974f96c7854fd61}{md\-\_\-init} (\hyperlink{fortuna_8c_a048bfa4110aab2baeb19226a65ac2d65}{M\-D\-\_\-\-C\-T\-X} $\ast$ctx)
+\item 
+void \hyperlink{fortuna_8c_a61e1ac92eacd37ff4ff973212847c07c}{md\-\_\-update} (\hyperlink{fortuna_8c_a048bfa4110aab2baeb19226a65ac2d65}{M\-D\-\_\-\-C\-T\-X} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, int len)
+\item 
+void \hyperlink{fortuna_8c_a53a43ee0460e32ddf450fd67beb4f923}{md\-\_\-result} (\hyperlink{fortuna_8c_a048bfa4110aab2baeb19226a65ac2d65}{M\-D\-\_\-\-C\-T\-X} $\ast$ctx, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\item 
+void \hyperlink{fortuna_8c_af00d7558f621be0f7c9157f873e13a59}{init\-\_\-state} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st)
+\item 
+void \hyperlink{fortuna_8c_ae1b2f5b741acca9119552c484fd7b45f}{inc\-\_\-counter} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st)
+\item 
+void \hyperlink{fortuna_8c_accc2fc48edc6f3c032e62739df38f665}{encrypt\-\_\-counter} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\item 
+int \hyperlink{fortuna_8c_a02ecc0a10ed0f93b65baa8da1adb114e}{enough\-\_\-time\-\_\-passed} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st)
+\item 
+void \hyperlink{fortuna_8c_abb7ed6aa38bfcb760bfc46edb33b9438}{reseed} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st)
+\item 
+unsigned \hyperlink{fortuna_8c_af853ce2c20701c12be71a9340337b516}{get\-\_\-rand\-\_\-pool} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st)
+\item 
+void \hyperlink{fortuna_8c_a75319c626e2f6f58d14b9c623dc56a4b}{add\-\_\-entropy} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned len)
+\item 
+void \hyperlink{fortuna_8c_a171a12e24548ed715b46672fcf826366}{rekey} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st)
+\item 
+void \hyperlink{fortuna_8c_a4fbaf3eae3193fb13d7f946bbf6afaec}{startup\-\_\-tricks} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st)
+\item 
+void \hyperlink{fortuna_8c_a77c5770bd3be7bfe47c58b67c3532e39}{extract\-\_\-data} (\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} $\ast$st, unsigned count, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\item 
+void \hyperlink{fortuna_8c_a704f564a22ded8759c8ba80938b44c8b}{fortuna\-\_\-add\-\_\-entropy} (const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned len)
+\item 
+void \hyperlink{fortuna_8c_aa118831145998f761723ee27f8aff541}{fortuna\-\_\-get\-\_\-bytes} (unsigned len, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{F\-State} \hyperlink{fortuna_8c_a6e4d1e4a2415921191d11abb9d9da802}{main\-\_\-state}
+\item 
+int \hyperlink{fortuna_8c_a07255fb29ed32ee3a4f5515f463517ff}{init\-\_\-done} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{fortuna_8c_a52220397ecea855b3a99746e451426e1}{\index{fortuna.\-c@{fortuna.\-c}!B\-L\-O\-C\-K@{B\-L\-O\-C\-K}}
+\index{B\-L\-O\-C\-K@{B\-L\-O\-C\-K}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{B\-L\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-L\-O\-C\-K~32}}\label{fortuna_8c_a52220397ecea855b3a99746e451426e1}
+\hypertarget{fortuna_8c_a9fe77c3b0290638cb826d1d21ea089f2}{\index{fortuna.\-c@{fortuna.\-c}!C\-I\-P\-H\-\_\-\-B\-L\-O\-C\-K@{C\-I\-P\-H\-\_\-\-B\-L\-O\-C\-K}}
+\index{C\-I\-P\-H\-\_\-\-B\-L\-O\-C\-K@{C\-I\-P\-H\-\_\-\-B\-L\-O\-C\-K}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{C\-I\-P\-H\-\_\-\-B\-L\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-I\-P\-H\-\_\-\-B\-L\-O\-C\-K~16}}\label{fortuna_8c_a9fe77c3b0290638cb826d1d21ea089f2}
+\hypertarget{fortuna_8c_af34e82ca14c1a5b3552ff1f386b66e18}{\index{fortuna.\-c@{fortuna.\-c}!C\-I\-P\-H\-\_\-\-C\-T\-X@{C\-I\-P\-H\-\_\-\-C\-T\-X}}
+\index{C\-I\-P\-H\-\_\-\-C\-T\-X@{C\-I\-P\-H\-\_\-\-C\-T\-X}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{C\-I\-P\-H\-\_\-\-C\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-I\-P\-H\-\_\-\-C\-T\-X~{\bf rijndael\-\_\-ctx}}}\label{fortuna_8c_af34e82ca14c1a5b3552ff1f386b66e18}
+\hypertarget{fortuna_8c_a048bfa4110aab2baeb19226a65ac2d65}{\index{fortuna.\-c@{fortuna.\-c}!M\-D\-\_\-\-C\-T\-X@{M\-D\-\_\-\-C\-T\-X}}
+\index{M\-D\-\_\-\-C\-T\-X@{M\-D\-\_\-\-C\-T\-X}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{M\-D\-\_\-\-C\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-D\-\_\-\-C\-T\-X~{\bf S\-H\-A256\-\_\-\-C\-T\-X}}}\label{fortuna_8c_a048bfa4110aab2baeb19226a65ac2d65}
+\hypertarget{fortuna_8c_a2c5a4c46ba326a907d016cc28654e39e}{\index{fortuna.\-c@{fortuna.\-c}!N\-U\-M\-\_\-\-P\-O\-O\-L\-S@{N\-U\-M\-\_\-\-P\-O\-O\-L\-S}}
+\index{N\-U\-M\-\_\-\-P\-O\-O\-L\-S@{N\-U\-M\-\_\-\-P\-O\-O\-L\-S}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{N\-U\-M\-\_\-\-P\-O\-O\-L\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-U\-M\-\_\-\-P\-O\-O\-L\-S~23}}\label{fortuna_8c_a2c5a4c46ba326a907d016cc28654e39e}
+\hypertarget{fortuna_8c_a8b30cef6eddf67772af599c4cd2f284d}{\index{fortuna.\-c@{fortuna.\-c}!P\-O\-O\-L0\-\_\-\-F\-I\-L\-L@{P\-O\-O\-L0\-\_\-\-F\-I\-L\-L}}
+\index{P\-O\-O\-L0\-\_\-\-F\-I\-L\-L@{P\-O\-O\-L0\-\_\-\-F\-I\-L\-L}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{P\-O\-O\-L0\-\_\-\-F\-I\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-O\-L0\-\_\-\-F\-I\-L\-L~(256/8)}}\label{fortuna_8c_a8b30cef6eddf67772af599c4cd2f284d}
+\hypertarget{fortuna_8c_a2630d825f6f41fe703a7e290b84ca648}{\index{fortuna.\-c@{fortuna.\-c}!R\-E\-S\-E\-E\-D\-\_\-\-B\-Y\-T\-E\-S@{R\-E\-S\-E\-E\-D\-\_\-\-B\-Y\-T\-E\-S}}
+\index{R\-E\-S\-E\-E\-D\-\_\-\-B\-Y\-T\-E\-S@{R\-E\-S\-E\-E\-D\-\_\-\-B\-Y\-T\-E\-S}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{R\-E\-S\-E\-E\-D\-\_\-\-B\-Y\-T\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-E\-S\-E\-E\-D\-\_\-\-B\-Y\-T\-E\-S~(1024$\ast$1024)}}\label{fortuna_8c_a2630d825f6f41fe703a7e290b84ca648}
+\hypertarget{fortuna_8c_ac784c07c11ecb8dfefb98bc3911fbb38}{\index{fortuna.\-c@{fortuna.\-c}!R\-E\-S\-E\-E\-D\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L@{R\-E\-S\-E\-E\-D\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}}
+\index{R\-E\-S\-E\-E\-D\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L@{R\-E\-S\-E\-E\-D\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{R\-E\-S\-E\-E\-D\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-E\-S\-E\-E\-D\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L~100000	/$\ast$ 0.\-1 sec $\ast$/}}\label{fortuna_8c_ac784c07c11ecb8dfefb98bc3911fbb38}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}{\index{fortuna.\-c@{fortuna.\-c}!F\-State@{F\-State}}
+\index{F\-State@{F\-State}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{F\-State}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf fortuna\-\_\-state} {\bf F\-State}}}\label{fortuna_8c_a81a4a830d532b110dfe0999798f3f0f8}
+
+
+\subsection{Function Documentation}
+\hypertarget{fortuna_8c_a75319c626e2f6f58d14b9c623dc56a4b}{\index{fortuna.\-c@{fortuna.\-c}!add\-\_\-entropy@{add\-\_\-entropy}}
+\index{add\-\_\-entropy@{add\-\_\-entropy}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{add\-\_\-entropy}]{\setlength{\rightskip}{0pt plus 5cm}void add\-\_\-entropy (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{len}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a75319c626e2f6f58d14b9c623dc56a4b}
+\hypertarget{fortuna_8c_a1163a960c611810f6b17d61387a83d20}{\index{fortuna.\-c@{fortuna.\-c}!ciph\-\_\-encrypt@{ciph\-\_\-encrypt}}
+\index{ciph\-\_\-encrypt@{ciph\-\_\-encrypt}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{ciph\-\_\-encrypt}]{\setlength{\rightskip}{0pt plus 5cm}void ciph\-\_\-encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-I\-P\-H\-\_\-\-C\-T\-X} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{in, }
+\item[{{\bf uint8} $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a1163a960c611810f6b17d61387a83d20}
+\hypertarget{fortuna_8c_aec287d6d196702a2ed8ede4975254e1c}{\index{fortuna.\-c@{fortuna.\-c}!ciph\-\_\-init@{ciph\-\_\-init}}
+\index{ciph\-\_\-init@{ciph\-\_\-init}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{ciph\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void ciph\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-I\-P\-H\-\_\-\-C\-T\-X} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{key, }
+\item[{int}]{klen}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_aec287d6d196702a2ed8ede4975254e1c}
+\hypertarget{fortuna_8c_accc2fc48edc6f3c032e62739df38f665}{\index{fortuna.\-c@{fortuna.\-c}!encrypt\-\_\-counter@{encrypt\-\_\-counter}}
+\index{encrypt\-\_\-counter@{encrypt\-\_\-counter}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{encrypt\-\_\-counter}]{\setlength{\rightskip}{0pt plus 5cm}void encrypt\-\_\-counter (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st, }
+\item[{{\bf uint8} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_accc2fc48edc6f3c032e62739df38f665}
+\hypertarget{fortuna_8c_a02ecc0a10ed0f93b65baa8da1adb114e}{\index{fortuna.\-c@{fortuna.\-c}!enough\-\_\-time\-\_\-passed@{enough\-\_\-time\-\_\-passed}}
+\index{enough\-\_\-time\-\_\-passed@{enough\-\_\-time\-\_\-passed}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{enough\-\_\-time\-\_\-passed}]{\setlength{\rightskip}{0pt plus 5cm}int enough\-\_\-time\-\_\-passed (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a02ecc0a10ed0f93b65baa8da1adb114e}
+\hypertarget{fortuna_8c_a77c5770bd3be7bfe47c58b67c3532e39}{\index{fortuna.\-c@{fortuna.\-c}!extract\-\_\-data@{extract\-\_\-data}}
+\index{extract\-\_\-data@{extract\-\_\-data}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{extract\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void extract\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st, }
+\item[{unsigned}]{count, }
+\item[{{\bf uint8} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a77c5770bd3be7bfe47c58b67c3532e39}
+\hypertarget{fortuna_8c_a704f564a22ded8759c8ba80938b44c8b}{\index{fortuna.\-c@{fortuna.\-c}!fortuna\-\_\-add\-\_\-entropy@{fortuna\-\_\-add\-\_\-entropy}}
+\index{fortuna\-\_\-add\-\_\-entropy@{fortuna\-\_\-add\-\_\-entropy}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{fortuna\-\_\-add\-\_\-entropy}]{\setlength{\rightskip}{0pt plus 5cm}void fortuna\-\_\-add\-\_\-entropy (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{len}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a704f564a22ded8759c8ba80938b44c8b}
+\hypertarget{fortuna_8c_aa118831145998f761723ee27f8aff541}{\index{fortuna.\-c@{fortuna.\-c}!fortuna\-\_\-get\-\_\-bytes@{fortuna\-\_\-get\-\_\-bytes}}
+\index{fortuna\-\_\-get\-\_\-bytes@{fortuna\-\_\-get\-\_\-bytes}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{fortuna\-\_\-get\-\_\-bytes}]{\setlength{\rightskip}{0pt plus 5cm}void fortuna\-\_\-get\-\_\-bytes (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{len, }
+\item[{{\bf uint8} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_aa118831145998f761723ee27f8aff541}
+\hypertarget{fortuna_8c_af853ce2c20701c12be71a9340337b516}{\index{fortuna.\-c@{fortuna.\-c}!get\-\_\-rand\-\_\-pool@{get\-\_\-rand\-\_\-pool}}
+\index{get\-\_\-rand\-\_\-pool@{get\-\_\-rand\-\_\-pool}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{get\-\_\-rand\-\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}unsigned get\-\_\-rand\-\_\-pool (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_af853ce2c20701c12be71a9340337b516}
+\hypertarget{fortuna_8c_ae1b2f5b741acca9119552c484fd7b45f}{\index{fortuna.\-c@{fortuna.\-c}!inc\-\_\-counter@{inc\-\_\-counter}}
+\index{inc\-\_\-counter@{inc\-\_\-counter}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{inc\-\_\-counter}]{\setlength{\rightskip}{0pt plus 5cm}void inc\-\_\-counter (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_ae1b2f5b741acca9119552c484fd7b45f}
+\hypertarget{fortuna_8c_af00d7558f621be0f7c9157f873e13a59}{\index{fortuna.\-c@{fortuna.\-c}!init\-\_\-state@{init\-\_\-state}}
+\index{init\-\_\-state@{init\-\_\-state}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{init\-\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-state (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_af00d7558f621be0f7c9157f873e13a59}
+\hypertarget{fortuna_8c_a592f7001f27e14a23974f96c7854fd61}{\index{fortuna.\-c@{fortuna.\-c}!md\-\_\-init@{md\-\_\-init}}
+\index{md\-\_\-init@{md\-\_\-init}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{md\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void md\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf M\-D\-\_\-\-C\-T\-X} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a592f7001f27e14a23974f96c7854fd61}
+\hypertarget{fortuna_8c_a53a43ee0460e32ddf450fd67beb4f923}{\index{fortuna.\-c@{fortuna.\-c}!md\-\_\-result@{md\-\_\-result}}
+\index{md\-\_\-result@{md\-\_\-result}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{md\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}void md\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{{\bf M\-D\-\_\-\-C\-T\-X} $\ast$}]{ctx, }
+\item[{{\bf uint8} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a53a43ee0460e32ddf450fd67beb4f923}
+\hypertarget{fortuna_8c_a61e1ac92eacd37ff4ff973212847c07c}{\index{fortuna.\-c@{fortuna.\-c}!md\-\_\-update@{md\-\_\-update}}
+\index{md\-\_\-update@{md\-\_\-update}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{md\-\_\-update}]{\setlength{\rightskip}{0pt plus 5cm}void md\-\_\-update (
+\begin{DoxyParamCaption}
+\item[{{\bf M\-D\-\_\-\-C\-T\-X} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a61e1ac92eacd37ff4ff973212847c07c}
+\hypertarget{fortuna_8c_a171a12e24548ed715b46672fcf826366}{\index{fortuna.\-c@{fortuna.\-c}!rekey@{rekey}}
+\index{rekey@{rekey}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{rekey}]{\setlength{\rightskip}{0pt plus 5cm}void rekey (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a171a12e24548ed715b46672fcf826366}
+\hypertarget{fortuna_8c_abb7ed6aa38bfcb760bfc46edb33b9438}{\index{fortuna.\-c@{fortuna.\-c}!reseed@{reseed}}
+\index{reseed@{reseed}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{reseed}]{\setlength{\rightskip}{0pt plus 5cm}void reseed (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_abb7ed6aa38bfcb760bfc46edb33b9438}
+\hypertarget{fortuna_8c_a4fbaf3eae3193fb13d7f946bbf6afaec}{\index{fortuna.\-c@{fortuna.\-c}!startup\-\_\-tricks@{startup\-\_\-tricks}}
+\index{startup\-\_\-tricks@{startup\-\_\-tricks}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{startup\-\_\-tricks}]{\setlength{\rightskip}{0pt plus 5cm}void startup\-\_\-tricks (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-State} $\ast$}]{st}
+\end{DoxyParamCaption}
+)}}\label{fortuna_8c_a4fbaf3eae3193fb13d7f946bbf6afaec}
+
+
+\subsection{Variable Documentation}
+\hypertarget{fortuna_8c_a07255fb29ed32ee3a4f5515f463517ff}{\index{fortuna.\-c@{fortuna.\-c}!init\-\_\-done@{init\-\_\-done}}
+\index{init\-\_\-done@{init\-\_\-done}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{init\-\_\-done}]{\setlength{\rightskip}{0pt plus 5cm}int init\-\_\-done = 0}}\label{fortuna_8c_a07255fb29ed32ee3a4f5515f463517ff}
+\hypertarget{fortuna_8c_a6e4d1e4a2415921191d11abb9d9da802}{\index{fortuna.\-c@{fortuna.\-c}!main\-\_\-state@{main\-\_\-state}}
+\index{main\-\_\-state@{main\-\_\-state}!fortuna.c@{fortuna.\-c}}
+\subsubsection[{main\-\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\-State} main\-\_\-state}}\label{fortuna_8c_a6e4d1e4a2415921191d11abb9d9da802}

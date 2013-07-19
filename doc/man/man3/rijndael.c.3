@@ -1,0 +1,312 @@
+.TH "rijndael.c" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+rijndael.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <sys/param\&.h>\fP
+.br
+\fC#include 'px\&.h'\fP
+.br
+\fC#include 'rijndael\&.h'\fP
+.br
+\fC#include 'rijndael\&.tbl'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPRE_CALC_TABLES\fP"
+.br
+.ti -1c
+.RI "#define \fBLARGE_TABLES\fP"
+.br
+.ti -1c
+.RI "#define \fBrotr\fP(x, n)   (((x) >> ((int)(n))) | ((x) << (32 - (int)(n))))"
+.br
+.ti -1c
+.RI "#define \fBrotl\fP(x, n)   (((x) << ((int)(n))) | ((x) >> (32 - (int)(n))))"
+.br
+.ti -1c
+.RI "#define \fBbswap\fP(x)   ((\fBrotl\fP((x), 8) & 0x00ff00ff) | (rotr((x), 8) & 0xff00ff00))"
+.br
+.ti -1c
+.RI "#define \fBbyte\fP(x, n)   ((\fBu1byte\fP)((x) >> (8 * (n))))"
+.br
+.ti -1c
+.RI "#define \fBio_swap\fP(x)   (x)"
+.br
+.ti -1c
+.RI "#define \fBtab_gen\fP   1"
+.br
+.ti -1c
+.RI "#define \fBff_mult\fP(a, b)   ((a) && (b) ? pow_tab[(log_tab[a] + log_tab[b]) % 255] : 0)"
+.br
+.ti -1c
+.RI "#define \fBf_rn\fP(bo, bi, n, k)"
+.br
+.ti -1c
+.RI "#define \fBi_rn\fP(bo, bi, n, k)"
+.br
+.ti -1c
+.RI "#define \fBls_box\fP(x)"
+.br
+.ti -1c
+.RI "#define \fBf_rl\fP(bo, bi, n, k)"
+.br
+.ti -1c
+.RI "#define \fBi_rl\fP(bo, bi, n, k)"
+.br
+.ti -1c
+.RI "#define \fBstar_x\fP(x)   (((x) & 0x7f7f7f7f) << 1) ^ ((((x) & 0x80808080) >> 7) * 0x1b)"
+.br
+.ti -1c
+.RI "#define \fBimix_col\fP(y, x)"
+.br
+.ti -1c
+.RI "#define \fBloop4\fP(i)"
+.br
+.ti -1c
+.RI "#define \fBloop6\fP(i)"
+.br
+.ti -1c
+.RI "#define \fBloop8\fP(i)"
+.br
+.ti -1c
+.RI "#define \fBf_nround\fP(bo, bi, k)"
+.br
+.ti -1c
+.RI "#define \fBf_lround\fP(bo, bi, k)"
+.br
+.ti -1c
+.RI "#define \fBi_nround\fP(bo, bi, k)"
+.br
+.ti -1c
+.RI "#define \fBi_lround\fP(bo, bi, k)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBgen_tabs\fP (void)"
+.br
+.ti -1c
+.RI "\fBrijndael_ctx\fP * \fBrijndael_set_key\fP (\fBrijndael_ctx\fP *ctx, const \fBu4byte\fP *in_key, const \fBu4byte\fP key_len, int encrypt)"
+.br
+.ti -1c
+.RI "void \fBrijndael_encrypt\fP (\fBrijndael_ctx\fP *ctx, const \fBu4byte\fP *in_blk, \fBu4byte\fP *out_blk)"
+.br
+.ti -1c
+.RI "void \fBrijndael_decrypt\fP (\fBrijndael_ctx\fP *ctx, const \fBu4byte\fP *in_blk, \fBu4byte\fP *out_blk)"
+.br
+.ti -1c
+.RI "void \fBaes_set_key\fP (\fBrijndael_ctx\fP *ctx, const \fBuint8\fP *key, unsigned keybits, int enc)"
+.br
+.ti -1c
+.RI "void \fBaes_ecb_encrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBaes_ecb_decrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBaes_cbc_encrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBaes_cbc_decrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsigned len)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define bswap(x)   ((\fBrotl\fP((x), 8) & 0x00ff00ff) | (rotr((x), 8) & 0xff00ff00))"
+
+.SS "#define byte(x, n)   ((\fBu1byte\fP)((x) >> (8 * (n))))"
+
+.SS "#define f_lround(bo, bi, k)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    f_rl(bo, bi, 0, k);     \
+    f_rl(bo, bi, 1, k);     \
+    f_rl(bo, bi, 2, k);     \
+    f_rl(bo, bi, 3, k);     \
+} while (0)
+.fi
+.SS "#define f_nround(bo, bi, k)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    f_rn(bo, bi, 0, k);     \
+    f_rn(bo, bi, 1, k);     \
+    f_rn(bo, bi, 2, k);     \
+    f_rn(bo, bi, 3, k);     \
+    k += 4;                 \
+} while (0)
+.fi
+.SS "#define f_rl(bo, bi, n, k)"
+\fBValue:\fP
+.PP
+.nf
+(bo)[n] =  fl_tab[0][byte((bi)[n],0)] ^               \
+             fl_tab[1][byte((bi)[((n) + 1) & 3],1)] ^   \
+             fl_tab[2][byte((bi)[((n) + 2) & 3],2)] ^   \
+             fl_tab[3][byte((bi)[((n) + 3) & 3],3)] ^ *((k) + (n))
+.fi
+.SS "#define f_rn(bo, bi, n, k)"
+\fBValue:\fP
+.PP
+.nf
+(bo)[n] =  ft_tab[0][byte((bi)[n],0)] ^               \
+             ft_tab[1][byte((bi)[((n) + 1) & 3],1)] ^   \
+             ft_tab[2][byte((bi)[((n) + 2) & 3],2)] ^   \
+             ft_tab[3][byte((bi)[((n) + 3) & 3],3)] ^ *((k) + (n))
+.fi
+.SS "#define ff_mult(a, b)   ((a) && (b) ? pow_tab[(log_tab[a] + log_tab[b]) % 255] : 0)"
+
+.SS "#define i_lround(bo, bi, k)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    i_rl(bo, bi, 0, k);     \
+    i_rl(bo, bi, 1, k);     \
+    i_rl(bo, bi, 2, k);     \
+    i_rl(bo, bi, 3, k);     \
+} while (0)
+.fi
+.SS "#define i_nround(bo, bi, k)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    i_rn(bo, bi, 0, k);     \
+    i_rn(bo, bi, 1, k);     \
+    i_rn(bo, bi, 2, k);     \
+    i_rn(bo, bi, 3, k);     \
+    k -= 4;                 \
+} while (0)
+.fi
+.SS "#define i_rl(bo, bi, n, k)"
+\fBValue:\fP
+.PP
+.nf
+(bo)[n] =  il_tab[0][byte((bi)[n],0)] ^               \
+             il_tab[1][byte((bi)[((n) + 3) & 3],1)] ^   \
+             il_tab[2][byte((bi)[((n) + 2) & 3],2)] ^   \
+             il_tab[3][byte((bi)[((n) + 1) & 3],3)] ^ *((k) + (n))
+.fi
+.SS "#define i_rn(bo, bi, n, k)"
+\fBValue:\fP
+.PP
+.nf
+(bo)[n] =  it_tab[0][byte((bi)[n],0)] ^               \
+             it_tab[1][byte((bi)[((n) + 3) & 3],1)] ^   \
+             it_tab[2][byte((bi)[((n) + 2) & 3],2)] ^   \
+             it_tab[3][byte((bi)[((n) + 1) & 3],3)] ^ *((k) + (n))
+.fi
+.SS "#define imix_col(y, x)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    u   = star_x(x);        \
+    v   = star_x(u);        \
+    w   = star_x(v);        \
+    t   = w ^ (x);          \
+   (y)  = u ^ v ^ w;        \
+   (y) ^= rotr(u ^ t,  8) ^ \
+          rotr(v ^ t, 16) ^ \
+          rotr(t,24);       \
+} while (0)
+.fi
+.SS "#define io_swap(x)   (x)"
+
+.SS "#define LARGE_TABLES"
+
+.SS "#define loop4(i)"
+\fBValue:\fP
+.PP
+.nf
+do {   t = ls_box(rotr(t,  8)) ^ rco_tab[i];          \
+    t ^= e_key[4 * i];     e_key[4 * i + 4] = t;    \
+    t ^= e_key[4 * i + 1]; e_key[4 * i + 5] = t;    \
+    t ^= e_key[4 * i + 2]; e_key[4 * i + 6] = t;    \
+    t ^= e_key[4 * i + 3]; e_key[4 * i + 7] = t;    \
+} while (0)
+.fi
+.SS "#define loop6(i)"
+\fBValue:\fP
+.PP
+.nf
+do {   t = ls_box(rotr(t,  8)) ^ rco_tab[i];           \
+    t ^= e_key[6 * (i)];       e_key[6 * (i) + 6] = t;  \
+    t ^= e_key[6 * (i) + 1]; e_key[6 * (i) + 7] = t;    \
+    t ^= e_key[6 * (i) + 2]; e_key[6 * (i) + 8] = t;    \
+    t ^= e_key[6 * (i) + 3]; e_key[6 * (i) + 9] = t;    \
+    t ^= e_key[6 * (i) + 4]; e_key[6 * (i) + 10] = t;   \
+    t ^= e_key[6 * (i) + 5]; e_key[6 * (i) + 11] = t;   \
+} while (0)
+.fi
+.SS "#define loop8(i)"
+\fBValue:\fP
+.PP
+.nf
+do {   t = ls_box(rotr(t,  8)) ^ rco_tab[i];           \
+    t ^= e_key[8 * (i)];     e_key[8 * (i) + 8] = t;    \
+    t ^= e_key[8 * (i) + 1]; e_key[8 * (i) + 9] = t;    \
+    t ^= e_key[8 * (i) + 2]; e_key[8 * (i) + 10] = t;   \
+    t ^= e_key[8 * (i) + 3]; e_key[8 * (i) + 11] = t;   \
+    t  = e_key[8 * (i) + 4] ^ ls_box(t);                \
+    e_key[8 * (i) + 12] = t;                            \
+    t ^= e_key[8 * (i) + 5]; e_key[8 * (i) + 13] = t;   \
+    t ^= e_key[8 * (i) + 6]; e_key[8 * (i) + 14] = t;   \
+    t ^= e_key[8 * (i) + 7]; e_key[8 * (i) + 15] = t;   \
+} while (0)
+.fi
+.SS "#define ls_box(x)"
+\fBValue:\fP
+.PP
+.nf
+( fl_tab[0][byte(x, 0)] ^   \
+      fl_tab[1][byte(x, 1)] ^    \
+      fl_tab[2][byte(x, 2)] ^    \
+      fl_tab[3][byte(x, 3)] )
+.fi
+.SS "#define PRE_CALC_TABLES"
+
+.SS "#define rotl(x, n)   (((x) << ((int)(n))) | ((x) >> (32 - (int)(n))))"
+
+.SS "#define rotr(x, n)   (((x) >> ((int)(n))) | ((x) << (32 - (int)(n))))"
+
+.SS "#define star_x(x)   (((x) & 0x7f7f7f7f) << 1) ^ ((((x) & 0x80808080) >> 7) * 0x1b)"
+
+.SS "#define tab_gen   1"
+
+.SH "Function Documentation"
+.PP 
+.SS "void aes_cbc_decrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_cbc_encrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_ecb_decrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_ecb_encrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_set_key (\fBrijndael_ctx\fP *ctx, const \fBuint8\fP *key, unsignedkeybits, intenc)"
+
+.SS "void gen_tabs (void)"
+
+.SS "void rijndael_decrypt (\fBrijndael_ctx\fP *ctx, const \fBu4byte\fP *in_blk, \fBu4byte\fP *out_blk)"
+
+.SS "void rijndael_encrypt (\fBrijndael_ctx\fP *ctx, const \fBu4byte\fP *in_blk, \fBu4byte\fP *out_blk)"
+
+.SS "\fBrijndael_ctx\fP* rijndael_set_key (\fBrijndael_ctx\fP *ctx, const \fBu4byte\fP *in_key, const \fBu4byte\fPkey_len, intencrypt)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

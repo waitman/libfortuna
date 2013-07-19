@@ -1,0 +1,68 @@
+.TH "fortuna_state" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fortuna_state \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBuint8\fP \fBcounter\fP [\fBCIPH_BLOCK\fP]"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBresult\fP [\fBCIPH_BLOCK\fP]"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBkey\fP [\fBBLOCK\fP]"
+.br
+.ti -1c
+.RI "\fBMD_CTX\fP \fBpool\fP [\fBNUM_POOLS\fP]"
+.br
+.ti -1c
+.RI "\fBCIPH_CTX\fP \fBciph\fP"
+.br
+.ti -1c
+.RI "unsigned \fBreseed_count\fP"
+.br
+.ti -1c
+.RI "struct timeval \fBlast_reseed_time\fP"
+.br
+.ti -1c
+.RI "unsigned \fBpool0_bytes\fP"
+.br
+.ti -1c
+.RI "unsigned \fBrnd_pos\fP"
+.br
+.ti -1c
+.RI "int \fBtricks_done\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "\fBCIPH_CTX\fP fortuna_state::ciph"
+
+.SS "\fBuint8\fP fortuna_state::counter[\fBCIPH_BLOCK\fP]"
+
+.SS "\fBuint8\fP fortuna_state::key[\fBBLOCK\fP]"
+
+.SS "struct timeval fortuna_state::last_reseed_time"
+
+.SS "\fBMD_CTX\fP fortuna_state::pool[\fBNUM_POOLS\fP]"
+
+.SS "unsigned fortuna_state::pool0_bytes"
+
+.SS "unsigned fortuna_state::reseed_count"
+
+.SS "\fBuint8\fP fortuna_state::result[\fBCIPH_BLOCK\fP]"
+
+.SS "unsigned fortuna_state::rnd_pos"
+
+.SS "int fortuna_state::tricks_done"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

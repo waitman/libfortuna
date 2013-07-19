@@ -1,0 +1,449 @@
+.TH "internal.h" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+internal.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <malloc_np\&.h>\fP
+.br
+\fC#include <time\&.h>\fP
+.br
+\fC#include 'px\&.h'\fP
+.br
+\fC#include 'md5\&.h'\fP
+.br
+\fC#include 'sha1\&.h'\fP
+.br
+\fC#include 'blf\&.h'\fP
+.br
+\fC#include 'rijndael\&.h'\fP
+.br
+\fC#include 'fortuna\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBint_ctx\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSYSTEM_RESEED_MIN\fP   (20*60)		/* 20 min */"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_RESEED_CHECK_TIME\fP   (10*60)		/* 10 min */"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_RESEED_CHANCE\fP   (4) /* 256/4 * 10min ~ 10h */"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_RESEED_MAX\fP   (12*60*60)	/* 12h */"
+.br
+.ti -1c
+.RI "#define \fBMD5_DIGEST_LENGTH\fP   16"
+.br
+.ti -1c
+.RI "#define \fBSHA1_DIGEST_LENGTH\fP   \fBSHA1_RESULTLEN\fP"
+.br
+.ti -1c
+.RI "#define \fBSHA1_BLOCK_SIZE\fP   64"
+.br
+.ti -1c
+.RI "#define \fBMD5_BLOCK_SIZE\fP   64"
+.br
+.ti -1c
+.RI "#define \fBINT_MAX_KEY\fP   (512/8)"
+.br
+.ti -1c
+.RI "#define \fBINT_MAX_IV\fP   (128/8)"
+.br
+.ti -1c
+.RI "#define \fBMODE_ECB\fP   0"
+.br
+.ti -1c
+.RI "#define \fBMODE_CBC\fP   1"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit_md5\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBinit_sha1\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBinit_sha224\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBinit_sha256\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBinit_sha384\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBinit_sha512\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_md5_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_md5_block_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_md5_update\fP (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void \fBint_md5_reset\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_md5_finish\fP (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBint_md5_free\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha1_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha1_block_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha1_update\fP (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void \fBint_sha1_reset\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha1_finish\fP (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBint_sha1_free\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBintctx_free\fP (\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "unsigned \fBrj_block_size\fP (\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "unsigned \fBrj_key_size\fP (\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "unsigned \fBrj_iv_size\fP (\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "int \fBrj_init\fP (\fBPX_Cipher\fP *c, const \fBuint8\fP *key, unsigned klen, const \fBuint8\fP *iv)"
+.br
+.ti -1c
+.RI "int \fBrj_real_init\fP (struct \fBint_ctx\fP *cx, int dir)"
+.br
+.ti -1c
+.RI "int \fBrj_encrypt\fP (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+.br
+.ti -1c
+.RI "int \fBrj_decrypt\fP (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+.br
+.ti -1c
+.RI "\fBPX_Cipher\fP * \fBrj_load\fP (int mode)"
+.br
+.ti -1c
+.RI "unsigned \fBbf_block_size\fP (\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "unsigned \fBbf_key_size\fP (\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "unsigned \fBbf_iv_size\fP (\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "int \fBbf_init\fP (\fBPX_Cipher\fP *c, const \fBuint8\fP *key, unsigned klen, const \fBuint8\fP *iv)"
+.br
+.ti -1c
+.RI "int \fBbf_encrypt\fP (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+.br
+.ti -1c
+.RI "int \fBbf_decrypt\fP (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+.br
+.ti -1c
+.RI "\fBPX_Cipher\fP * \fBbf_load\fP (int mode)"
+.br
+.ti -1c
+.RI "\fBPX_Cipher\fP * \fBrj_128_ecb\fP (void)"
+.br
+.ti -1c
+.RI "\fBPX_Cipher\fP * \fBrj_128_cbc\fP (void)"
+.br
+.ti -1c
+.RI "\fBPX_Cipher\fP * \fBbf_ecb_load\fP (void)"
+.br
+.ti -1c
+.RI "\fBPX_Cipher\fP * \fBbf_cbc_load\fP (void)"
+.br
+.ti -1c
+.RI "int \fBpx_find_digest\fP (const char *name, \fBPX_MD\fP **res)"
+.br
+.ti -1c
+.RI "int \fBpx_find_cipher\fP (const char *name, \fBPX_Cipher\fP **res)"
+.br
+.ti -1c
+.RI "int \fBpx_get_pseudo_random_bytes\fP (\fBuint8\fP *dst, unsigned count)"
+.br
+.ti -1c
+.RI "void \fBsystem_reseed\fP (void)"
+.br
+.ti -1c
+.RI "int \fBpx_get_random_bytes\fP (\fBuint8\fP *dst, unsigned count)"
+.br
+.ti -1c
+.RI "int \fBpx_add_entropy\fP (const \fBuint8\fP *data, unsigned count)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha224_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha224_block_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha224_update\fP (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void \fBint_sha224_reset\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha224_finish\fP (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBint_sha224_free\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha256_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha256_block_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha256_update\fP (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void \fBint_sha256_reset\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha256_finish\fP (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBint_sha256_free\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha384_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha384_block_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha384_update\fP (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void \fBint_sha384_reset\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha384_finish\fP (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBint_sha384_free\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha512_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "unsigned \fBint_sha512_block_len\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha512_update\fP (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigned dlen)"
+.br
+.ti -1c
+.RI "void \fBint_sha512_reset\fP (\fBPX_MD\fP *h)"
+.br
+.ti -1c
+.RI "void \fBint_sha512_finish\fP (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBint_sha512_free\fP (\fBPX_MD\fP *h)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define INT_MAX_IV   (128/8)"
+
+.SS "#define INT_MAX_KEY   (512/8)"
+
+.SS "#define MD5_BLOCK_SIZE   64"
+
+.SS "#define MD5_DIGEST_LENGTH   16"
+
+.SS "#define MODE_CBC   1"
+
+.SS "#define MODE_ECB   0"
+
+.SS "#define SHA1_BLOCK_SIZE   64"
+
+.SS "#define SHA1_DIGEST_LENGTH   \fBSHA1_RESULTLEN\fP"
+
+.SS "#define SYSTEM_RESEED_CHANCE   (4) /* 256/4 * 10min ~ 10h */"
+
+.SS "#define SYSTEM_RESEED_CHECK_TIME   (10*60)		/* 10 min */"
+
+.SS "#define SYSTEM_RESEED_MAX   (12*60*60)	/* 12h */"
+
+.SS "#define SYSTEM_RESEED_MIN   (20*60)		/* 20 min */"
+
+.SH "Function Documentation"
+.PP 
+.SS "unsigned bf_block_size (\fBPX_Cipher\fP *c)"
+
+.SS "\fBPX_Cipher\fP* bf_cbc_load (void)"
+
+.SS "int bf_decrypt (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigneddlen, \fBuint8\fP *res)"
+
+.SS "\fBPX_Cipher\fP* bf_ecb_load (void)"
+
+.SS "int bf_encrypt (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigneddlen, \fBuint8\fP *res)"
+
+.SS "int bf_init (\fBPX_Cipher\fP *c, const \fBuint8\fP *key, unsignedklen, const \fBuint8\fP *iv)"
+
+.SS "unsigned bf_iv_size (\fBPX_Cipher\fP *c)"
+
+.SS "unsigned bf_key_size (\fBPX_Cipher\fP *c)"
+
+.SS "\fBPX_Cipher\fP* bf_load (intmode)"
+
+.SS "void init_md5 (\fBPX_MD\fP *h)"
+
+.SS "void init_sha1 (\fBPX_MD\fP *h)"
+
+.SS "void init_sha224 (\fBPX_MD\fP *h)"
+
+.SS "void init_sha256 (\fBPX_MD\fP *h)"
+
+.SS "void init_sha384 (\fBPX_MD\fP *h)"
+
+.SS "void init_sha512 (\fBPX_MD\fP *h)"
+
+.SS "unsigned int_md5_block_len (\fBPX_MD\fP *h)"
+
+.SS "void int_md5_finish (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+
+.SS "void int_md5_free (\fBPX_MD\fP *h)"
+
+.SS "unsigned int_md5_len (\fBPX_MD\fP *h)"
+
+.SS "void int_md5_reset (\fBPX_MD\fP *h)"
+
+.SS "void int_md5_update (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigneddlen)"
+
+.SS "unsigned int_sha1_block_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha1_finish (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+
+.SS "void int_sha1_free (\fBPX_MD\fP *h)"
+
+.SS "unsigned int_sha1_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha1_reset (\fBPX_MD\fP *h)"
+
+.SS "void int_sha1_update (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigneddlen)"
+
+.SS "unsigned int_sha224_block_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha224_finish (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+
+.SS "void int_sha224_free (\fBPX_MD\fP *h)"
+
+.SS "unsigned int_sha224_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha224_reset (\fBPX_MD\fP *h)"
+
+.SS "void int_sha224_update (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigneddlen)"
+
+.SS "unsigned int_sha256_block_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha256_finish (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+
+.SS "void int_sha256_free (\fBPX_MD\fP *h)"
+
+.SS "unsigned int_sha256_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha256_reset (\fBPX_MD\fP *h)"
+
+.SS "void int_sha256_update (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigneddlen)"
+
+.SS "unsigned int_sha384_block_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha384_finish (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+
+.SS "void int_sha384_free (\fBPX_MD\fP *h)"
+
+.SS "unsigned int_sha384_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha384_reset (\fBPX_MD\fP *h)"
+
+.SS "void int_sha384_update (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigneddlen)"
+
+.SS "unsigned int_sha512_block_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha512_finish (\fBPX_MD\fP *h, \fBuint8\fP *dst)"
+
+.SS "void int_sha512_free (\fBPX_MD\fP *h)"
+
+.SS "unsigned int_sha512_len (\fBPX_MD\fP *h)"
+
+.SS "void int_sha512_reset (\fBPX_MD\fP *h)"
+
+.SS "void int_sha512_update (\fBPX_MD\fP *h, const \fBuint8\fP *data, unsigneddlen)"
+
+.SS "void intctx_free (\fBPX_Cipher\fP *c)"
+
+.SS "int px_add_entropy (const \fBuint8\fP *data, unsignedcount)"
+
+.SS "int px_find_cipher (const char *name, \fBPX_Cipher\fP **res)"
+
+.SS "int px_find_digest (const char *name, \fBPX_MD\fP **res)"
+
+.SS "int px_get_pseudo_random_bytes (\fBuint8\fP *dst, unsignedcount)"
+
+.SS "int px_get_random_bytes (\fBuint8\fP *dst, unsignedcount)"
+
+.SS "\fBPX_Cipher\fP* rj_128_cbc (void)"
+
+.SS "\fBPX_Cipher\fP* rj_128_ecb (void)"
+
+.SS "unsigned rj_block_size (\fBPX_Cipher\fP *c)"
+
+.SS "int rj_decrypt (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigneddlen, \fBuint8\fP *res)"
+
+.SS "int rj_encrypt (\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigneddlen, \fBuint8\fP *res)"
+
+.SS "int rj_init (\fBPX_Cipher\fP *c, const \fBuint8\fP *key, unsignedklen, const \fBuint8\fP *iv)"
+
+.SS "unsigned rj_iv_size (\fBPX_Cipher\fP *c)"
+
+.SS "unsigned rj_key_size (\fBPX_Cipher\fP *c)"
+
+.SS "\fBPX_Cipher\fP* rj_load (intmode)"
+
+.SS "int rj_real_init (struct \fBint_ctx\fP *cx, intdir)"
+
+.SS "void system_reseed (void)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

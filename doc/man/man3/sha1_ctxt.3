@@ -1,0 +1,73 @@
+.TH "sha1_ctxt" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sha1_ctxt \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sha1\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   \fBuint8\fP \fBb8\fP [20]"
+.br
+.ti -1c
+.RI "   \fBuint32\fP \fBb32\fP [5]"
+.br
+.ti -1c
+.RI "} \fBh\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   \fBuint8\fP \fBb8\fP [8]"
+.br
+.ti -1c
+.RI "   \fBuint64\fP \fBb64\fP [1]"
+.br
+.ti -1c
+.RI "} \fBc\fP"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   \fBuint8\fP \fBb8\fP [64]"
+.br
+.ti -1c
+.RI "   \fBuint32\fP \fBb32\fP [16]"
+.br
+.ti -1c
+.RI "} \fBm\fP"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBcount\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "\fBuint32\fP sha1_ctxt::b32[16]"
+
+.SS "\fBuint64\fP sha1_ctxt::b64[1]"
+
+.SS "\fBuint8\fP sha1_ctxt::b8[64]"
+
+.SS "union { \&.\&.\&. } 			 sha1_ctxt::c"
+
+.SS "\fBuint8\fP sha1_ctxt::count"
+
+.SS "union { \&.\&.\&. } 			 sha1_ctxt::h"
+
+.SS "union { \&.\&.\&. } 			 sha1_ctxt::m"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

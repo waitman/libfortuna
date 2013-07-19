@@ -1,0 +1,209 @@
+\hypertarget{blf_8c}{\section{blf.\-c File Reference}
+\label{blf_8c}\index{blf.\-c@{blf.\-c}}
+}
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}c.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}blf.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{blf_8c_a39f900ba4de957a17300b336aa669896}{G\-E\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}(p)
+\item 
+\#define \hyperlink{blf_8c_a969d6dd2f965522a4ee2fb1c0755ec17}{P\-U\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}(p, v)
+\item 
+\#define \hyperlink{blf_8c_a09ccfebe445e0d1b3ecdc9177e1e5107}{Fprime}(a, b, c, d)~( ( (S0\mbox{[}a\mbox{]} + S1\mbox{[}b\mbox{]}) $^\wedge$ S2\mbox{[}c\mbox{]} ) + S3\mbox{[}d\mbox{]} )
+\item 
+\#define \hyperlink{blf_8c_a203d5b93e4077aa273c7013964a31f9e}{F}(x)~\hyperlink{blf_8c_a09ccfebe445e0d1b3ecdc9177e1e5107}{Fprime}( ((x$>$$>$24)\&0x\-F\-F), ((x$>$$>$16)\&0x\-F\-F), ((x$>$$>$8)\&0x\-F\-F), (x\&0x\-F\-F) )
+\item 
+\#define \hyperlink{blf_8c_a7b4f059e65901b941a2ca4050dd89ce7}{R\-O\-U\-N\-D}(n)~( x\-L $^\wedge$= P\mbox{[}n\mbox{]}, t = x\-L, x\-L = \hyperlink{md5_8c_ad6d7c306af62dbc87d1fcde6cb1bfb0e}{F}(x\-L) $^\wedge$ x\-R, x\-R = t )
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{blf_8c_a35b1feffad2f819ec10a99cb4efe2dc9}{blowfish\-\_\-encrypt} (\hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} x\-L, \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} x\-R, \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} $\ast$output, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8c_af03d4a00f9a08f2b9614114f5c709c24}{blowfish\-\_\-decrypt} (\hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} x\-L, \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} x\-R, \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} $\ast$output, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8c_a8e9cdfb98962426c3255a6053793c41b}{blowfish\-\_\-encrypt\-\_\-cbc} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8c_a16cd8f1fdada50ad7470c68e7b789a2a}{blowfish\-\_\-decrypt\-\_\-cbc} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8c_a16b3f6277c420dcc3495cb8276ce78c2}{blowfish\-\_\-encrypt\-\_\-ecb} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8c_a74dde02d964cea7cbe060af8e9434b7f}{blowfish\-\_\-decrypt\-\_\-ecb} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8c_a7fda66d7422cc1a6ad08d70775512acd}{blowfish\-\_\-setkey} (\hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, short keybytes)
+\item 
+void \hyperlink{blf_8c_aa61739ee13fa5fca29d96054c0d7e53a}{blowfish\-\_\-setiv} (\hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$iv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{blf_8c_ac40d15f196e63a0f82fec3e2b224f2f5}{parray} \mbox{[}$\,$\mbox{]}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{blf_8c_a9ad906515216e1d1a781aa77acbc4ac7}{sbox0} \mbox{[}$\,$\mbox{]}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{blf_8c_a51b8ea5656dd8779c03eb0dd90030c6b}{sbox1} \mbox{[}$\,$\mbox{]}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{blf_8c_ac73811fee8db6dcf8d207c690dbc7e78}{sbox2} \mbox{[}$\,$\mbox{]}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{blf_8c_abfd6f1db421566bb9a18ec2500b74d2f}{sbox3} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{blf_8c_a203d5b93e4077aa273c7013964a31f9e}{\index{blf.\-c@{blf.\-c}!F@{F}}
+\index{F@{F}!blf.c@{blf.\-c}}
+\subsubsection[{F}]{\setlength{\rightskip}{0pt plus 5cm}\#define F(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~{\bf Fprime}( ((x$>$$>$24)\&0x\-F\-F), ((x$>$$>$16)\&0x\-F\-F), ((x$>$$>$8)\&0x\-F\-F), (x\&0x\-F\-F) )}}\label{blf_8c_a203d5b93e4077aa273c7013964a31f9e}
+\hypertarget{blf_8c_a09ccfebe445e0d1b3ecdc9177e1e5107}{\index{blf.\-c@{blf.\-c}!Fprime@{Fprime}}
+\index{Fprime@{Fprime}!blf.c@{blf.\-c}}
+\subsubsection[{Fprime}]{\setlength{\rightskip}{0pt plus 5cm}\#define Fprime(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d}
+\end{DoxyParamCaption}
+)~( ( (S0\mbox{[}a\mbox{]} + S1\mbox{[}b\mbox{]}) $^\wedge$ S2\mbox{[}c\mbox{]} ) + S3\mbox{[}d\mbox{]} )}}\label{blf_8c_a09ccfebe445e0d1b3ecdc9177e1e5107}
+\hypertarget{blf_8c_a39f900ba4de957a17300b336aa669896}{\index{blf.\-c@{blf.\-c}!G\-E\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T@{G\-E\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}}
+\index{G\-E\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T@{G\-E\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}!blf.c@{blf.\-c}}
+\subsubsection[{G\-E\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-E\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a39f900ba4de957a17300b336aa669896}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+( \(\backslash\)
+    ((p)[0] << 24) | ((p)[1] << 16) | ((p)[2] << 8) | ((p)[3]) )
+\end{DoxyCode}
+\hypertarget{blf_8c_a969d6dd2f965522a4ee2fb1c0755ec17}{\index{blf.\-c@{blf.\-c}!P\-U\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T@{P\-U\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}}
+\index{P\-U\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T@{P\-U\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}!blf.c@{blf.\-c}}
+\subsubsection[{P\-U\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-U\-T\-\_\-32\-B\-I\-T\-\_\-\-M\-S\-B\-\_\-\-F\-I\-R\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a969d6dd2f965522a4ee2fb1c0755ec17}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    (p)[0] = v >> 24; \(\backslash\)
+    (p)[1] = v >> 16; \(\backslash\)
+    (p)[2] = v >> 8; \(\backslash\)
+    (p)[3] = v; \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\hypertarget{blf_8c_a7b4f059e65901b941a2ca4050dd89ce7}{\index{blf.\-c@{blf.\-c}!R\-O\-U\-N\-D@{R\-O\-U\-N\-D}}
+\index{R\-O\-U\-N\-D@{R\-O\-U\-N\-D}!blf.c@{blf.\-c}}
+\subsubsection[{R\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-O\-U\-N\-D(
+\begin{DoxyParamCaption}
+\item[{}]{n}
+\end{DoxyParamCaption}
+)~( x\-L $^\wedge$= P\mbox{[}n\mbox{]}, t = x\-L, x\-L = {\bf F}(x\-L) $^\wedge$ x\-R, x\-R = t )}}\label{blf_8c_a7b4f059e65901b941a2ca4050dd89ce7}
+
+
+\subsection{Function Documentation}
+\hypertarget{blf_8c_af03d4a00f9a08f2b9614114f5c709c24}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-decrypt@{blowfish\-\_\-decrypt}}
+\index{blowfish\-\_\-decrypt@{blowfish\-\_\-decrypt}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-decrypt}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-decrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf uint32}}]{x\-L, }
+\item[{{\bf uint32}}]{x\-R, }
+\item[{{\bf uint32} $\ast$}]{output, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_af03d4a00f9a08f2b9614114f5c709c24}
+\hypertarget{blf_8c_a16cd8f1fdada50ad7470c68e7b789a2a}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-decrypt\-\_\-cbc@{blowfish\-\_\-decrypt\-\_\-cbc}}
+\index{blowfish\-\_\-decrypt\-\_\-cbc@{blowfish\-\_\-decrypt\-\_\-cbc}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-decrypt\-\_\-cbc}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-decrypt\-\_\-cbc (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a16cd8f1fdada50ad7470c68e7b789a2a}
+\hypertarget{blf_8c_a74dde02d964cea7cbe060af8e9434b7f}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-decrypt\-\_\-ecb@{blowfish\-\_\-decrypt\-\_\-ecb}}
+\index{blowfish\-\_\-decrypt\-\_\-ecb@{blowfish\-\_\-decrypt\-\_\-ecb}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-decrypt\-\_\-ecb}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-decrypt\-\_\-ecb (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a74dde02d964cea7cbe060af8e9434b7f}
+\hypertarget{blf_8c_a35b1feffad2f819ec10a99cb4efe2dc9}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-encrypt@{blowfish\-\_\-encrypt}}
+\index{blowfish\-\_\-encrypt@{blowfish\-\_\-encrypt}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-encrypt}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf uint32}}]{x\-L, }
+\item[{{\bf uint32}}]{x\-R, }
+\item[{{\bf uint32} $\ast$}]{output, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a35b1feffad2f819ec10a99cb4efe2dc9}
+\hypertarget{blf_8c_a8e9cdfb98962426c3255a6053793c41b}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-encrypt\-\_\-cbc@{blowfish\-\_\-encrypt\-\_\-cbc}}
+\index{blowfish\-\_\-encrypt\-\_\-cbc@{blowfish\-\_\-encrypt\-\_\-cbc}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-encrypt\-\_\-cbc}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-encrypt\-\_\-cbc (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a8e9cdfb98962426c3255a6053793c41b}
+\hypertarget{blf_8c_a16b3f6277c420dcc3495cb8276ce78c2}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-encrypt\-\_\-ecb@{blowfish\-\_\-encrypt\-\_\-ecb}}
+\index{blowfish\-\_\-encrypt\-\_\-ecb@{blowfish\-\_\-encrypt\-\_\-ecb}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-encrypt\-\_\-ecb}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-encrypt\-\_\-ecb (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a16b3f6277c420dcc3495cb8276ce78c2}
+\hypertarget{blf_8c_aa61739ee13fa5fca29d96054c0d7e53a}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-setiv@{blowfish\-\_\-setiv}}
+\index{blowfish\-\_\-setiv@{blowfish\-\_\-setiv}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-setiv}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-setiv (
+\begin{DoxyParamCaption}
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{iv}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_aa61739ee13fa5fca29d96054c0d7e53a}
+\hypertarget{blf_8c_a7fda66d7422cc1a6ad08d70775512acd}{\index{blf.\-c@{blf.\-c}!blowfish\-\_\-setkey@{blowfish\-\_\-setkey}}
+\index{blowfish\-\_\-setkey@{blowfish\-\_\-setkey}!blf.c@{blf.\-c}}
+\subsubsection[{blowfish\-\_\-setkey}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-setkey (
+\begin{DoxyParamCaption}
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{key, }
+\item[{short}]{keybytes}
+\end{DoxyParamCaption}
+)}}\label{blf_8c_a7fda66d7422cc1a6ad08d70775512acd}
+
+
+\subsection{Variable Documentation}
+\hypertarget{blf_8c_ac40d15f196e63a0f82fec3e2b224f2f5}{\index{blf.\-c@{blf.\-c}!parray@{parray}}
+\index{parray@{parray}!blf.c@{blf.\-c}}
+\subsubsection[{parray}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} parray\mbox{[}$\,$\mbox{]}}}\label{blf_8c_ac40d15f196e63a0f82fec3e2b224f2f5}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+    0x243F6A88, 0x85A308D3, 0x13198A2E, 0x03707344, 0xA4093822, 0x299F31D0,
+    0x082EFA98, 0xEC4E6C89, 0x452821E6, 0x38D01377, 0xBE5466CF, 0x34E90C6C,
+    0xC0AC29B7, 0xC97C50DD, 0x3F84D5B5, 0xB5470917, 0x9216D5D9, 0x8979FB1B,
+\}
+\end{DoxyCode}
+\hypertarget{blf_8c_a9ad906515216e1d1a781aa77acbc4ac7}{\index{blf.\-c@{blf.\-c}!sbox0@{sbox0}}
+\index{sbox0@{sbox0}!blf.c@{blf.\-c}}
+\subsubsection[{sbox0}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} sbox0\mbox{[}$\,$\mbox{]}}}\label{blf_8c_a9ad906515216e1d1a781aa77acbc4ac7}
+\hypertarget{blf_8c_a51b8ea5656dd8779c03eb0dd90030c6b}{\index{blf.\-c@{blf.\-c}!sbox1@{sbox1}}
+\index{sbox1@{sbox1}!blf.c@{blf.\-c}}
+\subsubsection[{sbox1}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} sbox1\mbox{[}$\,$\mbox{]}}}\label{blf_8c_a51b8ea5656dd8779c03eb0dd90030c6b}
+\hypertarget{blf_8c_ac73811fee8db6dcf8d207c690dbc7e78}{\index{blf.\-c@{blf.\-c}!sbox2@{sbox2}}
+\index{sbox2@{sbox2}!blf.c@{blf.\-c}}
+\subsubsection[{sbox2}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} sbox2\mbox{[}$\,$\mbox{]}}}\label{blf_8c_ac73811fee8db6dcf8d207c690dbc7e78}
+\hypertarget{blf_8c_abfd6f1db421566bb9a18ec2500b74d2f}{\index{blf.\-c@{blf.\-c}!sbox3@{sbox3}}
+\index{sbox3@{sbox3}!blf.c@{blf.\-c}}
+\subsubsection[{sbox3}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} sbox3\mbox{[}$\,$\mbox{]}}}\label{blf_8c_abfd6f1db421566bb9a18ec2500b74d2f}

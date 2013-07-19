@@ -1,0 +1,60 @@
+.TH "px_combo" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+px_combo \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <px\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBinit\fP )(\fBPX_Combo\fP *cx, const \fBuint8\fP *key, unsigned klen, const \fBuint8\fP *iv, unsigned ivlen)"
+.br
+.ti -1c
+.RI "int(* \fBencrypt\fP )(\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res, unsigned *rlen)"
+.br
+.ti -1c
+.RI "int(* \fBdecrypt\fP )(\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res, unsigned *rlen)"
+.br
+.ti -1c
+.RI "unsigned(* \fBencrypt_len\fP )(\fBPX_Combo\fP *cx, unsigned dlen)"
+.br
+.ti -1c
+.RI "unsigned(* \fBdecrypt_len\fP )(\fBPX_Combo\fP *cx, unsigned dlen)"
+.br
+.ti -1c
+.RI "void(* \fBfree\fP )(\fBPX_Combo\fP *cx)"
+.br
+.ti -1c
+.RI "\fBPX_Cipher\fP * \fBcipher\fP"
+.br
+.ti -1c
+.RI "unsigned \fBpadding\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "\fBPX_Cipher\fP* px_combo::cipher"
+
+.SS "int(* px_combo::decrypt)(\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res, unsigned *rlen)"
+
+.SS "unsigned(* px_combo::decrypt_len)(\fBPX_Combo\fP *cx, unsigned dlen)"
+
+.SS "int(* px_combo::encrypt)(\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res, unsigned *rlen)"
+
+.SS "unsigned(* px_combo::encrypt_len)(\fBPX_Combo\fP *cx, unsigned dlen)"
+
+.SS "void(* px_combo::free)(\fBPX_Combo\fP *cx)"
+
+.SS "int(* px_combo::init)(\fBPX_Combo\fP *cx, const \fBuint8\fP *key, unsigned klen, const \fBuint8\fP *iv, unsigned ivlen)"
+
+.SS "unsigned px_combo::padding"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

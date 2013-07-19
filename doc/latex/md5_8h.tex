@@ -1,0 +1,141 @@
+\hypertarget{md5_8h}{\section{md5.\-h File Reference}
+\label{md5_8h}\index{md5.\-h@{md5.\-h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmd5__ctxt}{md5\-\_\-ctxt}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{md5_8h_a6b39a21088ab28a667f614a5e486d206}{M\-D5\-\_\-\-B\-U\-F\-L\-E\-N}~64
+\item 
+\#define \hyperlink{md5_8h_ad192b9367628cb058dfb6fd9429f80c3}{md5\-\_\-sta}~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}0\mbox{]}
+\item 
+\#define \hyperlink{md5_8h_a72bcf7076595bfc77644c799528e71ef}{md5\-\_\-stb}~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}1\mbox{]}
+\item 
+\#define \hyperlink{md5_8h_ad8ea206449bf50197ebe1b6e89221c76}{md5\-\_\-stc}~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}2\mbox{]}
+\item 
+\#define \hyperlink{md5_8h_a38515f0d3bde2968b29c73adf53f9878}{md5\-\_\-std}~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}3\mbox{]}
+\item 
+\#define \hyperlink{md5_8h_a21de90fd005136defee49523a920257d}{md5\-\_\-st8}~md5\-\_\-st.\-md5\-\_\-state8
+\item 
+\#define \hyperlink{md5_8h_aa0b5a28db27344f5fd35d09af8f0bb44}{md5\-\_\-n}~md5\-\_\-count.\-md5\-\_\-count64
+\item 
+\#define \hyperlink{md5_8h_a3332c7cf908e638b4a4aba559ecfc603}{md5\-\_\-n8}~md5\-\_\-count.\-md5\-\_\-count8
+\item 
+\#define \hyperlink{md5_8h_a71b7c53816d90dc180b03df889aacd18}{M\-D5\-\_\-\-C\-T\-X}~\hyperlink{structmd5__ctxt}{md5\-\_\-ctxt}
+\item 
+\#define \hyperlink{md5_8h_a3651aa5847a3d8ca5141aa25086cc146}{M\-D5\-Init}(x)~\hyperlink{md5_8h_a79ebd0c3d8cf325bdd0d4ad475a52961}{md5\-\_\-init}((x))
+\item 
+\#define \hyperlink{md5_8h_a1716d4c4fd33e8d8ab3f6054cd73d02d}{M\-D5\-Update}(x, y, z)~\hyperlink{md5_8h_a4c313ba2a2777176d3d1bc80c752d8a5}{md5\-\_\-loop}((x), (y), (z))
+\item 
+\#define \hyperlink{md5_8h_ae653f59a8022a8e4b0a6beccec24452d}{M\-D5\-Final}(x, y)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{md5_8h_a79ebd0c3d8cf325bdd0d4ad475a52961}{md5\-\_\-init} (\hyperlink{structmd5__ctxt}{md5\-\_\-ctxt} $\ast$)
+\item 
+void \hyperlink{md5_8h_a4c313ba2a2777176d3d1bc80c752d8a5}{md5\-\_\-loop} (\hyperlink{structmd5__ctxt}{md5\-\_\-ctxt} $\ast$, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$, unsigned int)
+\item 
+void \hyperlink{md5_8h_acb9ba6b042e035214b2a84fb703a88c4}{md5\-\_\-pad} (\hyperlink{structmd5__ctxt}{md5\-\_\-ctxt} $\ast$)
+\item 
+void \hyperlink{md5_8h_a485b6dc99abec71c52f0516675ad0fa3}{md5\-\_\-result} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$, \hyperlink{structmd5__ctxt}{md5\-\_\-ctxt} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{md5_8h_a6b39a21088ab28a667f614a5e486d206}{\index{md5.\-h@{md5.\-h}!M\-D5\-\_\-\-B\-U\-F\-L\-E\-N@{M\-D5\-\_\-\-B\-U\-F\-L\-E\-N}}
+\index{M\-D5\-\_\-\-B\-U\-F\-L\-E\-N@{M\-D5\-\_\-\-B\-U\-F\-L\-E\-N}!md5.h@{md5.\-h}}
+\subsubsection[{M\-D5\-\_\-\-B\-U\-F\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-D5\-\_\-\-B\-U\-F\-L\-E\-N~64}}\label{md5_8h_a6b39a21088ab28a667f614a5e486d206}
+\hypertarget{md5_8h_a71b7c53816d90dc180b03df889aacd18}{\index{md5.\-h@{md5.\-h}!M\-D5\-\_\-\-C\-T\-X@{M\-D5\-\_\-\-C\-T\-X}}
+\index{M\-D5\-\_\-\-C\-T\-X@{M\-D5\-\_\-\-C\-T\-X}!md5.h@{md5.\-h}}
+\subsubsection[{M\-D5\-\_\-\-C\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-D5\-\_\-\-C\-T\-X~{\bf md5\-\_\-ctxt}}}\label{md5_8h_a71b7c53816d90dc180b03df889aacd18}
+\hypertarget{md5_8h_aa0b5a28db27344f5fd35d09af8f0bb44}{\index{md5.\-h@{md5.\-h}!md5\-\_\-n@{md5\-\_\-n}}
+\index{md5\-\_\-n@{md5\-\_\-n}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-n}]{\setlength{\rightskip}{0pt plus 5cm}\#define md5\-\_\-n~md5\-\_\-count.\-md5\-\_\-count64}}\label{md5_8h_aa0b5a28db27344f5fd35d09af8f0bb44}
+\hypertarget{md5_8h_a3332c7cf908e638b4a4aba559ecfc603}{\index{md5.\-h@{md5.\-h}!md5\-\_\-n8@{md5\-\_\-n8}}
+\index{md5\-\_\-n8@{md5\-\_\-n8}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-n8}]{\setlength{\rightskip}{0pt plus 5cm}\#define md5\-\_\-n8~md5\-\_\-count.\-md5\-\_\-count8}}\label{md5_8h_a3332c7cf908e638b4a4aba559ecfc603}
+\hypertarget{md5_8h_a21de90fd005136defee49523a920257d}{\index{md5.\-h@{md5.\-h}!md5\-\_\-st8@{md5\-\_\-st8}}
+\index{md5\-\_\-st8@{md5\-\_\-st8}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-st8}]{\setlength{\rightskip}{0pt plus 5cm}\#define md5\-\_\-st8~md5\-\_\-st.\-md5\-\_\-state8}}\label{md5_8h_a21de90fd005136defee49523a920257d}
+\hypertarget{md5_8h_ad192b9367628cb058dfb6fd9429f80c3}{\index{md5.\-h@{md5.\-h}!md5\-\_\-sta@{md5\-\_\-sta}}
+\index{md5\-\_\-sta@{md5\-\_\-sta}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-sta}]{\setlength{\rightskip}{0pt plus 5cm}\#define md5\-\_\-sta~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}0\mbox{]}}}\label{md5_8h_ad192b9367628cb058dfb6fd9429f80c3}
+\hypertarget{md5_8h_a72bcf7076595bfc77644c799528e71ef}{\index{md5.\-h@{md5.\-h}!md5\-\_\-stb@{md5\-\_\-stb}}
+\index{md5\-\_\-stb@{md5\-\_\-stb}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-stb}]{\setlength{\rightskip}{0pt plus 5cm}\#define md5\-\_\-stb~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}1\mbox{]}}}\label{md5_8h_a72bcf7076595bfc77644c799528e71ef}
+\hypertarget{md5_8h_ad8ea206449bf50197ebe1b6e89221c76}{\index{md5.\-h@{md5.\-h}!md5\-\_\-stc@{md5\-\_\-stc}}
+\index{md5\-\_\-stc@{md5\-\_\-stc}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-stc}]{\setlength{\rightskip}{0pt plus 5cm}\#define md5\-\_\-stc~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}2\mbox{]}}}\label{md5_8h_ad8ea206449bf50197ebe1b6e89221c76}
+\hypertarget{md5_8h_a38515f0d3bde2968b29c73adf53f9878}{\index{md5.\-h@{md5.\-h}!md5\-\_\-std@{md5\-\_\-std}}
+\index{md5\-\_\-std@{md5\-\_\-std}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-std}]{\setlength{\rightskip}{0pt plus 5cm}\#define md5\-\_\-std~md5\-\_\-st.\-md5\-\_\-state32\mbox{[}3\mbox{]}}}\label{md5_8h_a38515f0d3bde2968b29c73adf53f9878}
+\hypertarget{md5_8h_ae653f59a8022a8e4b0a6beccec24452d}{\index{md5.\-h@{md5.\-h}!M\-D5\-Final@{M\-D5\-Final}}
+\index{M\-D5\-Final@{M\-D5\-Final}!md5.h@{md5.\-h}}
+\subsubsection[{M\-D5\-Final}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-D5\-Final(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)}}\label{md5_8h_ae653f59a8022a8e4b0a6beccec24452d}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                \(\backslash\)
+    md5\_pad((y));       \(\backslash\)
+    md5\_result((x), (y));   \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\hypertarget{md5_8h_a3651aa5847a3d8ca5141aa25086cc146}{\index{md5.\-h@{md5.\-h}!M\-D5\-Init@{M\-D5\-Init}}
+\index{M\-D5\-Init@{M\-D5\-Init}!md5.h@{md5.\-h}}
+\subsubsection[{M\-D5\-Init}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-D5\-Init(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~{\bf md5\-\_\-init}((x))}}\label{md5_8h_a3651aa5847a3d8ca5141aa25086cc146}
+\hypertarget{md5_8h_a1716d4c4fd33e8d8ab3f6054cd73d02d}{\index{md5.\-h@{md5.\-h}!M\-D5\-Update@{M\-D5\-Update}}
+\index{M\-D5\-Update@{M\-D5\-Update}!md5.h@{md5.\-h}}
+\subsubsection[{M\-D5\-Update}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-D5\-Update(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y, }
+\item[{}]{z}
+\end{DoxyParamCaption}
+)~{\bf md5\-\_\-loop}((x), (y), (z))}}\label{md5_8h_a1716d4c4fd33e8d8ab3f6054cd73d02d}
+
+
+\subsection{Function Documentation}
+\hypertarget{md5_8h_a79ebd0c3d8cf325bdd0d4ad475a52961}{\index{md5.\-h@{md5.\-h}!md5\-\_\-init@{md5\-\_\-init}}
+\index{md5\-\_\-init@{md5\-\_\-init}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void md5\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf md5\-\_\-ctxt} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{md5_8h_a79ebd0c3d8cf325bdd0d4ad475a52961}
+\hypertarget{md5_8h_a4c313ba2a2777176d3d1bc80c752d8a5}{\index{md5.\-h@{md5.\-h}!md5\-\_\-loop@{md5\-\_\-loop}}
+\index{md5\-\_\-loop@{md5\-\_\-loop}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-loop}]{\setlength{\rightskip}{0pt plus 5cm}void md5\-\_\-loop (
+\begin{DoxyParamCaption}
+\item[{{\bf md5\-\_\-ctxt} $\ast$}]{, }
+\item[{const {\bf uint8} $\ast$}]{, }
+\item[{unsigned}]{int}
+\end{DoxyParamCaption}
+)}}\label{md5_8h_a4c313ba2a2777176d3d1bc80c752d8a5}
+\hypertarget{md5_8h_acb9ba6b042e035214b2a84fb703a88c4}{\index{md5.\-h@{md5.\-h}!md5\-\_\-pad@{md5\-\_\-pad}}
+\index{md5\-\_\-pad@{md5\-\_\-pad}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-pad}]{\setlength{\rightskip}{0pt plus 5cm}void md5\-\_\-pad (
+\begin{DoxyParamCaption}
+\item[{{\bf md5\-\_\-ctxt} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{md5_8h_acb9ba6b042e035214b2a84fb703a88c4}
+\hypertarget{md5_8h_a485b6dc99abec71c52f0516675ad0fa3}{\index{md5.\-h@{md5.\-h}!md5\-\_\-result@{md5\-\_\-result}}
+\index{md5\-\_\-result@{md5\-\_\-result}!md5.h@{md5.\-h}}
+\subsubsection[{md5\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}void md5\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{, }
+\item[{{\bf md5\-\_\-ctxt} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{md5_8h_a485b6dc99abec71c52f0516675ad0fa3}

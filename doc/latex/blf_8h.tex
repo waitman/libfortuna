@@ -1,0 +1,79 @@
+\hypertarget{blf_8h}{\section{blf.\-h File Reference}
+\label{blf_8h}\index{blf.\-h@{blf.\-h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structBlowfishContext}{Blowfish\-Context}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{blf_8h_a7fda66d7422cc1a6ad08d70775512acd}{blowfish\-\_\-setkey} (\hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, short keybytes)
+\item 
+void \hyperlink{blf_8h_aa61739ee13fa5fca29d96054c0d7e53a}{blowfish\-\_\-setiv} (\hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$iv)
+\item 
+void \hyperlink{blf_8h_a8e9cdfb98962426c3255a6053793c41b}{blowfish\-\_\-encrypt\-\_\-cbc} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8h_a16cd8f1fdada50ad7470c68e7b789a2a}{blowfish\-\_\-decrypt\-\_\-cbc} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8h_a16b3f6277c420dcc3495cb8276ce78c2}{blowfish\-\_\-encrypt\-\_\-ecb} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\item 
+void \hyperlink{blf_8h_a74dde02d964cea7cbe060af8e9434b7f}{blowfish\-\_\-decrypt\-\_\-ecb} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$blk, int len, \hyperlink{structBlowfishContext}{Blowfish\-Context} $\ast$ctx)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{blf_8h_a16cd8f1fdada50ad7470c68e7b789a2a}{\index{blf.\-h@{blf.\-h}!blowfish\-\_\-decrypt\-\_\-cbc@{blowfish\-\_\-decrypt\-\_\-cbc}}
+\index{blowfish\-\_\-decrypt\-\_\-cbc@{blowfish\-\_\-decrypt\-\_\-cbc}!blf.h@{blf.\-h}}
+\subsubsection[{blowfish\-\_\-decrypt\-\_\-cbc}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-decrypt\-\_\-cbc (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8h_a16cd8f1fdada50ad7470c68e7b789a2a}
+\hypertarget{blf_8h_a74dde02d964cea7cbe060af8e9434b7f}{\index{blf.\-h@{blf.\-h}!blowfish\-\_\-decrypt\-\_\-ecb@{blowfish\-\_\-decrypt\-\_\-ecb}}
+\index{blowfish\-\_\-decrypt\-\_\-ecb@{blowfish\-\_\-decrypt\-\_\-ecb}!blf.h@{blf.\-h}}
+\subsubsection[{blowfish\-\_\-decrypt\-\_\-ecb}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-decrypt\-\_\-ecb (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8h_a74dde02d964cea7cbe060af8e9434b7f}
+\hypertarget{blf_8h_a8e9cdfb98962426c3255a6053793c41b}{\index{blf.\-h@{blf.\-h}!blowfish\-\_\-encrypt\-\_\-cbc@{blowfish\-\_\-encrypt\-\_\-cbc}}
+\index{blowfish\-\_\-encrypt\-\_\-cbc@{blowfish\-\_\-encrypt\-\_\-cbc}!blf.h@{blf.\-h}}
+\subsubsection[{blowfish\-\_\-encrypt\-\_\-cbc}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-encrypt\-\_\-cbc (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8h_a8e9cdfb98962426c3255a6053793c41b}
+\hypertarget{blf_8h_a16b3f6277c420dcc3495cb8276ce78c2}{\index{blf.\-h@{blf.\-h}!blowfish\-\_\-encrypt\-\_\-ecb@{blowfish\-\_\-encrypt\-\_\-ecb}}
+\index{blowfish\-\_\-encrypt\-\_\-ecb@{blowfish\-\_\-encrypt\-\_\-ecb}!blf.h@{blf.\-h}}
+\subsubsection[{blowfish\-\_\-encrypt\-\_\-ecb}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-encrypt\-\_\-ecb (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{blk, }
+\item[{int}]{len, }
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}}\label{blf_8h_a16b3f6277c420dcc3495cb8276ce78c2}
+\hypertarget{blf_8h_aa61739ee13fa5fca29d96054c0d7e53a}{\index{blf.\-h@{blf.\-h}!blowfish\-\_\-setiv@{blowfish\-\_\-setiv}}
+\index{blowfish\-\_\-setiv@{blowfish\-\_\-setiv}!blf.h@{blf.\-h}}
+\subsubsection[{blowfish\-\_\-setiv}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-setiv (
+\begin{DoxyParamCaption}
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{iv}
+\end{DoxyParamCaption}
+)}}\label{blf_8h_aa61739ee13fa5fca29d96054c0d7e53a}
+\hypertarget{blf_8h_a7fda66d7422cc1a6ad08d70775512acd}{\index{blf.\-h@{blf.\-h}!blowfish\-\_\-setkey@{blowfish\-\_\-setkey}}
+\index{blowfish\-\_\-setkey@{blowfish\-\_\-setkey}!blf.h@{blf.\-h}}
+\subsubsection[{blowfish\-\_\-setkey}]{\setlength{\rightskip}{0pt plus 5cm}void blowfish\-\_\-setkey (
+\begin{DoxyParamCaption}
+\item[{{\bf Blowfish\-Context} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{key, }
+\item[{short}]{keybytes}
+\end{DoxyParamCaption}
+)}}\label{blf_8h_a7fda66d7422cc1a6ad08d70775512acd}

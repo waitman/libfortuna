@@ -1,0 +1,148 @@
+\hypertarget{rijndael_8h}{\section{rijndael.\-h File Reference}
+\label{rijndael_8h}\index{rijndael.\-h@{rijndael.\-h}}
+}
+{\ttfamily \#include \char`\"{}c.\-h\char`\"{}}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__rijndael__ctx}{\-\_\-rijndael\-\_\-ctx}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{rijndael_8h_ae1baf4ea6f2c36bc51dde6839231f59d}{u1byte}
+\item 
+typedef \hyperlink{c_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} \hyperlink{rijndael_8h_ab082017e922dabac256535653af49a6b}{u2byte}
+\item 
+typedef \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{rijndael_8h_addeada50f7444917aba8721479216fe2}{u4byte}
+\item 
+typedef \hyperlink{c_8h_a1b956fe1df85f3c132b21edb4e116458}{int8} \hyperlink{rijndael_8h_ad1645dbbde04f53fc51759359ce1c80d}{s1byte}
+\item 
+typedef \hyperlink{c_8h_a259fa4834387bd68627ddf37bb3ebdb9}{int16} \hyperlink{rijndael_8h_abb4eda2bf19d4095edf655965cf1e6cc}{s2byte}
+\item 
+typedef \hyperlink{c_8h_a43d43196463bde49cb067f5c20ab8481}{int32} \hyperlink{rijndael_8h_ab356e63cf3a272455dfe45b8afebe1e9}{s4byte}
+\item 
+typedef struct \hyperlink{struct__rijndael__ctx}{\-\_\-rijndael\-\_\-ctx} \hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$ \hyperlink{rijndael_8h_a52e6e841b95fcd4620f2f06682b1e0b1}{rijndael\-\_\-set\-\_\-key} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$, const \hyperlink{rijndael_8h_addeada50f7444917aba8721479216fe2}{u4byte} $\ast$, const \hyperlink{rijndael_8h_addeada50f7444917aba8721479216fe2}{u4byte}, int)
+\item 
+void \hyperlink{rijndael_8h_ab4efda33bbdbc0aa590038179386e4b3}{rijndael\-\_\-encrypt} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$, const \hyperlink{rijndael_8h_addeada50f7444917aba8721479216fe2}{u4byte} $\ast$, \hyperlink{rijndael_8h_addeada50f7444917aba8721479216fe2}{u4byte} $\ast$)
+\item 
+void \hyperlink{rijndael_8h_ae11430505b2632da60d65f3a3566cd39}{rijndael\-\_\-decrypt} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$, const \hyperlink{rijndael_8h_addeada50f7444917aba8721479216fe2}{u4byte} $\ast$, \hyperlink{rijndael_8h_addeada50f7444917aba8721479216fe2}{u4byte} $\ast$)
+\item 
+void \hyperlink{rijndael_8h_aa1b347245996beaabd363e6a387ec698}{aes\-\_\-set\-\_\-key} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$ctx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, unsigned keybits, int enc)
+\item 
+void \hyperlink{rijndael_8h_a09f48bb8cae89b96b3d8567992c0936f}{aes\-\_\-ecb\-\_\-encrypt} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$ctx, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned len)
+\item 
+void \hyperlink{rijndael_8h_a81ec478a12fc02a7a55b1745baa34b86}{aes\-\_\-ecb\-\_\-decrypt} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$ctx, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned len)
+\item 
+void \hyperlink{rijndael_8h_abc1d40b55c861e8fdb24785d32032b91}{aes\-\_\-cbc\-\_\-encrypt} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$ctx, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$iva, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned len)
+\item 
+void \hyperlink{rijndael_8h_a34f452e7dda18506f6184c84dbed3527}{aes\-\_\-cbc\-\_\-decrypt} (\hyperlink{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{rijndael\-\_\-ctx} $\ast$ctx, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$iva, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}{\index{rijndael.\-h@{rijndael.\-h}!rijndael\-\_\-ctx@{rijndael\-\_\-ctx}}
+\index{rijndael\-\_\-ctx@{rijndael\-\_\-ctx}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{rijndael\-\_\-ctx}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-rijndael\-\_\-ctx}  {\bf rijndael\-\_\-ctx}}}\label{rijndael_8h_a2ee3f8edff4b0b6b1b668739d13a06fc}
+\hypertarget{rijndael_8h_ad1645dbbde04f53fc51759359ce1c80d}{\index{rijndael.\-h@{rijndael.\-h}!s1byte@{s1byte}}
+\index{s1byte@{s1byte}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{s1byte}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf int8} {\bf s1byte}}}\label{rijndael_8h_ad1645dbbde04f53fc51759359ce1c80d}
+\hypertarget{rijndael_8h_abb4eda2bf19d4095edf655965cf1e6cc}{\index{rijndael.\-h@{rijndael.\-h}!s2byte@{s2byte}}
+\index{s2byte@{s2byte}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{s2byte}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf int16} {\bf s2byte}}}\label{rijndael_8h_abb4eda2bf19d4095edf655965cf1e6cc}
+\hypertarget{rijndael_8h_ab356e63cf3a272455dfe45b8afebe1e9}{\index{rijndael.\-h@{rijndael.\-h}!s4byte@{s4byte}}
+\index{s4byte@{s4byte}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{s4byte}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf int32} {\bf s4byte}}}\label{rijndael_8h_ab356e63cf3a272455dfe45b8afebe1e9}
+\hypertarget{rijndael_8h_ae1baf4ea6f2c36bc51dde6839231f59d}{\index{rijndael.\-h@{rijndael.\-h}!u1byte@{u1byte}}
+\index{u1byte@{u1byte}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{u1byte}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint8} {\bf u1byte}}}\label{rijndael_8h_ae1baf4ea6f2c36bc51dde6839231f59d}
+\hypertarget{rijndael_8h_ab082017e922dabac256535653af49a6b}{\index{rijndael.\-h@{rijndael.\-h}!u2byte@{u2byte}}
+\index{u2byte@{u2byte}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{u2byte}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint16} {\bf u2byte}}}\label{rijndael_8h_ab082017e922dabac256535653af49a6b}
+\hypertarget{rijndael_8h_addeada50f7444917aba8721479216fe2}{\index{rijndael.\-h@{rijndael.\-h}!u4byte@{u4byte}}
+\index{u4byte@{u4byte}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{u4byte}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint32} {\bf u4byte}}}\label{rijndael_8h_addeada50f7444917aba8721479216fe2}
+
+
+\subsection{Function Documentation}
+\hypertarget{rijndael_8h_a34f452e7dda18506f6184c84dbed3527}{\index{rijndael.\-h@{rijndael.\-h}!aes\-\_\-cbc\-\_\-decrypt@{aes\-\_\-cbc\-\_\-decrypt}}
+\index{aes\-\_\-cbc\-\_\-decrypt@{aes\-\_\-cbc\-\_\-decrypt}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{aes\-\_\-cbc\-\_\-decrypt}]{\setlength{\rightskip}{0pt plus 5cm}void aes\-\_\-cbc\-\_\-decrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{ctx, }
+\item[{{\bf uint8} $\ast$}]{iva, }
+\item[{{\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{len}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_a34f452e7dda18506f6184c84dbed3527}
+\hypertarget{rijndael_8h_abc1d40b55c861e8fdb24785d32032b91}{\index{rijndael.\-h@{rijndael.\-h}!aes\-\_\-cbc\-\_\-encrypt@{aes\-\_\-cbc\-\_\-encrypt}}
+\index{aes\-\_\-cbc\-\_\-encrypt@{aes\-\_\-cbc\-\_\-encrypt}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{aes\-\_\-cbc\-\_\-encrypt}]{\setlength{\rightskip}{0pt plus 5cm}void aes\-\_\-cbc\-\_\-encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{ctx, }
+\item[{{\bf uint8} $\ast$}]{iva, }
+\item[{{\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{len}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_abc1d40b55c861e8fdb24785d32032b91}
+\hypertarget{rijndael_8h_a81ec478a12fc02a7a55b1745baa34b86}{\index{rijndael.\-h@{rijndael.\-h}!aes\-\_\-ecb\-\_\-decrypt@{aes\-\_\-ecb\-\_\-decrypt}}
+\index{aes\-\_\-ecb\-\_\-decrypt@{aes\-\_\-ecb\-\_\-decrypt}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{aes\-\_\-ecb\-\_\-decrypt}]{\setlength{\rightskip}{0pt plus 5cm}void aes\-\_\-ecb\-\_\-decrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{ctx, }
+\item[{{\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{len}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_a81ec478a12fc02a7a55b1745baa34b86}
+\hypertarget{rijndael_8h_a09f48bb8cae89b96b3d8567992c0936f}{\index{rijndael.\-h@{rijndael.\-h}!aes\-\_\-ecb\-\_\-encrypt@{aes\-\_\-ecb\-\_\-encrypt}}
+\index{aes\-\_\-ecb\-\_\-encrypt@{aes\-\_\-ecb\-\_\-encrypt}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{aes\-\_\-ecb\-\_\-encrypt}]{\setlength{\rightskip}{0pt plus 5cm}void aes\-\_\-ecb\-\_\-encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{ctx, }
+\item[{{\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{len}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_a09f48bb8cae89b96b3d8567992c0936f}
+\hypertarget{rijndael_8h_aa1b347245996beaabd363e6a387ec698}{\index{rijndael.\-h@{rijndael.\-h}!aes\-\_\-set\-\_\-key@{aes\-\_\-set\-\_\-key}}
+\index{aes\-\_\-set\-\_\-key@{aes\-\_\-set\-\_\-key}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{aes\-\_\-set\-\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}void aes\-\_\-set\-\_\-key (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{ctx, }
+\item[{const {\bf uint8} $\ast$}]{key, }
+\item[{unsigned}]{keybits, }
+\item[{int}]{enc}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_aa1b347245996beaabd363e6a387ec698}
+\hypertarget{rijndael_8h_ae11430505b2632da60d65f3a3566cd39}{\index{rijndael.\-h@{rijndael.\-h}!rijndael\-\_\-decrypt@{rijndael\-\_\-decrypt}}
+\index{rijndael\-\_\-decrypt@{rijndael\-\_\-decrypt}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{rijndael\-\_\-decrypt}]{\setlength{\rightskip}{0pt plus 5cm}void rijndael\-\_\-decrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{, }
+\item[{const {\bf u4byte} $\ast$}]{, }
+\item[{{\bf u4byte} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_ae11430505b2632da60d65f3a3566cd39}
+\hypertarget{rijndael_8h_ab4efda33bbdbc0aa590038179386e4b3}{\index{rijndael.\-h@{rijndael.\-h}!rijndael\-\_\-encrypt@{rijndael\-\_\-encrypt}}
+\index{rijndael\-\_\-encrypt@{rijndael\-\_\-encrypt}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{rijndael\-\_\-encrypt}]{\setlength{\rightskip}{0pt plus 5cm}void rijndael\-\_\-encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{, }
+\item[{const {\bf u4byte} $\ast$}]{, }
+\item[{{\bf u4byte} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_ab4efda33bbdbc0aa590038179386e4b3}
+\hypertarget{rijndael_8h_a52e6e841b95fcd4620f2f06682b1e0b1}{\index{rijndael.\-h@{rijndael.\-h}!rijndael\-\_\-set\-\_\-key@{rijndael\-\_\-set\-\_\-key}}
+\index{rijndael\-\_\-set\-\_\-key@{rijndael\-\_\-set\-\_\-key}!rijndael.h@{rijndael.\-h}}
+\subsubsection[{rijndael\-\_\-set\-\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rijndael\-\_\-ctx}$\ast$ rijndael\-\_\-set\-\_\-key (
+\begin{DoxyParamCaption}
+\item[{{\bf rijndael\-\_\-ctx} $\ast$}]{, }
+\item[{const {\bf u4byte} $\ast$}]{, }
+\item[{const {\bf u4byte}}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{rijndael_8h_a52e6e841b95fcd4620f2f06682b1e0b1}

@@ -1,0 +1,117 @@
+.TH "md5.h" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md5.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBmd5_ctxt\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMD5_BUFLEN\fP   64"
+.br
+.ti -1c
+.RI "#define \fBmd5_sta\fP   md5_st\&.md5_state32[0]"
+.br
+.ti -1c
+.RI "#define \fBmd5_stb\fP   md5_st\&.md5_state32[1]"
+.br
+.ti -1c
+.RI "#define \fBmd5_stc\fP   md5_st\&.md5_state32[2]"
+.br
+.ti -1c
+.RI "#define \fBmd5_std\fP   md5_st\&.md5_state32[3]"
+.br
+.ti -1c
+.RI "#define \fBmd5_st8\fP   md5_st\&.md5_state8"
+.br
+.ti -1c
+.RI "#define \fBmd5_n\fP   md5_count\&.md5_count64"
+.br
+.ti -1c
+.RI "#define \fBmd5_n8\fP   md5_count\&.md5_count8"
+.br
+.ti -1c
+.RI "#define \fBMD5_CTX\fP   \fBmd5_ctxt\fP"
+.br
+.ti -1c
+.RI "#define \fBMD5Init\fP(x)   \fBmd5_init\fP((x))"
+.br
+.ti -1c
+.RI "#define \fBMD5Update\fP(x, y, z)   \fBmd5_loop\fP((x), (y), (z))"
+.br
+.ti -1c
+.RI "#define \fBMD5Final\fP(x, y)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmd5_init\fP (\fBmd5_ctxt\fP *)"
+.br
+.ti -1c
+.RI "void \fBmd5_loop\fP (\fBmd5_ctxt\fP *, const \fBuint8\fP *, unsigned int)"
+.br
+.ti -1c
+.RI "void \fBmd5_pad\fP (\fBmd5_ctxt\fP *)"
+.br
+.ti -1c
+.RI "void \fBmd5_result\fP (\fBuint8\fP *, \fBmd5_ctxt\fP *)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define MD5_BUFLEN   64"
+
+.SS "#define MD5_CTX   \fBmd5_ctxt\fP"
+
+.SS "#define md5_n   md5_count\&.md5_count64"
+
+.SS "#define md5_n8   md5_count\&.md5_count8"
+
+.SS "#define md5_st8   md5_st\&.md5_state8"
+
+.SS "#define md5_sta   md5_st\&.md5_state32[0]"
+
+.SS "#define md5_stb   md5_st\&.md5_state32[1]"
+
+.SS "#define md5_stc   md5_st\&.md5_state32[2]"
+
+.SS "#define md5_std   md5_st\&.md5_state32[3]"
+
+.SS "#define MD5Final(x, y)"
+\fBValue:\fP
+.PP
+.nf
+do {               \
+    md5_pad((y));       \
+    md5_result((x), (y));   \
+} while (0)
+.fi
+.SS "#define MD5Init(x)   \fBmd5_init\fP((x))"
+
+.SS "#define MD5Update(x, y, z)   \fBmd5_loop\fP((x), (y), (z))"
+
+.SH "Function Documentation"
+.PP 
+.SS "void md5_init (\fBmd5_ctxt\fP *)"
+
+.SS "void md5_loop (\fBmd5_ctxt\fP *, const \fBuint8\fP *, unsignedint)"
+
+.SS "void md5_pad (\fBmd5_ctxt\fP *)"
+
+.SS "void md5_result (\fBuint8\fP *, \fBmd5_ctxt\fP *)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

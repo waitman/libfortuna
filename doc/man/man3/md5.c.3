@@ -1,0 +1,227 @@
+.TH "md5.c" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md5.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <sys/param\&.h>\fP
+.br
+\fC#include 'c\&.h'\fP
+.br
+\fC#include 'md5\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSHIFT\fP(X, s)   (((X) << (s)) | ((X) >> (32 - (s))))"
+.br
+.ti -1c
+.RI "#define \fBF\fP(X, Y, Z)   (((X) & (Y)) | ((~X) & (Z)))"
+.br
+.ti -1c
+.RI "#define \fBG\fP(X, Y, Z)   (((X) & (Z)) | ((Y) & (~Z)))"
+.br
+.ti -1c
+.RI "#define \fBH\fP(X, Y, Z)   ((X) ^ (Y) ^ (Z))"
+.br
+.ti -1c
+.RI "#define \fBI\fP(X, Y, Z)   ((Y) ^ ((X) | (~Z)))"
+.br
+.ti -1c
+.RI "#define \fBROUND1\fP(a, b, c, d, k, s, i)"
+.br
+.ti -1c
+.RI "#define \fBROUND2\fP(a, b, c, d, k, s, i)"
+.br
+.ti -1c
+.RI "#define \fBROUND3\fP(a, b, c, d, k, s, i)"
+.br
+.ti -1c
+.RI "#define \fBROUND4\fP(a, b, c, d, k, s, i)"
+.br
+.ti -1c
+.RI "#define \fBSa\fP   7"
+.br
+.ti -1c
+.RI "#define \fBSb\fP   12"
+.br
+.ti -1c
+.RI "#define \fBSc\fP   17"
+.br
+.ti -1c
+.RI "#define \fBSd\fP   22"
+.br
+.ti -1c
+.RI "#define \fBSe\fP   5"
+.br
+.ti -1c
+.RI "#define \fBSf\fP   9"
+.br
+.ti -1c
+.RI "#define \fBSg\fP   14"
+.br
+.ti -1c
+.RI "#define \fBSh\fP   20"
+.br
+.ti -1c
+.RI "#define \fBSi\fP   4"
+.br
+.ti -1c
+.RI "#define \fBSj\fP   11"
+.br
+.ti -1c
+.RI "#define \fBSk\fP   16"
+.br
+.ti -1c
+.RI "#define \fBSl\fP   23"
+.br
+.ti -1c
+.RI "#define \fBSm\fP   6"
+.br
+.ti -1c
+.RI "#define \fBSn\fP   10"
+.br
+.ti -1c
+.RI "#define \fBSo\fP   15"
+.br
+.ti -1c
+.RI "#define \fBSp\fP   21"
+.br
+.ti -1c
+.RI "#define \fBMD5_A0\fP   0x67452301"
+.br
+.ti -1c
+.RI "#define \fBMD5_B0\fP   0xefcdab89"
+.br
+.ti -1c
+.RI "#define \fBMD5_C0\fP   0x98badcfe"
+.br
+.ti -1c
+.RI "#define \fBMD5_D0\fP   0x10325476"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmd5_init\fP (\fBmd5_ctxt\fP *ctxt)"
+.br
+.ti -1c
+.RI "void \fBmd5_loop\fP (\fBmd5_ctxt\fP *ctxt, const \fBuint8\fP *input, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBmd5_pad\fP (\fBmd5_ctxt\fP *ctxt)"
+.br
+.ti -1c
+.RI "void \fBmd5_result\fP (\fBuint8\fP *digest, \fBmd5_ctxt\fP *ctxt)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define F(X, Y, Z)   (((X) & (Y)) | ((~X) & (Z)))"
+
+.SS "#define G(X, Y, Z)   (((X) & (Z)) | ((Y) & (~Z)))"
+
+.SS "#define H(X, Y, Z)   ((X) ^ (Y) ^ (Z))"
+
+.SS "#define I(X, Y, Z)   ((Y) ^ ((X) | (~Z)))"
+
+.SS "#define MD5_A0   0x67452301"
+
+.SS "#define MD5_B0   0xefcdab89"
+
+.SS "#define MD5_C0   0x98badcfe"
+
+.SS "#define MD5_D0   0x10325476"
+
+.SS "#define ROUND1(a, b, c, d, k, s, i)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    (a) = (a) + F((b), (c), (d)) + X[(k)] + T[(i)]; \
+    (a) = SHIFT((a), (s)); \
+    (a) = (b) + (a); \
+} while (0)
+.fi
+.SS "#define ROUND2(a, b, c, d, k, s, i)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    (a) = (a) + G((b), (c), (d)) + X[(k)] + T[(i)]; \
+    (a) = SHIFT((a), (s)); \
+    (a) = (b) + (a); \
+} while (0)
+.fi
+.SS "#define ROUND3(a, b, c, d, k, s, i)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    (a) = (a) + H((b), (c), (d)) + X[(k)] + T[(i)]; \
+    (a) = SHIFT((a), (s)); \
+    (a) = (b) + (a); \
+} while (0)
+.fi
+.SS "#define ROUND4(a, b, c, d, k, s, i)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    (a) = (a) + I((b), (c), (d)) + X[(k)] + T[(i)]; \
+    (a) = SHIFT((a), (s)); \
+    (a) = (b) + (a); \
+} while (0)
+.fi
+.SS "#define Sa   7"
+
+.SS "#define Sb   12"
+
+.SS "#define Sc   17"
+
+.SS "#define Sd   22"
+
+.SS "#define Se   5"
+
+.SS "#define Sf   9"
+
+.SS "#define Sg   14"
+
+.SS "#define Sh   20"
+
+.SS "#define SHIFT(X, s)   (((X) << (s)) | ((X) >> (32 - (s))))"
+
+.SS "#define Si   4"
+
+.SS "#define Sj   11"
+
+.SS "#define Sk   16"
+
+.SS "#define Sl   23"
+
+.SS "#define Sm   6"
+
+.SS "#define Sn   10"
+
+.SS "#define So   15"
+
+.SS "#define Sp   21"
+
+.SH "Function Documentation"
+.PP 
+.SS "void md5_init (\fBmd5_ctxt\fP *ctxt)"
+
+.SS "void md5_loop (\fBmd5_ctxt\fP *ctxt, const \fBuint8\fP *input, unsignedlen)"
+
+.SS "void md5_pad (\fBmd5_ctxt\fP *ctxt)"
+
+.SS "void md5_result (\fBuint8\fP *digest, \fBmd5_ctxt\fP *ctxt)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

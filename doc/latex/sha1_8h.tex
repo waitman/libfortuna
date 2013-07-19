@@ -1,0 +1,105 @@
+\hypertarget{sha1_8h}{\section{sha1.\-h File Reference}
+\label{sha1_8h}\index{sha1.\-h@{sha1.\-h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sha1_8h_a045127f1d5c2aa456127d37be5512e6a}{S\-H\-A1\-Init}(x)~\hyperlink{sha1_8h_a767a3e60d0c53a995721a52900570550}{sha1\-\_\-init}((x))
+\item 
+\#define \hyperlink{sha1_8h_a65d63ce7555b5c8c6b6601f4638a55ee}{S\-H\-A1\-Update}(x, y, z)~\hyperlink{sha1_8h_a4ee3c0c255dfbb6e41cc3b9db73cc7cb}{sha1\-\_\-loop}((x), (y), (z))
+\item 
+\#define \hyperlink{sha1_8h_a167b770d8456009c777f5c91bfb9be93}{S\-H\-A1\-Final}(x, y)~\hyperlink{sha1_8h_a5b6c2c52e299364b326483306a3d97f4}{sha1\-\_\-result}((y), (x))
+\item 
+\#define \hyperlink{sha1_8h_a0990fb19a19af8343610f6df186aac92}{S\-H\-A1\-\_\-\-R\-E\-S\-U\-L\-T\-L\-E\-N}~(160/8)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} \hyperlink{sha1_8h_a4c3b6dc09f244809a9c2bf82f2bcbd2c}{S\-H\-A1\-\_\-\-C\-T\-X}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sha1_8h_a767a3e60d0c53a995721a52900570550}{sha1\-\_\-init} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$)
+\item 
+void \hyperlink{sha1_8h_a85d124d6d39a0631c4af990a981d2129}{sha1\-\_\-pad} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$)
+\item 
+void \hyperlink{sha1_8h_a4ee3c0c255dfbb6e41cc3b9db73cc7cb}{sha1\-\_\-loop} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$, size\-\_\-t)
+\item 
+void \hyperlink{sha1_8h_a5b6c2c52e299364b326483306a3d97f4}{sha1\-\_\-result} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{sha1_8h_a0990fb19a19af8343610f6df186aac92}{\index{sha1.\-h@{sha1.\-h}!S\-H\-A1\-\_\-\-R\-E\-S\-U\-L\-T\-L\-E\-N@{S\-H\-A1\-\_\-\-R\-E\-S\-U\-L\-T\-L\-E\-N}}
+\index{S\-H\-A1\-\_\-\-R\-E\-S\-U\-L\-T\-L\-E\-N@{S\-H\-A1\-\_\-\-R\-E\-S\-U\-L\-T\-L\-E\-N}!sha1.h@{sha1.\-h}}
+\subsubsection[{S\-H\-A1\-\_\-\-R\-E\-S\-U\-L\-T\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A1\-\_\-\-R\-E\-S\-U\-L\-T\-L\-E\-N~(160/8)}}\label{sha1_8h_a0990fb19a19af8343610f6df186aac92}
+\hypertarget{sha1_8h_a167b770d8456009c777f5c91bfb9be93}{\index{sha1.\-h@{sha1.\-h}!S\-H\-A1\-Final@{S\-H\-A1\-Final}}
+\index{S\-H\-A1\-Final@{S\-H\-A1\-Final}!sha1.h@{sha1.\-h}}
+\subsubsection[{S\-H\-A1\-Final}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A1\-Final(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~{\bf sha1\-\_\-result}((y), (x))}}\label{sha1_8h_a167b770d8456009c777f5c91bfb9be93}
+\hypertarget{sha1_8h_a045127f1d5c2aa456127d37be5512e6a}{\index{sha1.\-h@{sha1.\-h}!S\-H\-A1\-Init@{S\-H\-A1\-Init}}
+\index{S\-H\-A1\-Init@{S\-H\-A1\-Init}!sha1.h@{sha1.\-h}}
+\subsubsection[{S\-H\-A1\-Init}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A1\-Init(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~{\bf sha1\-\_\-init}((x))}}\label{sha1_8h_a045127f1d5c2aa456127d37be5512e6a}
+\hypertarget{sha1_8h_a65d63ce7555b5c8c6b6601f4638a55ee}{\index{sha1.\-h@{sha1.\-h}!S\-H\-A1\-Update@{S\-H\-A1\-Update}}
+\index{S\-H\-A1\-Update@{S\-H\-A1\-Update}!sha1.h@{sha1.\-h}}
+\subsubsection[{S\-H\-A1\-Update}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A1\-Update(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y, }
+\item[{}]{z}
+\end{DoxyParamCaption}
+)~{\bf sha1\-\_\-loop}((x), (y), (z))}}\label{sha1_8h_a65d63ce7555b5c8c6b6601f4638a55ee}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{sha1_8h_a4c3b6dc09f244809a9c2bf82f2bcbd2c}{\index{sha1.\-h@{sha1.\-h}!S\-H\-A1\-\_\-\-C\-T\-X@{S\-H\-A1\-\_\-\-C\-T\-X}}
+\index{S\-H\-A1\-\_\-\-C\-T\-X@{S\-H\-A1\-\_\-\-C\-T\-X}!sha1.h@{sha1.\-h}}
+\subsubsection[{S\-H\-A1\-\_\-\-C\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf sha1\-\_\-ctxt} {\bf S\-H\-A1\-\_\-\-C\-T\-X}}}\label{sha1_8h_a4c3b6dc09f244809a9c2bf82f2bcbd2c}
+
+
+\subsection{Function Documentation}
+\hypertarget{sha1_8h_a767a3e60d0c53a995721a52900570550}{\index{sha1.\-h@{sha1.\-h}!sha1\-\_\-init@{sha1\-\_\-init}}
+\index{sha1\-\_\-init@{sha1\-\_\-init}!sha1.h@{sha1.\-h}}
+\subsubsection[{sha1\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{sha1_8h_a767a3e60d0c53a995721a52900570550}
+\hypertarget{sha1_8h_a4ee3c0c255dfbb6e41cc3b9db73cc7cb}{\index{sha1.\-h@{sha1.\-h}!sha1\-\_\-loop@{sha1\-\_\-loop}}
+\index{sha1\-\_\-loop@{sha1\-\_\-loop}!sha1.h@{sha1.\-h}}
+\subsubsection[{sha1\-\_\-loop}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-loop (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{, }
+\item[{const {\bf uint8} $\ast$}]{, }
+\item[{size\-\_\-t}]{}
+\end{DoxyParamCaption}
+)}}\label{sha1_8h_a4ee3c0c255dfbb6e41cc3b9db73cc7cb}
+\hypertarget{sha1_8h_a85d124d6d39a0631c4af990a981d2129}{\index{sha1.\-h@{sha1.\-h}!sha1\-\_\-pad@{sha1\-\_\-pad}}
+\index{sha1\-\_\-pad@{sha1\-\_\-pad}!sha1.h@{sha1.\-h}}
+\subsubsection[{sha1\-\_\-pad}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-pad (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{sha1_8h_a85d124d6d39a0631c4af990a981d2129}
+\hypertarget{sha1_8h_a5b6c2c52e299364b326483306a3d97f4}{\index{sha1.\-h@{sha1.\-h}!sha1\-\_\-result@{sha1\-\_\-result}}
+\index{sha1\-\_\-result@{sha1\-\_\-result}!sha1.h@{sha1.\-h}}
+\subsubsection[{sha1\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{, }
+\item[{{\bf uint8} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{sha1_8h_a5b6c2c52e299364b326483306a3d97f4}

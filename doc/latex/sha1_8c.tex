@@ -1,0 +1,208 @@
+\hypertarget{sha1_8c}{\section{sha1.\-c File Reference}
+\label{sha1_8c}\index{sha1.\-c@{sha1.\-c}}
+}
+{\ttfamily \#include $<$sys/param.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}c.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sha1.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sha1_8c_a79409d41d39a0b434cdf6896949848b4}{K}(t)~\hyperlink{sha1_8c_afd626f8efa9134366d3e4869a52529ca}{\-\_\-\-K}\mbox{[}(t) / 20\mbox{]}
+\item 
+\#define \hyperlink{sha1_8c_a5c482e816f35bfb6e98a35ebb98faf6f}{F0}(b, c, d)~(((b) \& (c)) $|$ (($\sim$(b)) \& (d)))
+\item 
+\#define \hyperlink{sha1_8c_a4b43e24406104c71169a8ef7548dd11c}{F1}(b, c, d)~(((b) $^\wedge$ (c)) $^\wedge$ (d))
+\item 
+\#define \hyperlink{sha1_8c_a3758a57dd3ebe6d6d232ded594a841ab}{F2}(b, c, d)~(((b) \& (c)) $|$ ((b) \& (d)) $|$ ((c) \& (d)))
+\item 
+\#define \hyperlink{sha1_8c_a52dbd9db25b71d9031d0673b87c03912}{F3}(b, c, d)~(((b) $^\wedge$ (c)) $^\wedge$ (d))
+\item 
+\#define \hyperlink{sha1_8c_af15513bee028c2c0146fa50ae1e26d84}{S}(n, x)~(((x) $<$$<$ (n)) $|$ ((x) $>$$>$ (32 -\/ (n))))
+\item 
+\#define \hyperlink{sha1_8c_aaa382e24b66be8c20d6aca62a1973146}{H}(n)~(ctxt-\/$>$h.\-b32\mbox{[}(n)\mbox{]})
+\item 
+\#define \hyperlink{sha1_8c_a698c124f1c293f98840449d6c5b9d984}{C\-O\-U\-N\-T}~(ctxt-\/$>$count)
+\item 
+\#define \hyperlink{sha1_8c_a6c023101778ba9767c107e3d682d4ab6}{B\-C\-O\-U\-N\-T}~(ctxt-\/$>$c.\-b64\mbox{[}0\mbox{]} / 8)
+\item 
+\#define \hyperlink{sha1_8c_aaa1911626d1a69d3e5c777edea7ae186}{W}(n)~(ctxt-\/$>$m.\-b32\mbox{[}(n)\mbox{]})
+\item 
+\#define \hyperlink{sha1_8c_a635ee526f164441e4c22e102e467f448}{P\-U\-T\-B\-Y\-T\-E}(x)
+\item 
+\#define \hyperlink{sha1_8c_ad39c973ac48c3579adaa98ab681c01af}{P\-U\-T\-P\-A\-D}(x)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sha1_8c_aee76cf16a9f5e2312e47d4872045653e}{sha1\-\_\-step} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$)
+\item 
+void \hyperlink{sha1_8c_ad047f7750f5b8907414d894113e120a9}{sha1\-\_\-init} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$ctxt)
+\item 
+void \hyperlink{sha1_8c_a47e007a7a911ea662507803fd0a34481}{sha1\-\_\-pad} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$ctxt)
+\item 
+void \hyperlink{sha1_8c_ad04923e6a54c13d4b448675c87701b16}{sha1\-\_\-loop} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$ctxt, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$input0, size\-\_\-t len)
+\item 
+void \hyperlink{sha1_8c_ac1f26075503ec4b169e6f3ddc094a997}{sha1\-\_\-result} (struct \hyperlink{structsha1__ctxt}{sha1\-\_\-ctxt} $\ast$ctxt, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$digest0)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{sha1_8c_afd626f8efa9134366d3e4869a52529ca}{\-\_\-\-K} \mbox{[}$\,$\mbox{]} = \{0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{sha1_8c_a6c023101778ba9767c107e3d682d4ab6}{\index{sha1.\-c@{sha1.\-c}!B\-C\-O\-U\-N\-T@{B\-C\-O\-U\-N\-T}}
+\index{B\-C\-O\-U\-N\-T@{B\-C\-O\-U\-N\-T}!sha1.c@{sha1.\-c}}
+\subsubsection[{B\-C\-O\-U\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-C\-O\-U\-N\-T~(ctxt-\/$>$c.\-b64\mbox{[}0\mbox{]} / 8)}}\label{sha1_8c_a6c023101778ba9767c107e3d682d4ab6}
+\hypertarget{sha1_8c_a698c124f1c293f98840449d6c5b9d984}{\index{sha1.\-c@{sha1.\-c}!C\-O\-U\-N\-T@{C\-O\-U\-N\-T}}
+\index{C\-O\-U\-N\-T@{C\-O\-U\-N\-T}!sha1.c@{sha1.\-c}}
+\subsubsection[{C\-O\-U\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-U\-N\-T~(ctxt-\/$>$count)}}\label{sha1_8c_a698c124f1c293f98840449d6c5b9d984}
+\hypertarget{sha1_8c_a5c482e816f35bfb6e98a35ebb98faf6f}{\index{sha1.\-c@{sha1.\-c}!F0@{F0}}
+\index{F0@{F0}!sha1.c@{sha1.\-c}}
+\subsubsection[{F0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F0(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d}
+\end{DoxyParamCaption}
+)~(((b) \& (c)) $|$ (($\sim$(b)) \& (d)))}}\label{sha1_8c_a5c482e816f35bfb6e98a35ebb98faf6f}
+\hypertarget{sha1_8c_a4b43e24406104c71169a8ef7548dd11c}{\index{sha1.\-c@{sha1.\-c}!F1@{F1}}
+\index{F1@{F1}!sha1.c@{sha1.\-c}}
+\subsubsection[{F1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F1(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d}
+\end{DoxyParamCaption}
+)~(((b) $^\wedge$ (c)) $^\wedge$ (d))}}\label{sha1_8c_a4b43e24406104c71169a8ef7548dd11c}
+\hypertarget{sha1_8c_a3758a57dd3ebe6d6d232ded594a841ab}{\index{sha1.\-c@{sha1.\-c}!F2@{F2}}
+\index{F2@{F2}!sha1.c@{sha1.\-c}}
+\subsubsection[{F2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F2(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d}
+\end{DoxyParamCaption}
+)~(((b) \& (c)) $|$ ((b) \& (d)) $|$ ((c) \& (d)))}}\label{sha1_8c_a3758a57dd3ebe6d6d232ded594a841ab}
+\hypertarget{sha1_8c_a52dbd9db25b71d9031d0673b87c03912}{\index{sha1.\-c@{sha1.\-c}!F3@{F3}}
+\index{F3@{F3}!sha1.c@{sha1.\-c}}
+\subsubsection[{F3}]{\setlength{\rightskip}{0pt plus 5cm}\#define F3(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d}
+\end{DoxyParamCaption}
+)~(((b) $^\wedge$ (c)) $^\wedge$ (d))}}\label{sha1_8c_a52dbd9db25b71d9031d0673b87c03912}
+\hypertarget{sha1_8c_aaa382e24b66be8c20d6aca62a1973146}{\index{sha1.\-c@{sha1.\-c}!H@{H}}
+\index{H@{H}!sha1.c@{sha1.\-c}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}\#define H(
+\begin{DoxyParamCaption}
+\item[{}]{n}
+\end{DoxyParamCaption}
+)~(ctxt-\/$>$h.\-b32\mbox{[}(n)\mbox{]})}}\label{sha1_8c_aaa382e24b66be8c20d6aca62a1973146}
+\hypertarget{sha1_8c_a79409d41d39a0b434cdf6896949848b4}{\index{sha1.\-c@{sha1.\-c}!K@{K}}
+\index{K@{K}!sha1.c@{sha1.\-c}}
+\subsubsection[{K}]{\setlength{\rightskip}{0pt plus 5cm}\#define K(
+\begin{DoxyParamCaption}
+\item[{}]{t}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-\-K}\mbox{[}(t) / 20\mbox{]}}}\label{sha1_8c_a79409d41d39a0b434cdf6896949848b4}
+\hypertarget{sha1_8c_a635ee526f164441e4c22e102e467f448}{\index{sha1.\-c@{sha1.\-c}!P\-U\-T\-B\-Y\-T\-E@{P\-U\-T\-B\-Y\-T\-E}}
+\index{P\-U\-T\-B\-Y\-T\-E@{P\-U\-T\-B\-Y\-T\-E}!sha1.c@{sha1.\-c}}
+\subsubsection[{P\-U\-T\-B\-Y\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-U\-T\-B\-Y\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}}\label{sha1_8c_a635ee526f164441e4c22e102e467f448}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    ctxt->m.b8[(\hyperlink{sha1_8c_a698c124f1c293f98840449d6c5b9d984}{COUNT} % 64)] = (x);        \(\backslash\)
+    COUNT++;                \(\backslash\)
+    COUNT %= 64;                \(\backslash\)
+    ctxt->c.b64[0] += 8;            \(\backslash\)
+    if (\hyperlink{sha1_8c_a698c124f1c293f98840449d6c5b9d984}{COUNT} % 64 == 0)           \(\backslash\)
+        sha1\_step(ctxt);        \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\hypertarget{sha1_8c_ad39c973ac48c3579adaa98ab681c01af}{\index{sha1.\-c@{sha1.\-c}!P\-U\-T\-P\-A\-D@{P\-U\-T\-P\-A\-D}}
+\index{P\-U\-T\-P\-A\-D@{P\-U\-T\-P\-A\-D}!sha1.c@{sha1.\-c}}
+\subsubsection[{P\-U\-T\-P\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-U\-T\-P\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}}\label{sha1_8c_ad39c973ac48c3579adaa98ab681c01af}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    ctxt->m.b8[(\hyperlink{sha1_8c_a698c124f1c293f98840449d6c5b9d984}{COUNT} % 64)] = (x);        \(\backslash\)
+    COUNT++;                \(\backslash\)
+    COUNT %= 64;                \(\backslash\)
+    if (\hyperlink{sha1_8c_a698c124f1c293f98840449d6c5b9d984}{COUNT} % 64 == 0)           \(\backslash\)
+        sha1\_step(ctxt);        \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\hypertarget{sha1_8c_af15513bee028c2c0146fa50ae1e26d84}{\index{sha1.\-c@{sha1.\-c}!S@{S}}
+\index{S@{S}!sha1.c@{sha1.\-c}}
+\subsubsection[{S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S(
+\begin{DoxyParamCaption}
+\item[{}]{n, }
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(((x) $<$$<$ (n)) $|$ ((x) $>$$>$ (32 -\/ (n))))}}\label{sha1_8c_af15513bee028c2c0146fa50ae1e26d84}
+\hypertarget{sha1_8c_aaa1911626d1a69d3e5c777edea7ae186}{\index{sha1.\-c@{sha1.\-c}!W@{W}}
+\index{W@{W}!sha1.c@{sha1.\-c}}
+\subsubsection[{W}]{\setlength{\rightskip}{0pt plus 5cm}\#define W(
+\begin{DoxyParamCaption}
+\item[{}]{n}
+\end{DoxyParamCaption}
+)~(ctxt-\/$>$m.\-b32\mbox{[}(n)\mbox{]})}}\label{sha1_8c_aaa1911626d1a69d3e5c777edea7ae186}
+
+
+\subsection{Function Documentation}
+\hypertarget{sha1_8c_ad047f7750f5b8907414d894113e120a9}{\index{sha1.\-c@{sha1.\-c}!sha1\-\_\-init@{sha1\-\_\-init}}
+\index{sha1\-\_\-init@{sha1\-\_\-init}!sha1.c@{sha1.\-c}}
+\subsubsection[{sha1\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{ctxt}
+\end{DoxyParamCaption}
+)}}\label{sha1_8c_ad047f7750f5b8907414d894113e120a9}
+\hypertarget{sha1_8c_ad04923e6a54c13d4b448675c87701b16}{\index{sha1.\-c@{sha1.\-c}!sha1\-\_\-loop@{sha1\-\_\-loop}}
+\index{sha1\-\_\-loop@{sha1\-\_\-loop}!sha1.c@{sha1.\-c}}
+\subsubsection[{sha1\-\_\-loop}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-loop (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{ctxt, }
+\item[{const {\bf uint8} $\ast$}]{input0, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{sha1_8c_ad04923e6a54c13d4b448675c87701b16}
+\hypertarget{sha1_8c_a47e007a7a911ea662507803fd0a34481}{\index{sha1.\-c@{sha1.\-c}!sha1\-\_\-pad@{sha1\-\_\-pad}}
+\index{sha1\-\_\-pad@{sha1\-\_\-pad}!sha1.c@{sha1.\-c}}
+\subsubsection[{sha1\-\_\-pad}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-pad (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{ctxt}
+\end{DoxyParamCaption}
+)}}\label{sha1_8c_a47e007a7a911ea662507803fd0a34481}
+\hypertarget{sha1_8c_ac1f26075503ec4b169e6f3ddc094a997}{\index{sha1.\-c@{sha1.\-c}!sha1\-\_\-result@{sha1\-\_\-result}}
+\index{sha1\-\_\-result@{sha1\-\_\-result}!sha1.c@{sha1.\-c}}
+\subsubsection[{sha1\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{ctxt, }
+\item[{{\bf uint8} $\ast$}]{digest0}
+\end{DoxyParamCaption}
+)}}\label{sha1_8c_ac1f26075503ec4b169e6f3ddc094a997}
+\hypertarget{sha1_8c_aee76cf16a9f5e2312e47d4872045653e}{\index{sha1.\-c@{sha1.\-c}!sha1\-\_\-step@{sha1\-\_\-step}}
+\index{sha1\-\_\-step@{sha1\-\_\-step}!sha1.c@{sha1.\-c}}
+\subsubsection[{sha1\-\_\-step}]{\setlength{\rightskip}{0pt plus 5cm}void sha1\-\_\-step (
+\begin{DoxyParamCaption}
+\item[{struct {\bf sha1\-\_\-ctxt} $\ast$}]{ctxt}
+\end{DoxyParamCaption}
+)}}\label{sha1_8c_aee76cf16a9f5e2312e47d4872045653e}
+
+
+\subsection{Variable Documentation}
+\hypertarget{sha1_8c_afd626f8efa9134366d3e4869a52529ca}{\index{sha1.\-c@{sha1.\-c}!\-\_\-\-K@{\-\_\-\-K}}
+\index{\-\_\-\-K@{\-\_\-\-K}!sha1.c@{sha1.\-c}}
+\subsubsection[{\-\_\-\-K}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} \-\_\-\-K\mbox{[}$\,$\mbox{]} = \{0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6\}}}\label{sha1_8c_afd626f8efa9134366d3e4869a52529ca}

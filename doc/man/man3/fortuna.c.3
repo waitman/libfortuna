@@ -1,0 +1,195 @@
+.TH "fortuna.c" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fortuna.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <sys/time\&.h>\fP
+.br
+\fC#include <time\&.h>\fP
+.br
+\fC#include 'c\&.h'\fP
+.br
+\fC#include 'rijndael\&.h'\fP
+.br
+\fC#include 'sha2\&.h'\fP
+.br
+\fC#include 'fortuna\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBfortuna_state\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBNUM_POOLS\fP   23"
+.br
+.ti -1c
+.RI "#define \fBRESEED_INTERVAL\fP   100000	/* 0\&.1 sec */"
+.br
+.ti -1c
+.RI "#define \fBRESEED_BYTES\fP   (1024*1024)"
+.br
+.ti -1c
+.RI "#define \fBPOOL0_FILL\fP   (256/8)"
+.br
+.ti -1c
+.RI "#define \fBBLOCK\fP   32"
+.br
+.ti -1c
+.RI "#define \fBCIPH_BLOCK\fP   16"
+.br
+.ti -1c
+.RI "#define \fBMD_CTX\fP   \fBSHA256_CTX\fP"
+.br
+.ti -1c
+.RI "#define \fBCIPH_CTX\fP   \fBrijndael_ctx\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBfortuna_state\fP \fBFState\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBciph_init\fP (\fBCIPH_CTX\fP *ctx, const \fBuint8\fP *key, int klen)"
+.br
+.ti -1c
+.RI "void \fBciph_encrypt\fP (\fBCIPH_CTX\fP *ctx, const \fBuint8\fP *in, \fBuint8\fP *out)"
+.br
+.ti -1c
+.RI "void \fBmd_init\fP (\fBMD_CTX\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBmd_update\fP (\fBMD_CTX\fP *ctx, const \fBuint8\fP *data, int len)"
+.br
+.ti -1c
+.RI "void \fBmd_result\fP (\fBMD_CTX\fP *ctx, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBinit_state\fP (\fBFState\fP *st)"
+.br
+.ti -1c
+.RI "void \fBinc_counter\fP (\fBFState\fP *st)"
+.br
+.ti -1c
+.RI "void \fBencrypt_counter\fP (\fBFState\fP *st, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "int \fBenough_time_passed\fP (\fBFState\fP *st)"
+.br
+.ti -1c
+.RI "void \fBreseed\fP (\fBFState\fP *st)"
+.br
+.ti -1c
+.RI "unsigned \fBget_rand_pool\fP (\fBFState\fP *st)"
+.br
+.ti -1c
+.RI "void \fBadd_entropy\fP (\fBFState\fP *st, const \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBrekey\fP (\fBFState\fP *st)"
+.br
+.ti -1c
+.RI "void \fBstartup_tricks\fP (\fBFState\fP *st)"
+.br
+.ti -1c
+.RI "void \fBextract_data\fP (\fBFState\fP *st, unsigned count, \fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "void \fBfortuna_add_entropy\fP (const \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBfortuna_get_bytes\fP (unsigned len, \fBuint8\fP *dst)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBFState\fP \fBmain_state\fP"
+.br
+.ti -1c
+.RI "int \fBinit_done\fP = 0"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BLOCK   32"
+
+.SS "#define CIPH_BLOCK   16"
+
+.SS "#define CIPH_CTX   \fBrijndael_ctx\fP"
+
+.SS "#define MD_CTX   \fBSHA256_CTX\fP"
+
+.SS "#define NUM_POOLS   23"
+
+.SS "#define POOL0_FILL   (256/8)"
+
+.SS "#define RESEED_BYTES   (1024*1024)"
+
+.SS "#define RESEED_INTERVAL   100000	/* 0\&.1 sec */"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBfortuna_state\fP \fBFState\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void add_entropy (\fBFState\fP *st, const \fBuint8\fP *data, unsignedlen)"
+
+.SS "void ciph_encrypt (\fBCIPH_CTX\fP *ctx, const \fBuint8\fP *in, \fBuint8\fP *out)"
+
+.SS "void ciph_init (\fBCIPH_CTX\fP *ctx, const \fBuint8\fP *key, intklen)"
+
+.SS "void encrypt_counter (\fBFState\fP *st, \fBuint8\fP *dst)"
+
+.SS "int enough_time_passed (\fBFState\fP *st)"
+
+.SS "void extract_data (\fBFState\fP *st, unsignedcount, \fBuint8\fP *dst)"
+
+.SS "void fortuna_add_entropy (const \fBuint8\fP *data, unsignedlen)"
+
+.SS "void fortuna_get_bytes (unsignedlen, \fBuint8\fP *dst)"
+
+.SS "unsigned get_rand_pool (\fBFState\fP *st)"
+
+.SS "void inc_counter (\fBFState\fP *st)"
+
+.SS "void init_state (\fBFState\fP *st)"
+
+.SS "void md_init (\fBMD_CTX\fP *ctx)"
+
+.SS "void md_result (\fBMD_CTX\fP *ctx, \fBuint8\fP *dst)"
+
+.SS "void md_update (\fBMD_CTX\fP *ctx, const \fBuint8\fP *data, intlen)"
+
+.SS "void rekey (\fBFState\fP *st)"
+
+.SS "void reseed (\fBFState\fP *st)"
+
+.SS "void startup_tricks (\fBFState\fP *st)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "int init_done = 0"
+
+.SS "\fBFState\fP main_state"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

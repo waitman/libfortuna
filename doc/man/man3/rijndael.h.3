@@ -1,0 +1,108 @@
+.TH "rijndael.h" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+rijndael.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'c\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fB_rijndael_ctx\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBuint8\fP \fBu1byte\fP"
+.br
+.ti -1c
+.RI "typedef \fBuint16\fP \fBu2byte\fP"
+.br
+.ti -1c
+.RI "typedef \fBuint32\fP \fBu4byte\fP"
+.br
+.ti -1c
+.RI "typedef \fBint8\fP \fBs1byte\fP"
+.br
+.ti -1c
+.RI "typedef \fBint16\fP \fBs2byte\fP"
+.br
+.ti -1c
+.RI "typedef \fBint32\fP \fBs4byte\fP"
+.br
+.ti -1c
+.RI "typedef struct \fB_rijndael_ctx\fP \fBrijndael_ctx\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBrijndael_ctx\fP * \fBrijndael_set_key\fP (\fBrijndael_ctx\fP *, const \fBu4byte\fP *, const \fBu4byte\fP, int)"
+.br
+.ti -1c
+.RI "void \fBrijndael_encrypt\fP (\fBrijndael_ctx\fP *, const \fBu4byte\fP *, \fBu4byte\fP *)"
+.br
+.ti -1c
+.RI "void \fBrijndael_decrypt\fP (\fBrijndael_ctx\fP *, const \fBu4byte\fP *, \fBu4byte\fP *)"
+.br
+.ti -1c
+.RI "void \fBaes_set_key\fP (\fBrijndael_ctx\fP *ctx, const \fBuint8\fP *key, unsigned keybits, int enc)"
+.br
+.ti -1c
+.RI "void \fBaes_ecb_encrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBaes_ecb_decrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBaes_cbc_encrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsigned len)"
+.br
+.ti -1c
+.RI "void \fBaes_cbc_decrypt\fP (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsigned len)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fB_rijndael_ctx\fP  \fBrijndael_ctx\fP"
+
+.SS "typedef \fBint8\fP \fBs1byte\fP"
+
+.SS "typedef \fBint16\fP \fBs2byte\fP"
+
+.SS "typedef \fBint32\fP \fBs4byte\fP"
+
+.SS "typedef \fBuint8\fP \fBu1byte\fP"
+
+.SS "typedef \fBuint16\fP \fBu2byte\fP"
+
+.SS "typedef \fBuint32\fP \fBu4byte\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void aes_cbc_decrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_cbc_encrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *iva, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_ecb_decrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_ecb_encrypt (\fBrijndael_ctx\fP *ctx, \fBuint8\fP *data, unsignedlen)"
+
+.SS "void aes_set_key (\fBrijndael_ctx\fP *ctx, const \fBuint8\fP *key, unsignedkeybits, intenc)"
+
+.SS "void rijndael_decrypt (\fBrijndael_ctx\fP *, const \fBu4byte\fP *, \fBu4byte\fP *)"
+
+.SS "void rijndael_encrypt (\fBrijndael_ctx\fP *, const \fBu4byte\fP *, \fBu4byte\fP *)"
+
+.SS "\fBrijndael_ctx\fP* rijndael_set_key (\fBrijndael_ctx\fP *, const \fBu4byte\fP *, const \fBu4byte\fP, int)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

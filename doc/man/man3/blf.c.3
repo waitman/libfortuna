@@ -1,0 +1,148 @@
+.TH "blf.c" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+blf.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <assert\&.h>\fP
+.br
+\fC#include 'c\&.h'\fP
+.br
+\fC#include 'blf\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBGET_32BIT_MSB_FIRST\fP(p)"
+.br
+.ti -1c
+.RI "#define \fBPUT_32BIT_MSB_FIRST\fP(p, v)"
+.br
+.ti -1c
+.RI "#define \fBFprime\fP(a, b, c, d)   ( ( (S0[a] + S1[b]) ^ S2[c] ) + S3[d] )"
+.br
+.ti -1c
+.RI "#define \fBF\fP(x)   \fBFprime\fP( ((x>>24)&0xFF), ((x>>16)&0xFF), ((x>>8)&0xFF), (x&0xFF) )"
+.br
+.ti -1c
+.RI "#define \fBROUND\fP(n)   ( xL ^= P[n], t = xL, xL = \fBF\fP(xL) ^ xR, xR = t )"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBblowfish_encrypt\fP (\fBuint32\fP xL, \fBuint32\fP xR, \fBuint32\fP *output, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_decrypt\fP (\fBuint32\fP xL, \fBuint32\fP xR, \fBuint32\fP *output, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_encrypt_cbc\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_decrypt_cbc\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_encrypt_ecb\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_decrypt_ecb\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_setkey\fP (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *key, short keybytes)"
+.br
+.ti -1c
+.RI "void \fBblowfish_setiv\fP (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *iv)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const \fBuint32\fP \fBparray\fP []"
+.br
+.ti -1c
+.RI "const \fBuint32\fP \fBsbox0\fP []"
+.br
+.ti -1c
+.RI "const \fBuint32\fP \fBsbox1\fP []"
+.br
+.ti -1c
+.RI "const \fBuint32\fP \fBsbox2\fP []"
+.br
+.ti -1c
+.RI "const \fBuint32\fP \fBsbox3\fP []"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define F(x)   \fBFprime\fP( ((x>>24)&0xFF), ((x>>16)&0xFF), ((x>>8)&0xFF), (x&0xFF) )"
+
+.SS "#define Fprime(a, b, c, d)   ( ( (S0[a] + S1[b]) ^ S2[c] ) + S3[d] )"
+
+.SS "#define GET_32BIT_MSB_FIRST(p)"
+\fBValue:\fP
+.PP
+.nf
+( \
+    ((p)[0] << 24) | ((p)[1] << 16) | ((p)[2] << 8) | ((p)[3]) )
+.fi
+.SS "#define PUT_32BIT_MSB_FIRST(p, v)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    (p)[0] = v >> 24; \
+    (p)[1] = v >> 16; \
+    (p)[2] = v >> 8; \
+    (p)[3] = v; \
+} while (0)
+.fi
+.SS "#define ROUND(n)   ( xL ^= P[n], t = xL, xL = \fBF\fP(xL) ^ xR, xR = t )"
+
+.SH "Function Documentation"
+.PP 
+.SS "void blowfish_decrypt (\fBuint32\fPxL, \fBuint32\fPxR, \fBuint32\fP *output, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_decrypt_cbc (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_decrypt_ecb (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_encrypt (\fBuint32\fPxL, \fBuint32\fPxR, \fBuint32\fP *output, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_encrypt_cbc (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_encrypt_ecb (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_setiv (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *iv)"
+
+.SS "void blowfish_setkey (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *key, shortkeybytes)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "const \fBuint32\fP parray[]"
+\fBInitial value:\fP
+.PP
+.nf
+= {
+    0x243F6A88, 0x85A308D3, 0x13198A2E, 0x03707344, 0xA4093822, 0x299F31D0,
+    0x082EFA98, 0xEC4E6C89, 0x452821E6, 0x38D01377, 0xBE5466CF, 0x34E90C6C,
+    0xC0AC29B7, 0xC97C50DD, 0x3F84D5B5, 0xB5470917, 0x9216D5D9, 0x8979FB1B,
+}
+.fi
+.SS "const \fBuint32\fP sbox0[]"
+
+.SS "const \fBuint32\fP sbox1[]"
+
+.SS "const \fBuint32\fP sbox2[]"
+
+.SS "const \fBuint32\fP sbox3[]"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

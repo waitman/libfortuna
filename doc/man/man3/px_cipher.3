@@ -1,0 +1,65 @@
+.TH "px_cipher" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+px_cipher \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <px\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "unsigned(* \fBblock_size\fP )(\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "unsigned(* \fBkey_size\fP )(\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "unsigned(* \fBiv_size\fP )(\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "int(* \fBinit\fP )(\fBPX_Cipher\fP *c, const \fBuint8\fP *key, unsigned klen, const \fBuint8\fP *iv)"
+.br
+.ti -1c
+.RI "int(* \fBencrypt\fP )(\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+.br
+.ti -1c
+.RI "int(* \fBdecrypt\fP )(\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+.br
+.ti -1c
+.RI "void(* \fBfree\fP )(\fBPX_Cipher\fP *c)"
+.br
+.ti -1c
+.RI "void * \fBptr\fP"
+.br
+.ti -1c
+.RI "int \fBpstat\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "unsigned(* px_cipher::block_size)(\fBPX_Cipher\fP *c)"
+
+.SS "int(* px_cipher::decrypt)(\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+
+.SS "int(* px_cipher::encrypt)(\fBPX_Cipher\fP *c, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res)"
+
+.SS "void(* px_cipher::free)(\fBPX_Cipher\fP *c)"
+
+.SS "int(* px_cipher::init)(\fBPX_Cipher\fP *c, const \fBuint8\fP *key, unsigned klen, const \fBuint8\fP *iv)"
+
+.SS "unsigned(* px_cipher::iv_size)(\fBPX_Cipher\fP *c)"
+
+.SS "unsigned(* px_cipher::key_size)(\fBPX_Cipher\fP *c)"
+
+.SS "int px_cipher::pstat"
+
+.SS "void* px_cipher::ptr"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

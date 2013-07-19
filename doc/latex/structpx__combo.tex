@@ -1,0 +1,58 @@
+\hypertarget{structpx__combo}{\section{px\-\_\-combo Struct Reference}
+\label{structpx__combo}\index{px\-\_\-combo@{px\-\_\-combo}}
+}
+
+
+{\ttfamily \#include $<$px.\-h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int($\ast$ \hyperlink{structpx__combo_a401b15c0ba6e9cd2ab90b32ea26645ef}{init} )(\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, unsigned klen, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$iv, unsigned ivlen)
+\item 
+int($\ast$ \hyperlink{structpx__combo_af74336f8a213474316867f3fcaa31b0b}{encrypt} )(\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$res, unsigned $\ast$rlen)
+\item 
+int($\ast$ \hyperlink{structpx__combo_a23e2efbb8021fe4633dad4bf6c4bdd9c}{decrypt} )(\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$res, unsigned $\ast$rlen)
+\item 
+unsigned($\ast$ \hyperlink{structpx__combo_a5d77b2bb0597cc58b5a03a17cacddd6e}{encrypt\-\_\-len} )(\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, unsigned dlen)
+\item 
+unsigned($\ast$ \hyperlink{structpx__combo_a5255ab7d3977adcfb1ef250c1ae8750b}{decrypt\-\_\-len} )(\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, unsigned dlen)
+\item 
+void($\ast$ \hyperlink{structpx__combo_a47f3f63a1e165cbb460cbba11b6abe1c}{free} )(\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx)
+\item 
+\hyperlink{px_8h_a971b71d1dd84736bdccbc92805c3d018}{P\-X\-\_\-\-Cipher} $\ast$ \hyperlink{structpx__combo_a63135da76b1246d73c2636e7bc61e8e0}{cipher}
+\item 
+unsigned \hyperlink{structpx__combo_a253ba1f3900b1fdcf82ead9d1d5d5231}{padding}
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structpx__combo_a63135da76b1246d73c2636e7bc61e8e0}{\index{px\-\_\-combo@{px\-\_\-combo}!cipher@{cipher}}
+\index{cipher@{cipher}!px_combo@{px\-\_\-combo}}
+\subsubsection[{cipher}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\-X\-\_\-\-Cipher}$\ast$ px\-\_\-combo\-::cipher}}\label{structpx__combo_a63135da76b1246d73c2636e7bc61e8e0}
+\hypertarget{structpx__combo_a23e2efbb8021fe4633dad4bf6c4bdd9c}{\index{px\-\_\-combo@{px\-\_\-combo}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!px_combo@{px\-\_\-combo}}
+\subsubsection[{decrypt}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ px\-\_\-combo\-::decrypt)({\bf P\-X\-\_\-\-Combo} $\ast$cx, const {\bf uint8} $\ast$data, unsigned dlen, {\bf uint8} $\ast$res, unsigned $\ast$rlen)}}\label{structpx__combo_a23e2efbb8021fe4633dad4bf6c4bdd9c}
+\hypertarget{structpx__combo_a5255ab7d3977adcfb1ef250c1ae8750b}{\index{px\-\_\-combo@{px\-\_\-combo}!decrypt\-\_\-len@{decrypt\-\_\-len}}
+\index{decrypt\-\_\-len@{decrypt\-\_\-len}!px_combo@{px\-\_\-combo}}
+\subsubsection[{decrypt\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-combo\-::decrypt\-\_\-len)({\bf P\-X\-\_\-\-Combo} $\ast$cx, unsigned dlen)}}\label{structpx__combo_a5255ab7d3977adcfb1ef250c1ae8750b}
+\hypertarget{structpx__combo_af74336f8a213474316867f3fcaa31b0b}{\index{px\-\_\-combo@{px\-\_\-combo}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!px_combo@{px\-\_\-combo}}
+\subsubsection[{encrypt}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ px\-\_\-combo\-::encrypt)({\bf P\-X\-\_\-\-Combo} $\ast$cx, const {\bf uint8} $\ast$data, unsigned dlen, {\bf uint8} $\ast$res, unsigned $\ast$rlen)}}\label{structpx__combo_af74336f8a213474316867f3fcaa31b0b}
+\hypertarget{structpx__combo_a5d77b2bb0597cc58b5a03a17cacddd6e}{\index{px\-\_\-combo@{px\-\_\-combo}!encrypt\-\_\-len@{encrypt\-\_\-len}}
+\index{encrypt\-\_\-len@{encrypt\-\_\-len}!px_combo@{px\-\_\-combo}}
+\subsubsection[{encrypt\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-combo\-::encrypt\-\_\-len)({\bf P\-X\-\_\-\-Combo} $\ast$cx, unsigned dlen)}}\label{structpx__combo_a5d77b2bb0597cc58b5a03a17cacddd6e}
+\hypertarget{structpx__combo_a47f3f63a1e165cbb460cbba11b6abe1c}{\index{px\-\_\-combo@{px\-\_\-combo}!free@{free}}
+\index{free@{free}!px_combo@{px\-\_\-combo}}
+\subsubsection[{free}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-combo\-::free)({\bf P\-X\-\_\-\-Combo} $\ast$cx)}}\label{structpx__combo_a47f3f63a1e165cbb460cbba11b6abe1c}
+\hypertarget{structpx__combo_a401b15c0ba6e9cd2ab90b32ea26645ef}{\index{px\-\_\-combo@{px\-\_\-combo}!init@{init}}
+\index{init@{init}!px_combo@{px\-\_\-combo}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ px\-\_\-combo\-::init)({\bf P\-X\-\_\-\-Combo} $\ast$cx, const {\bf uint8} $\ast$key, unsigned klen, const {\bf uint8} $\ast$iv, unsigned ivlen)}}\label{structpx__combo_a401b15c0ba6e9cd2ab90b32ea26645ef}
+\hypertarget{structpx__combo_a253ba1f3900b1fdcf82ead9d1d5d5231}{\index{px\-\_\-combo@{px\-\_\-combo}!padding@{padding}}
+\index{padding@{padding}!px_combo@{px\-\_\-combo}}
+\subsubsection[{padding}]{\setlength{\rightskip}{0pt plus 5cm}unsigned px\-\_\-combo\-::padding}}\label{structpx__combo_a253ba1f3900b1fdcf82ead9d1d5d5231}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{px_8h}{px.\-h}\end{DoxyCompactItemize}

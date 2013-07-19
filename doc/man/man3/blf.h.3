@@ -1,0 +1,54 @@
+.TH "blf.h" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+blf.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBBlowfishContext\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBblowfish_setkey\fP (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *key, short keybytes)"
+.br
+.ti -1c
+.RI "void \fBblowfish_setiv\fP (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *iv)"
+.br
+.ti -1c
+.RI "void \fBblowfish_encrypt_cbc\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_decrypt_cbc\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_encrypt_ecb\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBblowfish_decrypt_ecb\fP (\fBuint8\fP *blk, int len, \fBBlowfishContext\fP *ctx)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void blowfish_decrypt_cbc (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_decrypt_ecb (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_encrypt_cbc (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_encrypt_ecb (\fBuint8\fP *blk, intlen, \fBBlowfishContext\fP *ctx)"
+
+.SS "void blowfish_setiv (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *iv)"
+
+.SS "void blowfish_setkey (\fBBlowfishContext\fP *ctx, const \fBuint8\fP *key, shortkeybytes)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

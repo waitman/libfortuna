@@ -1,0 +1,59 @@
+\hypertarget{random_8c}{\section{random.\-c File Reference}
+\label{random_8c}\index{random.\-c@{random.\-c}}
+}
+{\ttfamily \#include $<$errno.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}c.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}px.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$fcntl.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{random_8c_a4cf5f8f5bd7745ddb1b8fda81d935d9d}{R\-N\-D\-\_\-\-B\-Y\-T\-E\-S}~32
+\item 
+\#define \hyperlink{random_8c_aa1d5519d1bb712ae3ebd235981822ff5}{T\-R\-Y\-\_\-\-D\-E\-V\-\_\-\-R\-A\-N\-D\-O\-M}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{random_8c_a1a8adb27bafb42be2b2fced8257312e1}{safe\-\_\-read} (int fd, void $\ast$buf, size\-\_\-t count)
+\item 
+\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$ \hyperlink{random_8c_a5fbf11f9797d5a254fe556f35e0069b0}{try\-\_\-dev\-\_\-random} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\item 
+unsigned \hyperlink{random_8c_aa082dfc0d80af51bac9708935588acaf}{px\-\_\-acquire\-\_\-system\-\_\-randomness} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{random_8c_a4cf5f8f5bd7745ddb1b8fda81d935d9d}{\index{random.\-c@{random.\-c}!R\-N\-D\-\_\-\-B\-Y\-T\-E\-S@{R\-N\-D\-\_\-\-B\-Y\-T\-E\-S}}
+\index{R\-N\-D\-\_\-\-B\-Y\-T\-E\-S@{R\-N\-D\-\_\-\-B\-Y\-T\-E\-S}!random.c@{random.\-c}}
+\subsubsection[{R\-N\-D\-\_\-\-B\-Y\-T\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-N\-D\-\_\-\-B\-Y\-T\-E\-S~32}}\label{random_8c_a4cf5f8f5bd7745ddb1b8fda81d935d9d}
+\hypertarget{random_8c_aa1d5519d1bb712ae3ebd235981822ff5}{\index{random.\-c@{random.\-c}!T\-R\-Y\-\_\-\-D\-E\-V\-\_\-\-R\-A\-N\-D\-O\-M@{T\-R\-Y\-\_\-\-D\-E\-V\-\_\-\-R\-A\-N\-D\-O\-M}}
+\index{T\-R\-Y\-\_\-\-D\-E\-V\-\_\-\-R\-A\-N\-D\-O\-M@{T\-R\-Y\-\_\-\-D\-E\-V\-\_\-\-R\-A\-N\-D\-O\-M}!random.c@{random.\-c}}
+\subsubsection[{T\-R\-Y\-\_\-\-D\-E\-V\-\_\-\-R\-A\-N\-D\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-R\-Y\-\_\-\-D\-E\-V\-\_\-\-R\-A\-N\-D\-O\-M}}\label{random_8c_aa1d5519d1bb712ae3ebd235981822ff5}
+
+
+\subsection{Function Documentation}
+\hypertarget{random_8c_aa082dfc0d80af51bac9708935588acaf}{\index{random.\-c@{random.\-c}!px\-\_\-acquire\-\_\-system\-\_\-randomness@{px\-\_\-acquire\-\_\-system\-\_\-randomness}}
+\index{px\-\_\-acquire\-\_\-system\-\_\-randomness@{px\-\_\-acquire\-\_\-system\-\_\-randomness}!random.c@{random.\-c}}
+\subsubsection[{px\-\_\-acquire\-\_\-system\-\_\-randomness}]{\setlength{\rightskip}{0pt plus 5cm}unsigned px\-\_\-acquire\-\_\-system\-\_\-randomness (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{random_8c_aa082dfc0d80af51bac9708935588acaf}
+\hypertarget{random_8c_a1a8adb27bafb42be2b2fced8257312e1}{\index{random.\-c@{random.\-c}!safe\-\_\-read@{safe\-\_\-read}}
+\index{safe\-\_\-read@{safe\-\_\-read}!random.c@{random.\-c}}
+\subsubsection[{safe\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}int safe\-\_\-read (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{void $\ast$}]{buf, }
+\item[{size\-\_\-t}]{count}
+\end{DoxyParamCaption}
+)}}\label{random_8c_a1a8adb27bafb42be2b2fced8257312e1}
+\hypertarget{random_8c_a5fbf11f9797d5a254fe556f35e0069b0}{\index{random.\-c@{random.\-c}!try\-\_\-dev\-\_\-random@{try\-\_\-dev\-\_\-random}}
+\index{try\-\_\-dev\-\_\-random@{try\-\_\-dev\-\_\-random}!random.c@{random.\-c}}
+\subsubsection[{try\-\_\-dev\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8}$\ast$ try\-\_\-dev\-\_\-random (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}}\label{random_8c_a5fbf11f9797d5a254fe556f35e0069b0}

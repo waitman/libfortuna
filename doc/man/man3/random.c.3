@@ -1,0 +1,59 @@
+.TH "random.c" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+random.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <errno\&.h>\fP
+.br
+\fC#include 'c\&.h'\fP
+.br
+\fC#include 'px\&.h'\fP
+.br
+\fC#include <fcntl\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRND_BYTES\fP   32"
+.br
+.ti -1c
+.RI "#define \fBTRY_DEV_RANDOM\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBsafe_read\fP (int fd, void *buf, size_t count)"
+.br
+.ti -1c
+.RI "\fBuint8\fP * \fBtry_dev_random\fP (\fBuint8\fP *dst)"
+.br
+.ti -1c
+.RI "unsigned \fBpx_acquire_system_randomness\fP (\fBuint8\fP *dst)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define RND_BYTES   32"
+
+.SS "#define TRY_DEV_RANDOM"
+
+.SH "Function Documentation"
+.PP 
+.SS "unsigned px_acquire_system_randomness (\fBuint8\fP *dst)"
+
+.SS "int safe_read (intfd, void *buf, size_tcount)"
+
+.SS "\fBuint8\fP* try_dev_random (\fBuint8\fP *dst)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

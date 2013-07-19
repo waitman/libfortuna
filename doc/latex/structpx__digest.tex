@@ -1,0 +1,65 @@
+\hypertarget{structpx__digest}{\section{px\-\_\-digest Struct Reference}
+\label{structpx__digest}\index{px\-\_\-digest@{px\-\_\-digest}}
+}
+
+
+{\ttfamily \#include $<$px.\-h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned($\ast$ \hyperlink{structpx__digest_a02a702a5d459e7f985658d9c217112c4}{result\-\_\-size} )(\hyperlink{px_8h_a21fa22732371ffb7737caceba5e087dd}{P\-X\-\_\-\-M\-D} $\ast$h)
+\item 
+unsigned($\ast$ \hyperlink{structpx__digest_a137ed005ffea79a7fda88a5f8893ce45}{block\-\_\-size} )(\hyperlink{px_8h_a21fa22732371ffb7737caceba5e087dd}{P\-X\-\_\-\-M\-D} $\ast$h)
+\item 
+void($\ast$ \hyperlink{structpx__digest_a72f538447abc9a94dd7d9ef52ae6327a}{reset} )(\hyperlink{px_8h_a21fa22732371ffb7737caceba5e087dd}{P\-X\-\_\-\-M\-D} $\ast$h)
+\item 
+void($\ast$ \hyperlink{structpx__digest_ada9f7ff6923761ddb991bf6bf0ed4ba3}{update} )(\hyperlink{px_8h_a21fa22732371ffb7737caceba5e087dd}{P\-X\-\_\-\-M\-D} $\ast$h, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen)
+\item 
+void($\ast$ \hyperlink{structpx__digest_ae89cdb9f137bf3be780ffc3f6614ec47}{finish} )(\hyperlink{px_8h_a21fa22732371ffb7737caceba5e087dd}{P\-X\-\_\-\-M\-D} $\ast$h, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$dst)
+\item 
+void($\ast$ \hyperlink{structpx__digest_aa2b2fff74a15b31bad4f14eacf22c107}{free} )(\hyperlink{px_8h_a21fa22732371ffb7737caceba5e087dd}{P\-X\-\_\-\-M\-D} $\ast$h)
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>unsigned \hyperlink{structpx__digest_a7760b436ae0edceac7daaa3ca7ee90dd}{code}\\
+\>void $\ast$ \hyperlink{structpx__digest_acd8a79cac2b6b57525e8feb4c492db11}{ptr}\\
+\} \hyperlink{structpx__digest_a12dcd37566f38c4df0f8b2dafd26f6f7}{p}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structpx__digest_a137ed005ffea79a7fda88a5f8893ce45}{\index{px\-\_\-digest@{px\-\_\-digest}!block\-\_\-size@{block\-\_\-size}}
+\index{block\-\_\-size@{block\-\_\-size}!px_digest@{px\-\_\-digest}}
+\subsubsection[{block\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-digest\-::block\-\_\-size)({\bf P\-X\-\_\-\-M\-D} $\ast$h)}}\label{structpx__digest_a137ed005ffea79a7fda88a5f8893ce45}
+\hypertarget{structpx__digest_a7760b436ae0edceac7daaa3ca7ee90dd}{\index{px\-\_\-digest@{px\-\_\-digest}!code@{code}}
+\index{code@{code}!px_digest@{px\-\_\-digest}}
+\subsubsection[{code}]{\setlength{\rightskip}{0pt plus 5cm}unsigned px\-\_\-digest\-::code}}\label{structpx__digest_a7760b436ae0edceac7daaa3ca7ee90dd}
+\hypertarget{structpx__digest_ae89cdb9f137bf3be780ffc3f6614ec47}{\index{px\-\_\-digest@{px\-\_\-digest}!finish@{finish}}
+\index{finish@{finish}!px_digest@{px\-\_\-digest}}
+\subsubsection[{finish}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-digest\-::finish)({\bf P\-X\-\_\-\-M\-D} $\ast$h, {\bf uint8} $\ast$dst)}}\label{structpx__digest_ae89cdb9f137bf3be780ffc3f6614ec47}
+\hypertarget{structpx__digest_aa2b2fff74a15b31bad4f14eacf22c107}{\index{px\-\_\-digest@{px\-\_\-digest}!free@{free}}
+\index{free@{free}!px_digest@{px\-\_\-digest}}
+\subsubsection[{free}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-digest\-::free)({\bf P\-X\-\_\-\-M\-D} $\ast$h)}}\label{structpx__digest_aa2b2fff74a15b31bad4f14eacf22c107}
+\hypertarget{structpx__digest_a12dcd37566f38c4df0f8b2dafd26f6f7}{\index{px\-\_\-digest@{px\-\_\-digest}!p@{p}}
+\index{p@{p}!px_digest@{px\-\_\-digest}}
+\subsubsection[{p}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \} 			 px\-\_\-digest\-::p}}\label{structpx__digest_a12dcd37566f38c4df0f8b2dafd26f6f7}
+\hypertarget{structpx__digest_acd8a79cac2b6b57525e8feb4c492db11}{\index{px\-\_\-digest@{px\-\_\-digest}!ptr@{ptr}}
+\index{ptr@{ptr}!px_digest@{px\-\_\-digest}}
+\subsubsection[{ptr}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ px\-\_\-digest\-::ptr}}\label{structpx__digest_acd8a79cac2b6b57525e8feb4c492db11}
+\hypertarget{structpx__digest_a72f538447abc9a94dd7d9ef52ae6327a}{\index{px\-\_\-digest@{px\-\_\-digest}!reset@{reset}}
+\index{reset@{reset}!px_digest@{px\-\_\-digest}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-digest\-::reset)({\bf P\-X\-\_\-\-M\-D} $\ast$h)}}\label{structpx__digest_a72f538447abc9a94dd7d9ef52ae6327a}
+\hypertarget{structpx__digest_a02a702a5d459e7f985658d9c217112c4}{\index{px\-\_\-digest@{px\-\_\-digest}!result\-\_\-size@{result\-\_\-size}}
+\index{result\-\_\-size@{result\-\_\-size}!px_digest@{px\-\_\-digest}}
+\subsubsection[{result\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned($\ast$ px\-\_\-digest\-::result\-\_\-size)({\bf P\-X\-\_\-\-M\-D} $\ast$h)}}\label{structpx__digest_a02a702a5d459e7f985658d9c217112c4}
+\hypertarget{structpx__digest_ada9f7ff6923761ddb991bf6bf0ed4ba3}{\index{px\-\_\-digest@{px\-\_\-digest}!update@{update}}
+\index{update@{update}!px_digest@{px\-\_\-digest}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ px\-\_\-digest\-::update)({\bf P\-X\-\_\-\-M\-D} $\ast$h, const {\bf uint8} $\ast$data, unsigned dlen)}}\label{structpx__digest_ada9f7ff6923761ddb991bf6bf0ed4ba3}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{px_8h}{px.\-h}\end{DoxyCompactItemize}

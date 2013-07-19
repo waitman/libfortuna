@@ -1,0 +1,482 @@
+\hypertarget{sha2_8c}{\section{sha2.\-c File Reference}
+\label{sha2_8c}\index{sha2.\-c@{sha2.\-c}}
+}
+{\ttfamily \#include $<$sys/param.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}c.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sha2.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sha2_8c_adfc8fa95344782913efd4ee7d9a9ea74}{S\-H\-A256\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}~(\hyperlink{sha2_8h_af7a1879c2d7cd5cf31c91c0eb91b0015}{S\-H\-A256\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H} -\/ 8)
+\item 
+\#define \hyperlink{sha2_8c_a69eaa914a4d5c84d87ff204802efd4e8}{S\-H\-A384\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}~(\hyperlink{sha2_8h_a68d1fbbb5c00350da3e44c495607273e}{S\-H\-A384\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H} -\/ 16)
+\item 
+\#define \hyperlink{sha2_8c_aac3e549038e7ebd7af5a7e7385b93344}{S\-H\-A512\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}~(\hyperlink{sha2_8h_a768752124501032a219d4426b2ce3197}{S\-H\-A512\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H} -\/ 16)
+\item 
+\#define \hyperlink{sha2_8c_a7164c79bb6bc80abcb61cb96eef4194e}{R\-E\-V\-E\-R\-S\-E32}(w, x)
+\item 
+\#define \hyperlink{sha2_8c_a5399a7e8dab676a6c36fe85c91ae1366}{R\-E\-V\-E\-R\-S\-E64}(w, x)
+\item 
+\#define \hyperlink{sha2_8c_a32ce6a800376f90c7cee70ac2e7255d6}{A\-D\-D\-I\-N\-C128}(w, n)
+\item 
+\#define \hyperlink{sha2_8c_af299e0982ce71aad5027c4a7315e536f}{R}(b, x)~((x) $>$$>$ (b))
+\item 
+\#define \hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(b, x)~(((x) $>$$>$ (b)) $|$ ((x) $<$$<$ (32 -\/ (b))))
+\item 
+\#define \hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(b, x)~(((x) $>$$>$ (b)) $|$ ((x) $<$$<$ (64 -\/ (b))))
+\item 
+\#define \hyperlink{sha2_8c_ab0a0d1ad13c7e4d3cb38c89f7127c85a}{Ch}(x, y, z)~(((x) \& (y)) $^\wedge$ (($\sim$(x)) \& (z)))
+\item 
+\#define \hyperlink{sha2_8c_a447cd1d7fb703b62666400976be24bf3}{Maj}(x, y, z)~(((x) \& (y)) $^\wedge$ ((x) \& (z)) $^\wedge$ ((y) \& (z)))
+\item 
+\#define \hyperlink{sha2_8c_a1d3b933bf48a1c763775d358313f44a6}{Sigma0\-\_\-256}(x)~(\hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(2,  (x)) $^\wedge$ \hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(13, (x)) $^\wedge$ \hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(22, (x)))
+\item 
+\#define \hyperlink{sha2_8c_a98f25dda8f234733acf0386d6d5187fd}{Sigma1\-\_\-256}(x)~(\hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(6,  (x)) $^\wedge$ \hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(11, (x)) $^\wedge$ \hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(25, (x)))
+\item 
+\#define \hyperlink{sha2_8c_afdc787683d72110451742acd5bf41d16}{sigma0\-\_\-256}(x)~(\hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(7,  (x)) $^\wedge$ \hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(18, (x)) $^\wedge$ \hyperlink{sha2_8c_af299e0982ce71aad5027c4a7315e536f}{R}(3 ,   (x)))
+\item 
+\#define \hyperlink{sha2_8c_a6daf5f3524cf68e6a2e19de772070e77}{sigma1\-\_\-256}(x)~(\hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(17, (x)) $^\wedge$ \hyperlink{sha2_8c_afe83c8790798dddd30665496143a853b}{S32}(19, (x)) $^\wedge$ \hyperlink{sha2_8c_af299e0982ce71aad5027c4a7315e536f}{R}(10,   (x)))
+\item 
+\#define \hyperlink{sha2_8c_a07b4672fd77b0b5f2bf0041e2faf0b45}{Sigma0\-\_\-512}(x)~(\hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(28, (x)) $^\wedge$ \hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(34, (x)) $^\wedge$ \hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(39, (x)))
+\item 
+\#define \hyperlink{sha2_8c_a6a0406d09af6eaa6d933070801f74002}{Sigma1\-\_\-512}(x)~(\hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(14, (x)) $^\wedge$ \hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(18, (x)) $^\wedge$ \hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(41, (x)))
+\item 
+\#define \hyperlink{sha2_8c_a449da15ce26bdf3bf58925e17c7864b3}{sigma0\-\_\-512}(x)~(\hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}( 1, (x)) $^\wedge$ \hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}( 8, (x)) $^\wedge$ \hyperlink{sha2_8c_af299e0982ce71aad5027c4a7315e536f}{R}( 7,   (x)))
+\item 
+\#define \hyperlink{sha2_8c_adcf0e492a43c6f34a3a5023a0a448e2d}{sigma1\-\_\-512}(x)~(\hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(19, (x)) $^\wedge$ \hyperlink{sha2_8c_a04c57d7554181e15fe6063a477d28236}{S64}(61, (x)) $^\wedge$ \hyperlink{sha2_8c_af299e0982ce71aad5027c4a7315e536f}{R}( 6,   (x)))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sha2_8c_a7b1b1a28833da4a330b2e9a6844925ea}{S\-H\-A512\-\_\-\-Last} (\hyperlink{sha2_8h_a1b070134506a05572bad212a90835314}{S\-H\-A512\-\_\-\-C\-T\-X} $\ast$)
+\item 
+void \hyperlink{sha2_8c_ad6930fcba9f7ca0248df57a3531019c6}{S\-H\-A256\-\_\-\-Transform} (\hyperlink{sha2_8h_a0e4ea9b43c30824ef17d9d4a108cb249}{S\-H\-A256\-\_\-\-C\-T\-X} $\ast$, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$)
+\item 
+void \hyperlink{sha2_8c_ad70550e0950110e152252397a73db308}{S\-H\-A512\-\_\-\-Transform} (\hyperlink{sha2_8h_a1b070134506a05572bad212a90835314}{S\-H\-A512\-\_\-\-C\-T\-X} $\ast$, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$)
+\item 
+void \hyperlink{sha2_8c_a2bb66e85542b71ade598c8d8211f549e}{S\-H\-A256\-\_\-\-Init} (\hyperlink{sha2_8h_a0e4ea9b43c30824ef17d9d4a108cb249}{S\-H\-A256\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_a2fbdddd09e55e721c2184b834697f123}{S\-H\-A256\-\_\-\-Update} (\hyperlink{sha2_8h_a0e4ea9b43c30824ef17d9d4a108cb249}{S\-H\-A256\-\_\-\-C\-T\-X} $\ast$context, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, size\-\_\-t len)
+\item 
+void \hyperlink{sha2_8c_aeb9d3ebc82c01c92a9eb054825b2ae57}{S\-H\-A256\-\_\-\-Last} (\hyperlink{sha2_8h_a0e4ea9b43c30824ef17d9d4a108cb249}{S\-H\-A256\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_ab9b62e813e59abe6cbde40cd55fd1576}{S\-H\-A256\-\_\-\-Final} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} digest\mbox{[}$\,$\mbox{]}, \hyperlink{sha2_8h_a0e4ea9b43c30824ef17d9d4a108cb249}{S\-H\-A256\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_afaae05bad31bb726d219b0f723d15a5c}{S\-H\-A512\-\_\-\-Init} (\hyperlink{sha2_8h_a1b070134506a05572bad212a90835314}{S\-H\-A512\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_a0b25f166c155a3a264580904e2e8339a}{S\-H\-A512\-\_\-\-Update} (\hyperlink{sha2_8h_a1b070134506a05572bad212a90835314}{S\-H\-A512\-\_\-\-C\-T\-X} $\ast$context, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, size\-\_\-t len)
+\item 
+void \hyperlink{sha2_8c_a8074ee6286190739f2ee558dc50a261f}{S\-H\-A512\-\_\-\-Final} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} digest\mbox{[}$\,$\mbox{]}, \hyperlink{sha2_8h_a1b070134506a05572bad212a90835314}{S\-H\-A512\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_a22d6f0280bbb76dcd58aad6ac370b8f3}{S\-H\-A384\-\_\-\-Init} (\hyperlink{sha2_8h_aa5ada4d74bf5109a2ae863d156373bce}{S\-H\-A384\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_aeb10543c4bdc98e1809bf92604b97817}{S\-H\-A384\-\_\-\-Update} (\hyperlink{sha2_8h_aa5ada4d74bf5109a2ae863d156373bce}{S\-H\-A384\-\_\-\-C\-T\-X} $\ast$context, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, size\-\_\-t len)
+\item 
+void \hyperlink{sha2_8c_a63a239ffac1dfe84bf123dcba66a2d00}{S\-H\-A384\-\_\-\-Final} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} digest\mbox{[}$\,$\mbox{]}, \hyperlink{sha2_8h_aa5ada4d74bf5109a2ae863d156373bce}{S\-H\-A384\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_afd7485fbac0cd795be23de72fc60b577}{S\-H\-A224\-\_\-\-Init} (\hyperlink{sha2_8h_a55a723a82c54e04030fa0d17954bbada}{S\-H\-A224\-\_\-\-C\-T\-X} $\ast$context)
+\item 
+void \hyperlink{sha2_8c_a17793ec0264f536ec035022bf32098bd}{S\-H\-A224\-\_\-\-Update} (\hyperlink{sha2_8h_a55a723a82c54e04030fa0d17954bbada}{S\-H\-A224\-\_\-\-C\-T\-X} $\ast$context, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, size\-\_\-t len)
+\item 
+void \hyperlink{sha2_8c_a5f29702106c61acb39af1a30f5eb15a0}{S\-H\-A224\-\_\-\-Final} (\hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} digest\mbox{[}$\,$\mbox{]}, \hyperlink{sha2_8h_a55a723a82c54e04030fa0d17954bbada}{S\-H\-A224\-\_\-\-C\-T\-X} $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{sha2_8c_a2c241f0d9d367ad3fdb4a9296ff76a48}{K256} \mbox{[}64\mbox{]}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{sha2_8c_a0ed8f4cdb299022d8bd1475d6ae0d573}{sha224\-\_\-initial\-\_\-hash\-\_\-value} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{uint32} \hyperlink{sha2_8c_a13809368efcf2e76ec529508ccabcf18}{sha256\-\_\-initial\-\_\-hash\-\_\-value} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{c_8h_af68cb4c1926b997d49286c1e0c7fa68a}{uint64} \hyperlink{sha2_8c_a27f76f64b80d01fee1507399b8dbd29e}{K512} \mbox{[}80\mbox{]}
+\item 
+const \hyperlink{c_8h_af68cb4c1926b997d49286c1e0c7fa68a}{uint64} \hyperlink{sha2_8c_a18fc8963bee0ee4762b37e87d71e32a7}{sha384\-\_\-initial\-\_\-hash\-\_\-value} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{c_8h_af68cb4c1926b997d49286c1e0c7fa68a}{uint64} \hyperlink{sha2_8c_add6bb413e45139e9b00cdde490f8772b}{sha512\-\_\-initial\-\_\-hash\-\_\-value} \mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{sha2_8c_a32ce6a800376f90c7cee70ac2e7255d6}{\index{sha2.\-c@{sha2.\-c}!A\-D\-D\-I\-N\-C128@{A\-D\-D\-I\-N\-C128}}
+\index{A\-D\-D\-I\-N\-C128@{A\-D\-D\-I\-N\-C128}!sha2.c@{sha2.\-c}}
+\subsubsection[{A\-D\-D\-I\-N\-C128}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-D\-D\-I\-N\-C128(
+\begin{DoxyParamCaption}
+\item[{}]{w, }
+\item[{}]{n}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a32ce6a800376f90c7cee70ac2e7255d6}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+    (w)[0] += (\hyperlink{c_8h_af68cb4c1926b997d49286c1e0c7fa68a}{uint64})(n); \(\backslash\)
+    if ((w)[0] < (n)) \{ \(\backslash\)
+        (w)[1]++; \(\backslash\)
+    \} \(\backslash\)
+\}
+\end{DoxyCode}
+\hypertarget{sha2_8c_ab0a0d1ad13c7e4d3cb38c89f7127c85a}{\index{sha2.\-c@{sha2.\-c}!Ch@{Ch}}
+\index{Ch@{Ch}!sha2.c@{sha2.\-c}}
+\subsubsection[{Ch}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ch(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y, }
+\item[{}]{z}
+\end{DoxyParamCaption}
+)~(((x) \& (y)) $^\wedge$ (($\sim$(x)) \& (z)))}}\label{sha2_8c_ab0a0d1ad13c7e4d3cb38c89f7127c85a}
+\hypertarget{sha2_8c_a447cd1d7fb703b62666400976be24bf3}{\index{sha2.\-c@{sha2.\-c}!Maj@{Maj}}
+\index{Maj@{Maj}!sha2.c@{sha2.\-c}}
+\subsubsection[{Maj}]{\setlength{\rightskip}{0pt plus 5cm}\#define Maj(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y, }
+\item[{}]{z}
+\end{DoxyParamCaption}
+)~(((x) \& (y)) $^\wedge$ ((x) \& (z)) $^\wedge$ ((y) \& (z)))}}\label{sha2_8c_a447cd1d7fb703b62666400976be24bf3}
+\hypertarget{sha2_8c_af299e0982ce71aad5027c4a7315e536f}{\index{sha2.\-c@{sha2.\-c}!R@{R}}
+\index{R@{R}!sha2.c@{sha2.\-c}}
+\subsubsection[{R}]{\setlength{\rightskip}{0pt plus 5cm}\#define R(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x) $>$$>$ (b))}}\label{sha2_8c_af299e0982ce71aad5027c4a7315e536f}
+\hypertarget{sha2_8c_a7164c79bb6bc80abcb61cb96eef4194e}{\index{sha2.\-c@{sha2.\-c}!R\-E\-V\-E\-R\-S\-E32@{R\-E\-V\-E\-R\-S\-E32}}
+\index{R\-E\-V\-E\-R\-S\-E32@{R\-E\-V\-E\-R\-S\-E32}!sha2.c@{sha2.\-c}}
+\subsubsection[{R\-E\-V\-E\-R\-S\-E32}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-E\-V\-E\-R\-S\-E32(
+\begin{DoxyParamCaption}
+\item[{}]{w, }
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a7164c79bb6bc80abcb61cb96eef4194e}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\{ \hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{\(\backslash\)}
+\hyperlink{c_8h_a1134b580f8da4de94ca6b1de4d37975e}{    uint32} tmp = (w); \(\backslash\)
+    tmp = (tmp >> 16) | (tmp << 16); \(\backslash\)
+    (x) = ((tmp & 0xff00ff00UL) >> 8) | ((tmp & 0x00ff00ffUL) << 8); \(\backslash\)
+\}
+\end{DoxyCode}
+\hypertarget{sha2_8c_a5399a7e8dab676a6c36fe85c91ae1366}{\index{sha2.\-c@{sha2.\-c}!R\-E\-V\-E\-R\-S\-E64@{R\-E\-V\-E\-R\-S\-E64}}
+\index{R\-E\-V\-E\-R\-S\-E64@{R\-E\-V\-E\-R\-S\-E64}!sha2.c@{sha2.\-c}}
+\subsubsection[{R\-E\-V\-E\-R\-S\-E64}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-E\-V\-E\-R\-S\-E64(
+\begin{DoxyParamCaption}
+\item[{}]{w, }
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a5399a7e8dab676a6c36fe85c91ae1366}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\{ \hyperlink{c_8h_af68cb4c1926b997d49286c1e0c7fa68a}{\(\backslash\)}
+\hyperlink{c_8h_af68cb4c1926b997d49286c1e0c7fa68a}{    uint64} tmp = (w); \(\backslash\)
+    tmp = (tmp >> 32) | (tmp << 32); \(\backslash\)
+    tmp = ((tmp & 0xff00ff00ff00ff00ULL) >> 8) | \(\backslash\)
+          ((tmp & 0x00ff00ff00ff00ffULL) << 8); \(\backslash\)
+    (x) = ((tmp & 0xffff0000ffff0000ULL) >> 16) | \(\backslash\)
+          ((tmp & 0x0000ffff0000ffffULL) << 16); \(\backslash\)
+\}
+\end{DoxyCode}
+\hypertarget{sha2_8c_afe83c8790798dddd30665496143a853b}{\index{sha2.\-c@{sha2.\-c}!S32@{S32}}
+\index{S32@{S32}!sha2.c@{sha2.\-c}}
+\subsubsection[{S32}]{\setlength{\rightskip}{0pt plus 5cm}\#define S32(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(((x) $>$$>$ (b)) $|$ ((x) $<$$<$ (32 -\/ (b))))}}\label{sha2_8c_afe83c8790798dddd30665496143a853b}
+\hypertarget{sha2_8c_a04c57d7554181e15fe6063a477d28236}{\index{sha2.\-c@{sha2.\-c}!S64@{S64}}
+\index{S64@{S64}!sha2.c@{sha2.\-c}}
+\subsubsection[{S64}]{\setlength{\rightskip}{0pt plus 5cm}\#define S64(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(((x) $>$$>$ (b)) $|$ ((x) $<$$<$ (64 -\/ (b))))}}\label{sha2_8c_a04c57d7554181e15fe6063a477d28236}
+\hypertarget{sha2_8c_adfc8fa95344782913efd4ee7d9a9ea74}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A256\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H@{S\-H\-A256\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}}
+\index{S\-H\-A256\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H@{S\-H\-A256\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A256\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A256\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H~({\bf S\-H\-A256\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H} -\/ 8)}}\label{sha2_8c_adfc8fa95344782913efd4ee7d9a9ea74}
+\hypertarget{sha2_8c_a69eaa914a4d5c84d87ff204802efd4e8}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A384\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H@{S\-H\-A384\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}}
+\index{S\-H\-A384\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H@{S\-H\-A384\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A384\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A384\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H~({\bf S\-H\-A384\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H} -\/ 16)}}\label{sha2_8c_a69eaa914a4d5c84d87ff204802efd4e8}
+\hypertarget{sha2_8c_aac3e549038e7ebd7af5a7e7385b93344}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A512\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H@{S\-H\-A512\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}}
+\index{S\-H\-A512\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H@{S\-H\-A512\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A512\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A512\-\_\-\-S\-H\-O\-R\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H~({\bf S\-H\-A512\-\_\-\-B\-L\-O\-C\-K\-\_\-\-L\-E\-N\-G\-T\-H} -\/ 16)}}\label{sha2_8c_aac3e549038e7ebd7af5a7e7385b93344}
+\hypertarget{sha2_8c_a1d3b933bf48a1c763775d358313f44a6}{\index{sha2.\-c@{sha2.\-c}!Sigma0\-\_\-256@{Sigma0\-\_\-256}}
+\index{Sigma0\-\_\-256@{Sigma0\-\_\-256}!sha2.c@{sha2.\-c}}
+\subsubsection[{Sigma0\-\_\-256}]{\setlength{\rightskip}{0pt plus 5cm}\#define Sigma0\-\_\-256(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S32}(2,  (x)) $^\wedge$ {\bf S32}(13, (x)) $^\wedge$ {\bf S32}(22, (x)))}}\label{sha2_8c_a1d3b933bf48a1c763775d358313f44a6}
+\hypertarget{sha2_8c_afdc787683d72110451742acd5bf41d16}{\index{sha2.\-c@{sha2.\-c}!sigma0\-\_\-256@{sigma0\-\_\-256}}
+\index{sigma0\-\_\-256@{sigma0\-\_\-256}!sha2.c@{sha2.\-c}}
+\subsubsection[{sigma0\-\_\-256}]{\setlength{\rightskip}{0pt plus 5cm}\#define sigma0\-\_\-256(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S32}(7,  (x)) $^\wedge$ {\bf S32}(18, (x)) $^\wedge$ {\bf R}(3 ,   (x)))}}\label{sha2_8c_afdc787683d72110451742acd5bf41d16}
+\hypertarget{sha2_8c_a07b4672fd77b0b5f2bf0041e2faf0b45}{\index{sha2.\-c@{sha2.\-c}!Sigma0\-\_\-512@{Sigma0\-\_\-512}}
+\index{Sigma0\-\_\-512@{Sigma0\-\_\-512}!sha2.c@{sha2.\-c}}
+\subsubsection[{Sigma0\-\_\-512}]{\setlength{\rightskip}{0pt plus 5cm}\#define Sigma0\-\_\-512(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S64}(28, (x)) $^\wedge$ {\bf S64}(34, (x)) $^\wedge$ {\bf S64}(39, (x)))}}\label{sha2_8c_a07b4672fd77b0b5f2bf0041e2faf0b45}
+\hypertarget{sha2_8c_a449da15ce26bdf3bf58925e17c7864b3}{\index{sha2.\-c@{sha2.\-c}!sigma0\-\_\-512@{sigma0\-\_\-512}}
+\index{sigma0\-\_\-512@{sigma0\-\_\-512}!sha2.c@{sha2.\-c}}
+\subsubsection[{sigma0\-\_\-512}]{\setlength{\rightskip}{0pt plus 5cm}\#define sigma0\-\_\-512(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S64}( 1, (x)) $^\wedge$ {\bf S64}( 8, (x)) $^\wedge$ {\bf R}( 7,   (x)))}}\label{sha2_8c_a449da15ce26bdf3bf58925e17c7864b3}
+\hypertarget{sha2_8c_a98f25dda8f234733acf0386d6d5187fd}{\index{sha2.\-c@{sha2.\-c}!Sigma1\-\_\-256@{Sigma1\-\_\-256}}
+\index{Sigma1\-\_\-256@{Sigma1\-\_\-256}!sha2.c@{sha2.\-c}}
+\subsubsection[{Sigma1\-\_\-256}]{\setlength{\rightskip}{0pt plus 5cm}\#define Sigma1\-\_\-256(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S32}(6,  (x)) $^\wedge$ {\bf S32}(11, (x)) $^\wedge$ {\bf S32}(25, (x)))}}\label{sha2_8c_a98f25dda8f234733acf0386d6d5187fd}
+\hypertarget{sha2_8c_a6daf5f3524cf68e6a2e19de772070e77}{\index{sha2.\-c@{sha2.\-c}!sigma1\-\_\-256@{sigma1\-\_\-256}}
+\index{sigma1\-\_\-256@{sigma1\-\_\-256}!sha2.c@{sha2.\-c}}
+\subsubsection[{sigma1\-\_\-256}]{\setlength{\rightskip}{0pt plus 5cm}\#define sigma1\-\_\-256(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S32}(17, (x)) $^\wedge$ {\bf S32}(19, (x)) $^\wedge$ {\bf R}(10,   (x)))}}\label{sha2_8c_a6daf5f3524cf68e6a2e19de772070e77}
+\hypertarget{sha2_8c_a6a0406d09af6eaa6d933070801f74002}{\index{sha2.\-c@{sha2.\-c}!Sigma1\-\_\-512@{Sigma1\-\_\-512}}
+\index{Sigma1\-\_\-512@{Sigma1\-\_\-512}!sha2.c@{sha2.\-c}}
+\subsubsection[{Sigma1\-\_\-512}]{\setlength{\rightskip}{0pt plus 5cm}\#define Sigma1\-\_\-512(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S64}(14, (x)) $^\wedge$ {\bf S64}(18, (x)) $^\wedge$ {\bf S64}(41, (x)))}}\label{sha2_8c_a6a0406d09af6eaa6d933070801f74002}
+\hypertarget{sha2_8c_adcf0e492a43c6f34a3a5023a0a448e2d}{\index{sha2.\-c@{sha2.\-c}!sigma1\-\_\-512@{sigma1\-\_\-512}}
+\index{sigma1\-\_\-512@{sigma1\-\_\-512}!sha2.c@{sha2.\-c}}
+\subsubsection[{sigma1\-\_\-512}]{\setlength{\rightskip}{0pt plus 5cm}\#define sigma1\-\_\-512(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf S64}(19, (x)) $^\wedge$ {\bf S64}(61, (x)) $^\wedge$ {\bf R}( 6,   (x)))}}\label{sha2_8c_adcf0e492a43c6f34a3a5023a0a448e2d}
+
+
+\subsection{Function Documentation}
+\hypertarget{sha2_8c_a5f29702106c61acb39af1a30f5eb15a0}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A224\-\_\-\-Final@{S\-H\-A224\-\_\-\-Final}}
+\index{S\-H\-A224\-\_\-\-Final@{S\-H\-A224\-\_\-\-Final}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A224\-\_\-\-Final}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A224\-\_\-\-Final (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{digest\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf S\-H\-A224\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a5f29702106c61acb39af1a30f5eb15a0}
+\hypertarget{sha2_8c_afd7485fbac0cd795be23de72fc60b577}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A224\-\_\-\-Init@{S\-H\-A224\-\_\-\-Init}}
+\index{S\-H\-A224\-\_\-\-Init@{S\-H\-A224\-\_\-\-Init}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A224\-\_\-\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A224\-\_\-\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A224\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_afd7485fbac0cd795be23de72fc60b577}
+\hypertarget{sha2_8c_a17793ec0264f536ec035022bf32098bd}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A224\-\_\-\-Update@{S\-H\-A224\-\_\-\-Update}}
+\index{S\-H\-A224\-\_\-\-Update@{S\-H\-A224\-\_\-\-Update}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A224\-\_\-\-Update}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A224\-\_\-\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A224\-\_\-\-C\-T\-X} $\ast$}]{context, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a17793ec0264f536ec035022bf32098bd}
+\hypertarget{sha2_8c_ab9b62e813e59abe6cbde40cd55fd1576}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A256\-\_\-\-Final@{S\-H\-A256\-\_\-\-Final}}
+\index{S\-H\-A256\-\_\-\-Final@{S\-H\-A256\-\_\-\-Final}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A256\-\_\-\-Final}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A256\-\_\-\-Final (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{digest\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf S\-H\-A256\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_ab9b62e813e59abe6cbde40cd55fd1576}
+\hypertarget{sha2_8c_a2bb66e85542b71ade598c8d8211f549e}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A256\-\_\-\-Init@{S\-H\-A256\-\_\-\-Init}}
+\index{S\-H\-A256\-\_\-\-Init@{S\-H\-A256\-\_\-\-Init}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A256\-\_\-\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A256\-\_\-\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A256\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a2bb66e85542b71ade598c8d8211f549e}
+\hypertarget{sha2_8c_aeb9d3ebc82c01c92a9eb054825b2ae57}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A256\-\_\-\-Last@{S\-H\-A256\-\_\-\-Last}}
+\index{S\-H\-A256\-\_\-\-Last@{S\-H\-A256\-\_\-\-Last}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A256\-\_\-\-Last}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A256\-\_\-\-Last (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A256\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_aeb9d3ebc82c01c92a9eb054825b2ae57}
+\hypertarget{sha2_8c_ad6930fcba9f7ca0248df57a3531019c6}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A256\-\_\-\-Transform@{S\-H\-A256\-\_\-\-Transform}}
+\index{S\-H\-A256\-\_\-\-Transform@{S\-H\-A256\-\_\-\-Transform}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A256\-\_\-\-Transform}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A256\-\_\-\-Transform (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A256\-\_\-\-C\-T\-X} $\ast$}]{context, }
+\item[{const {\bf uint8} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_ad6930fcba9f7ca0248df57a3531019c6}
+\hypertarget{sha2_8c_a2fbdddd09e55e721c2184b834697f123}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A256\-\_\-\-Update@{S\-H\-A256\-\_\-\-Update}}
+\index{S\-H\-A256\-\_\-\-Update@{S\-H\-A256\-\_\-\-Update}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A256\-\_\-\-Update}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A256\-\_\-\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A256\-\_\-\-C\-T\-X} $\ast$}]{context, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a2fbdddd09e55e721c2184b834697f123}
+\hypertarget{sha2_8c_a63a239ffac1dfe84bf123dcba66a2d00}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A384\-\_\-\-Final@{S\-H\-A384\-\_\-\-Final}}
+\index{S\-H\-A384\-\_\-\-Final@{S\-H\-A384\-\_\-\-Final}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A384\-\_\-\-Final}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A384\-\_\-\-Final (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{digest\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf S\-H\-A384\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a63a239ffac1dfe84bf123dcba66a2d00}
+\hypertarget{sha2_8c_a22d6f0280bbb76dcd58aad6ac370b8f3}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A384\-\_\-\-Init@{S\-H\-A384\-\_\-\-Init}}
+\index{S\-H\-A384\-\_\-\-Init@{S\-H\-A384\-\_\-\-Init}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A384\-\_\-\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A384\-\_\-\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A384\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a22d6f0280bbb76dcd58aad6ac370b8f3}
+\hypertarget{sha2_8c_aeb10543c4bdc98e1809bf92604b97817}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A384\-\_\-\-Update@{S\-H\-A384\-\_\-\-Update}}
+\index{S\-H\-A384\-\_\-\-Update@{S\-H\-A384\-\_\-\-Update}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A384\-\_\-\-Update}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A384\-\_\-\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A384\-\_\-\-C\-T\-X} $\ast$}]{context, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_aeb10543c4bdc98e1809bf92604b97817}
+\hypertarget{sha2_8c_a8074ee6286190739f2ee558dc50a261f}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A512\-\_\-\-Final@{S\-H\-A512\-\_\-\-Final}}
+\index{S\-H\-A512\-\_\-\-Final@{S\-H\-A512\-\_\-\-Final}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A512\-\_\-\-Final}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A512\-\_\-\-Final (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{digest\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf S\-H\-A512\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a8074ee6286190739f2ee558dc50a261f}
+\hypertarget{sha2_8c_afaae05bad31bb726d219b0f723d15a5c}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A512\-\_\-\-Init@{S\-H\-A512\-\_\-\-Init}}
+\index{S\-H\-A512\-\_\-\-Init@{S\-H\-A512\-\_\-\-Init}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A512\-\_\-\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A512\-\_\-\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A512\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_afaae05bad31bb726d219b0f723d15a5c}
+\hypertarget{sha2_8c_a7b1b1a28833da4a330b2e9a6844925ea}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A512\-\_\-\-Last@{S\-H\-A512\-\_\-\-Last}}
+\index{S\-H\-A512\-\_\-\-Last@{S\-H\-A512\-\_\-\-Last}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A512\-\_\-\-Last}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A512\-\_\-\-Last (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A512\-\_\-\-C\-T\-X} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a7b1b1a28833da4a330b2e9a6844925ea}
+\hypertarget{sha2_8c_ad70550e0950110e152252397a73db308}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A512\-\_\-\-Transform@{S\-H\-A512\-\_\-\-Transform}}
+\index{S\-H\-A512\-\_\-\-Transform@{S\-H\-A512\-\_\-\-Transform}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A512\-\_\-\-Transform}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A512\-\_\-\-Transform (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A512\-\_\-\-C\-T\-X} $\ast$}]{context, }
+\item[{const {\bf uint8} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_ad70550e0950110e152252397a73db308}
+\hypertarget{sha2_8c_a0b25f166c155a3a264580904e2e8339a}{\index{sha2.\-c@{sha2.\-c}!S\-H\-A512\-\_\-\-Update@{S\-H\-A512\-\_\-\-Update}}
+\index{S\-H\-A512\-\_\-\-Update@{S\-H\-A512\-\_\-\-Update}!sha2.c@{sha2.\-c}}
+\subsubsection[{S\-H\-A512\-\_\-\-Update}]{\setlength{\rightskip}{0pt plus 5cm}void S\-H\-A512\-\_\-\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-H\-A512\-\_\-\-C\-T\-X} $\ast$}]{context, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{sha2_8c_a0b25f166c155a3a264580904e2e8339a}
+
+
+\subsection{Variable Documentation}
+\hypertarget{sha2_8c_a2c241f0d9d367ad3fdb4a9296ff76a48}{\index{sha2.\-c@{sha2.\-c}!K256@{K256}}
+\index{K256@{K256}!sha2.c@{sha2.\-c}}
+\subsubsection[{K256}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} K256\mbox{[}64\mbox{]}}}\label{sha2_8c_a2c241f0d9d367ad3fdb4a9296ff76a48}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+    0x428a2f98UL, 0x71374491UL, 0xb5c0fbcfUL, 0xe9b5dba5UL,
+    0x3956c25bUL, 0x59f111f1UL, 0x923f82a4UL, 0xab1c5ed5UL,
+    0xd807aa98UL, 0x12835b01UL, 0x243185beUL, 0x550c7dc3UL,
+    0x72be5d74UL, 0x80deb1feUL, 0x9bdc06a7UL, 0xc19bf174UL,
+    0xe49b69c1UL, 0xefbe4786UL, 0x0fc19dc6UL, 0x240ca1ccUL,
+    0x2de92c6fUL, 0x4a7484aaUL, 0x5cb0a9dcUL, 0x76f988daUL,
+    0x983e5152UL, 0xa831c66dUL, 0xb00327c8UL, 0xbf597fc7UL,
+    0xc6e00bf3UL, 0xd5a79147UL, 0x06ca6351UL, 0x14292967UL,
+    0x27b70a85UL, 0x2e1b2138UL, 0x4d2c6dfcUL, 0x53380d13UL,
+    0x650a7354UL, 0x766a0abbUL, 0x81c2c92eUL, 0x92722c85UL,
+    0xa2bfe8a1UL, 0xa81a664bUL, 0xc24b8b70UL, 0xc76c51a3UL,
+    0xd192e819UL, 0xd6990624UL, 0xf40e3585UL, 0x106aa070UL,
+    0x19a4c116UL, 0x1e376c08UL, 0x2748774cUL, 0x34b0bcb5UL,
+    0x391c0cb3UL, 0x4ed8aa4aUL, 0x5b9cca4fUL, 0x682e6ff3UL,
+    0x748f82eeUL, 0x78a5636fUL, 0x84c87814UL, 0x8cc70208UL,
+    0x90befffaUL, 0xa4506cebUL, 0xbef9a3f7UL, 0xc67178f2UL
+\}
+\end{DoxyCode}
+\hypertarget{sha2_8c_a27f76f64b80d01fee1507399b8dbd29e}{\index{sha2.\-c@{sha2.\-c}!K512@{K512}}
+\index{K512@{K512}!sha2.c@{sha2.\-c}}
+\subsubsection[{K512}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint64} K512\mbox{[}80\mbox{]}}}\label{sha2_8c_a27f76f64b80d01fee1507399b8dbd29e}
+\hypertarget{sha2_8c_a0ed8f4cdb299022d8bd1475d6ae0d573}{\index{sha2.\-c@{sha2.\-c}!sha224\-\_\-initial\-\_\-hash\-\_\-value@{sha224\-\_\-initial\-\_\-hash\-\_\-value}}
+\index{sha224\-\_\-initial\-\_\-hash\-\_\-value@{sha224\-\_\-initial\-\_\-hash\-\_\-value}!sha2.c@{sha2.\-c}}
+\subsubsection[{sha224\-\_\-initial\-\_\-hash\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} sha224\-\_\-initial\-\_\-hash\-\_\-value\mbox{[}8\mbox{]}}}\label{sha2_8c_a0ed8f4cdb299022d8bd1475d6ae0d573}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+    0xc1059ed8UL,
+    0x367cd507UL,
+    0x3070dd17UL,
+    0xf70e5939UL,
+    0xffc00b31UL,
+    0x68581511UL,
+    0x64f98fa7UL,
+    0xbefa4fa4UL
+\}
+\end{DoxyCode}
+\hypertarget{sha2_8c_a13809368efcf2e76ec529508ccabcf18}{\index{sha2.\-c@{sha2.\-c}!sha256\-\_\-initial\-\_\-hash\-\_\-value@{sha256\-\_\-initial\-\_\-hash\-\_\-value}}
+\index{sha256\-\_\-initial\-\_\-hash\-\_\-value@{sha256\-\_\-initial\-\_\-hash\-\_\-value}!sha2.c@{sha2.\-c}}
+\subsubsection[{sha256\-\_\-initial\-\_\-hash\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint32} sha256\-\_\-initial\-\_\-hash\-\_\-value\mbox{[}8\mbox{]}}}\label{sha2_8c_a13809368efcf2e76ec529508ccabcf18}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+    0x6a09e667UL,
+    0xbb67ae85UL,
+    0x3c6ef372UL,
+    0xa54ff53aUL,
+    0x510e527fUL,
+    0x9b05688cUL,
+    0x1f83d9abUL,
+    0x5be0cd19UL
+\}
+\end{DoxyCode}
+\hypertarget{sha2_8c_a18fc8963bee0ee4762b37e87d71e32a7}{\index{sha2.\-c@{sha2.\-c}!sha384\-\_\-initial\-\_\-hash\-\_\-value@{sha384\-\_\-initial\-\_\-hash\-\_\-value}}
+\index{sha384\-\_\-initial\-\_\-hash\-\_\-value@{sha384\-\_\-initial\-\_\-hash\-\_\-value}!sha2.c@{sha2.\-c}}
+\subsubsection[{sha384\-\_\-initial\-\_\-hash\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint64} sha384\-\_\-initial\-\_\-hash\-\_\-value\mbox{[}8\mbox{]}}}\label{sha2_8c_a18fc8963bee0ee4762b37e87d71e32a7}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+    0xcbbb9d5dc1059ed8ULL,
+    0x629a292a367cd507ULL,
+    0x9159015a3070dd17ULL,
+    0x152fecd8f70e5939ULL,
+    0x67332667ffc00b31ULL,
+    0x8eb44a8768581511ULL,
+    0xdb0c2e0d64f98fa7ULL,
+    0x47b5481dbefa4fa4ULL
+\}
+\end{DoxyCode}
+\hypertarget{sha2_8c_add6bb413e45139e9b00cdde490f8772b}{\index{sha2.\-c@{sha2.\-c}!sha512\-\_\-initial\-\_\-hash\-\_\-value@{sha512\-\_\-initial\-\_\-hash\-\_\-value}}
+\index{sha512\-\_\-initial\-\_\-hash\-\_\-value@{sha512\-\_\-initial\-\_\-hash\-\_\-value}!sha2.c@{sha2.\-c}}
+\subsubsection[{sha512\-\_\-initial\-\_\-hash\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint64} sha512\-\_\-initial\-\_\-hash\-\_\-value\mbox{[}8\mbox{]}}}\label{sha2_8c_add6bb413e45139e9b00cdde490f8772b}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+    0x6a09e667f3bcc908ULL,
+    0xbb67ae8584caa73bULL,
+    0x3c6ef372fe94f82bULL,
+    0xa54ff53a5f1d36f1ULL,
+    0x510e527fade682d1ULL,
+    0x9b05688c2b3e6c1fULL,
+    0x1f83d9abfb41bd6bULL,
+    0x5be0cd19137e2179ULL
+\}
+\end{DoxyCode}

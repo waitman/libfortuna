@@ -1,0 +1,35 @@
+.TH "_SHA256_CTX" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_SHA256_CTX \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sha2\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBuint32\fP \fBstate\fP [8]"
+.br
+.ti -1c
+.RI "\fBuint64\fP \fBbitcount\fP"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbuffer\fP [\fBSHA256_BLOCK_LENGTH\fP]"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "\fBuint64\fP _SHA256_CTX::bitcount"
+
+.SS "\fBuint8\fP _SHA256_CTX::buffer[\fBSHA256_BLOCK_LENGTH\fP]"
+
+.SS "\fBuint32\fP _SHA256_CTX::state[8]"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

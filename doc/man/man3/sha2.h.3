@@ -1,0 +1,227 @@
+.TH "sha2.h" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sha2.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'c\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fB_SHA256_CTX\fP"
+.br
+.ti -1c
+.RI "struct \fB_SHA512_CTX\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSHA256_Init\fP   pg_SHA256_Init"
+.br
+.ti -1c
+.RI "#define \fBSHA256_Update\fP   pg_SHA256_Update"
+.br
+.ti -1c
+.RI "#define \fBSHA256_Final\fP   pg_SHA256_Final"
+.br
+.ti -1c
+.RI "#define \fBSHA384_Init\fP   pg_SHA384_Init"
+.br
+.ti -1c
+.RI "#define \fBSHA384_Update\fP   pg_SHA384_Update"
+.br
+.ti -1c
+.RI "#define \fBSHA384_Final\fP   pg_SHA384_Final"
+.br
+.ti -1c
+.RI "#define \fBSHA512_Init\fP   pg_SHA512_Init"
+.br
+.ti -1c
+.RI "#define \fBSHA512_Update\fP   pg_SHA512_Update"
+.br
+.ti -1c
+.RI "#define \fBSHA512_Final\fP   pg_SHA512_Final"
+.br
+.ti -1c
+.RI "#define \fBSHA224_BLOCK_LENGTH\fP   64"
+.br
+.ti -1c
+.RI "#define \fBSHA224_DIGEST_LENGTH\fP   28"
+.br
+.ti -1c
+.RI "#define \fBSHA224_DIGEST_STRING_LENGTH\fP   (\fBSHA224_DIGEST_LENGTH\fP * 2 + 1)"
+.br
+.ti -1c
+.RI "#define \fBSHA256_BLOCK_LENGTH\fP   64"
+.br
+.ti -1c
+.RI "#define \fBSHA256_DIGEST_LENGTH\fP   32"
+.br
+.ti -1c
+.RI "#define \fBSHA256_DIGEST_STRING_LENGTH\fP   (\fBSHA256_DIGEST_LENGTH\fP * 2 + 1)"
+.br
+.ti -1c
+.RI "#define \fBSHA384_BLOCK_LENGTH\fP   128"
+.br
+.ti -1c
+.RI "#define \fBSHA384_DIGEST_LENGTH\fP   48"
+.br
+.ti -1c
+.RI "#define \fBSHA384_DIGEST_STRING_LENGTH\fP   (\fBSHA384_DIGEST_LENGTH\fP * 2 + 1)"
+.br
+.ti -1c
+.RI "#define \fBSHA512_BLOCK_LENGTH\fP   128"
+.br
+.ti -1c
+.RI "#define \fBSHA512_DIGEST_LENGTH\fP   64"
+.br
+.ti -1c
+.RI "#define \fBSHA512_DIGEST_STRING_LENGTH\fP   (\fBSHA512_DIGEST_LENGTH\fP * 2 + 1)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fB_SHA256_CTX\fP \fBSHA256_CTX\fP"
+.br
+.ti -1c
+.RI "typedef struct \fB_SHA512_CTX\fP \fBSHA512_CTX\fP"
+.br
+.ti -1c
+.RI "typedef \fBSHA256_CTX\fP \fBSHA224_CTX\fP"
+.br
+.ti -1c
+.RI "typedef \fBSHA512_CTX\fP \fBSHA384_CTX\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSHA224_Init\fP (\fBSHA224_CTX\fP *)"
+.br
+.ti -1c
+.RI "void \fBSHA224_Update\fP (\fBSHA224_CTX\fP *, const \fBuint8\fP *, size_t)"
+.br
+.ti -1c
+.RI "void \fBSHA224_Final\fP (\fBuint8\fP[\fBSHA224_DIGEST_LENGTH\fP], \fBSHA224_CTX\fP *)"
+.br
+.ti -1c
+.RI "void \fBSHA256_Init\fP (\fBSHA256_CTX\fP *)"
+.br
+.ti -1c
+.RI "void \fBSHA256_Update\fP (\fBSHA256_CTX\fP *, const \fBuint8\fP *, size_t)"
+.br
+.ti -1c
+.RI "void \fBSHA256_Final\fP (\fBuint8\fP[\fBSHA256_DIGEST_LENGTH\fP], \fBSHA256_CTX\fP *)"
+.br
+.ti -1c
+.RI "void \fBSHA384_Init\fP (\fBSHA384_CTX\fP *)"
+.br
+.ti -1c
+.RI "void \fBSHA384_Update\fP (\fBSHA384_CTX\fP *, const \fBuint8\fP *, size_t)"
+.br
+.ti -1c
+.RI "void \fBSHA384_Final\fP (\fBuint8\fP[\fBSHA384_DIGEST_LENGTH\fP], \fBSHA384_CTX\fP *)"
+.br
+.ti -1c
+.RI "void \fBSHA512_Init\fP (\fBSHA512_CTX\fP *)"
+.br
+.ti -1c
+.RI "void \fBSHA512_Update\fP (\fBSHA512_CTX\fP *, const \fBuint8\fP *, size_t)"
+.br
+.ti -1c
+.RI "void \fBSHA512_Final\fP (\fBuint8\fP[\fBSHA512_DIGEST_LENGTH\fP], \fBSHA512_CTX\fP *)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define SHA224_BLOCK_LENGTH   64"
+
+.SS "#define SHA224_DIGEST_LENGTH   28"
+
+.SS "#define SHA224_DIGEST_STRING_LENGTH   (\fBSHA224_DIGEST_LENGTH\fP * 2 + 1)"
+
+.SS "#define SHA256_BLOCK_LENGTH   64"
+
+.SS "#define SHA256_DIGEST_LENGTH   32"
+
+.SS "#define SHA256_DIGEST_STRING_LENGTH   (\fBSHA256_DIGEST_LENGTH\fP * 2 + 1)"
+
+.SS "#define SHA256_Final   pg_SHA256_Final"
+
+.SS "#define SHA256_Init   pg_SHA256_Init"
+
+.SS "#define SHA256_Update   pg_SHA256_Update"
+
+.SS "#define SHA384_BLOCK_LENGTH   128"
+
+.SS "#define SHA384_DIGEST_LENGTH   48"
+
+.SS "#define SHA384_DIGEST_STRING_LENGTH   (\fBSHA384_DIGEST_LENGTH\fP * 2 + 1)"
+
+.SS "#define SHA384_Final   pg_SHA384_Final"
+
+.SS "#define SHA384_Init   pg_SHA384_Init"
+
+.SS "#define SHA384_Update   pg_SHA384_Update"
+
+.SS "#define SHA512_BLOCK_LENGTH   128"
+
+.SS "#define SHA512_DIGEST_LENGTH   64"
+
+.SS "#define SHA512_DIGEST_STRING_LENGTH   (\fBSHA512_DIGEST_LENGTH\fP * 2 + 1)"
+
+.SS "#define SHA512_Final   pg_SHA512_Final"
+
+.SS "#define SHA512_Init   pg_SHA512_Init"
+
+.SS "#define SHA512_Update   pg_SHA512_Update"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBSHA256_CTX\fP \fBSHA224_CTX\fP"
+
+.SS "typedef struct \fB_SHA256_CTX\fP  \fBSHA256_CTX\fP"
+
+.SS "typedef \fBSHA512_CTX\fP \fBSHA384_CTX\fP"
+
+.SS "typedef struct \fB_SHA512_CTX\fP  \fBSHA512_CTX\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void SHA224_Final (\fBuint8\fP[SHA224_DIGEST_LENGTH], \fBSHA224_CTX\fP *)"
+
+.SS "void SHA224_Init (\fBSHA224_CTX\fP *)"
+
+.SS "void SHA224_Update (\fBSHA224_CTX\fP *, const \fBuint8\fP *, size_t)"
+
+.SS "void SHA256_Final (\fBuint8\fP[SHA256_DIGEST_LENGTH], \fBSHA256_CTX\fP *)"
+
+.SS "void SHA256_Init (\fBSHA256_CTX\fP *)"
+
+.SS "void SHA256_Update (\fBSHA256_CTX\fP *, const \fBuint8\fP *, size_t)"
+
+.SS "void SHA384_Final (\fBuint8\fP[SHA384_DIGEST_LENGTH], \fBSHA384_CTX\fP *)"
+
+.SS "void SHA384_Init (\fBSHA384_CTX\fP *)"
+
+.SS "void SHA384_Update (\fBSHA384_CTX\fP *, const \fBuint8\fP *, size_t)"
+
+.SS "void SHA512_Final (\fBuint8\fP[SHA512_DIGEST_LENGTH], \fBSHA512_CTX\fP *)"
+
+.SS "void SHA512_Init (\fBSHA512_CTX\fP *)"
+
+.SS "void SHA512_Update (\fBSHA512_CTX\fP *, const \fBuint8\fP *, size_t)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

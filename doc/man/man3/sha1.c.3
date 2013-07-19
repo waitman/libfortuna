@@ -1,0 +1,149 @@
+.TH "sha1.c" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sha1.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <sys/param\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'c\&.h'\fP
+.br
+\fC#include 'sha1\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBK\fP(t)   \fB_K\fP[(t) / 20]"
+.br
+.ti -1c
+.RI "#define \fBF0\fP(b, c, d)   (((b) & (c)) | ((~(b)) & (d)))"
+.br
+.ti -1c
+.RI "#define \fBF1\fP(b, c, d)   (((b) ^ (c)) ^ (d))"
+.br
+.ti -1c
+.RI "#define \fBF2\fP(b, c, d)   (((b) & (c)) | ((b) & (d)) | ((c) & (d)))"
+.br
+.ti -1c
+.RI "#define \fBF3\fP(b, c, d)   (((b) ^ (c)) ^ (d))"
+.br
+.ti -1c
+.RI "#define \fBS\fP(n, x)   (((x) << (n)) | ((x) >> (32 - (n))))"
+.br
+.ti -1c
+.RI "#define \fBH\fP(n)   (ctxt->h\&.b32[(n)])"
+.br
+.ti -1c
+.RI "#define \fBCOUNT\fP   (ctxt->count)"
+.br
+.ti -1c
+.RI "#define \fBBCOUNT\fP   (ctxt->c\&.b64[0] / 8)"
+.br
+.ti -1c
+.RI "#define \fBW\fP(n)   (ctxt->m\&.b32[(n)])"
+.br
+.ti -1c
+.RI "#define \fBPUTBYTE\fP(x)"
+.br
+.ti -1c
+.RI "#define \fBPUTPAD\fP(x)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsha1_step\fP (struct \fBsha1_ctxt\fP *)"
+.br
+.ti -1c
+.RI "void \fBsha1_init\fP (struct \fBsha1_ctxt\fP *ctxt)"
+.br
+.ti -1c
+.RI "void \fBsha1_pad\fP (struct \fBsha1_ctxt\fP *ctxt)"
+.br
+.ti -1c
+.RI "void \fBsha1_loop\fP (struct \fBsha1_ctxt\fP *ctxt, const \fBuint8\fP *input0, size_t len)"
+.br
+.ti -1c
+.RI "void \fBsha1_result\fP (struct \fBsha1_ctxt\fP *ctxt, \fBuint8\fP *digest0)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBuint32\fP \fB_K\fP [] = {0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6}"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BCOUNT   (ctxt->c\&.b64[0] / 8)"
+
+.SS "#define COUNT   (ctxt->count)"
+
+.SS "#define F0(b, c, d)   (((b) & (c)) | ((~(b)) & (d)))"
+
+.SS "#define F1(b, c, d)   (((b) ^ (c)) ^ (d))"
+
+.SS "#define F2(b, c, d)   (((b) & (c)) | ((b) & (d)) | ((c) & (d)))"
+
+.SS "#define F3(b, c, d)   (((b) ^ (c)) ^ (d))"
+
+.SS "#define H(n)   (ctxt->h\&.b32[(n)])"
+
+.SS "#define K(t)   \fB_K\fP[(t) / 20]"
+
+.SS "#define PUTBYTE(x)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    ctxt->m\&.b8[(COUNT % 64)] = (x);      \
+    COUNT++;                \
+    COUNT %= 64;                \
+    ctxt->c\&.b64[0] += 8;         \
+    if (COUNT % 64 == 0)            \
+        sha1_step(ctxt);        \
+} while (0)
+.fi
+.SS "#define PUTPAD(x)"
+\fBValue:\fP
+.PP
+.nf
+do { \
+    ctxt->m\&.b8[(COUNT % 64)] = (x);      \
+    COUNT++;                \
+    COUNT %= 64;                \
+    if (COUNT % 64 == 0)            \
+        sha1_step(ctxt);        \
+} while (0)
+.fi
+.SS "#define S(n, x)   (((x) << (n)) | ((x) >> (32 - (n))))"
+
+.SS "#define W(n)   (ctxt->m\&.b32[(n)])"
+
+.SH "Function Documentation"
+.PP 
+.SS "void sha1_init (struct \fBsha1_ctxt\fP *ctxt)"
+
+.SS "void sha1_loop (struct \fBsha1_ctxt\fP *ctxt, const \fBuint8\fP *input0, size_tlen)"
+
+.SS "void sha1_pad (struct \fBsha1_ctxt\fP *ctxt)"
+
+.SS "void sha1_result (struct \fBsha1_ctxt\fP *ctxt, \fBuint8\fP *digest0)"
+
+.SS "void sha1_step (struct \fBsha1_ctxt\fP *ctxt)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "\fBuint32\fP _K[] = {0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6}"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

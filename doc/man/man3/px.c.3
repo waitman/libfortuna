@@ -1,0 +1,105 @@
+.TH "px.c" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+px.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'c\&.h'\fP
+.br
+\fC#include 'px\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBerror_desc\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBpx_strerror\fP (int err)"
+.br
+.ti -1c
+.RI "const char * \fBpx_resolve_alias\fP (const \fBPX_Alias\fP *list, const char *name)"
+.br
+.ti -1c
+.RI "void \fBpx_set_debug_handler\fP (void(*handler)(const char *))"
+.br
+.ti -1c
+.RI "void \fBpx_debug\fP (const char *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "unsigned \fBcombo_encrypt_len\fP (\fBPX_Combo\fP *cx, unsigned dlen)"
+.br
+.ti -1c
+.RI "unsigned \fBcombo_decrypt_len\fP (\fBPX_Combo\fP *cx, unsigned dlen)"
+.br
+.ti -1c
+.RI "int \fBcombo_init\fP (\fBPX_Combo\fP *cx, const \fBuint8\fP *key, unsigned klen, const \fBuint8\fP *iv, unsigned ivlen)"
+.br
+.ti -1c
+.RI "int \fBcombo_encrypt\fP (\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res, unsigned *rlen)"
+.br
+.ti -1c
+.RI "int \fBcombo_decrypt\fP (\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigned dlen, \fBuint8\fP *res, unsigned *rlen)"
+.br
+.ti -1c
+.RI "void \fBcombo_free\fP (\fBPX_Combo\fP *cx)"
+.br
+.ti -1c
+.RI "int \fBparse_cipher_name\fP (char *full, char **cipher, char **pad)"
+.br
+.ti -1c
+.RI "int \fBpx_find_combo\fP (const char *name, \fBPX_Combo\fP **res)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "struct \fBerror_desc\fP \fBpx_err_list\fP []"
+.br
+.ti -1c
+.RI "void(* \fBdebug_handler\fP )(const char *) = NULL"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int combo_decrypt (\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigneddlen, \fBuint8\fP *res, unsigned *rlen)"
+
+.SS "unsigned combo_decrypt_len (\fBPX_Combo\fP *cx, unsigneddlen)"
+
+.SS "int combo_encrypt (\fBPX_Combo\fP *cx, const \fBuint8\fP *data, unsigneddlen, \fBuint8\fP *res, unsigned *rlen)"
+
+.SS "unsigned combo_encrypt_len (\fBPX_Combo\fP *cx, unsigneddlen)"
+
+.SS "void combo_free (\fBPX_Combo\fP *cx)"
+
+.SS "int combo_init (\fBPX_Combo\fP *cx, const \fBuint8\fP *key, unsignedklen, const \fBuint8\fP *iv, unsignedivlen)"
+
+.SS "int parse_cipher_name (char *full, char **cipher, char **pad)"
+
+.SS "void px_debug (const char *fmt, \&.\&.\&.)"
+
+.SS "int px_find_combo (const char *name, \fBPX_Combo\fP **res)"
+
+.SS "const char* px_resolve_alias (const \fBPX_Alias\fP *list, const char *name)"
+
+.SS "void px_set_debug_handler (void(*)(const char *)handler)"
+
+.SS "const char* px_strerror (interr)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "void(* debug_handler)(const char *) = NULL"
+
+.SS "struct \fBerror_desc\fP px_err_list[]"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

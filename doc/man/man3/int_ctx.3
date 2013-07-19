@@ -1,0 +1,63 @@
+.TH "int_ctx" 3 "Fri Jul 19 2013" "Version 1" "libfortuna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+int_ctx \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <internal\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBuint8\fP \fBkeybuf\fP [\fBINT_MAX_KEY\fP]"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBiv\fP [\fBINT_MAX_IV\fP]"
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   \fBBlowfishContext\fP \fBbf\fP"
+.br
+.ti -1c
+.RI "   \fBrijndael_ctx\fP \fBrj\fP"
+.br
+.ti -1c
+.RI "} \fBctx\fP"
+.br
+.ti -1c
+.RI "unsigned \fBkeylen\fP"
+.br
+.ti -1c
+.RI "int \fBis_init\fP"
+.br
+.ti -1c
+.RI "int \fBmode\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "\fBBlowfishContext\fP int_ctx::bf"
+
+.SS "union { \&.\&.\&. } 			 int_ctx::ctx"
+
+.SS "int int_ctx::is_init"
+
+.SS "\fBuint8\fP int_ctx::iv[\fBINT_MAX_IV\fP]"
+
+.SS "\fBuint8\fP int_ctx::keybuf[\fBINT_MAX_KEY\fP]"
+
+.SS "unsigned int_ctx::keylen"
+
+.SS "int int_ctx::mode"
+
+.SS "\fBrijndael_ctx\fP int_ctx::rj"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libfortuna from the source code\&.

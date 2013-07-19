@@ -1,0 +1,159 @@
+\hypertarget{px_8c}{\section{px.\-c File Reference}
+\label{px_8c}\index{px.\-c@{px.\-c}}
+}
+{\ttfamily \#include \char`\"{}c.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}px.\-h\char`\"{}}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structerror__desc}{error\-\_\-desc}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{px_8c_a8854840a061ae6a05f223128b3d61f32}{px\-\_\-strerror} (int err)
+\item 
+const char $\ast$ \hyperlink{px_8c_a78f3e05d08b1715000f5b2c4b2cca430}{px\-\_\-resolve\-\_\-alias} (const \hyperlink{px_8h_a6a2f8a51ac4b8482bd2719486f177623}{P\-X\-\_\-\-Alias} $\ast$list, const char $\ast$name)
+\item 
+void \hyperlink{px_8c_ac66670a6195d7d4cf0c38fbe9cf127c4}{px\-\_\-set\-\_\-debug\-\_\-handler} (void($\ast$handler)(const char $\ast$))
+\item 
+void \hyperlink{px_8c_a9e38bbbe6962d668f9ba2a0d9664fd8e}{px\-\_\-debug} (const char $\ast$fmt,...)
+\item 
+unsigned \hyperlink{px_8c_aa843360f8a69dc7717a6ea5f5bd22b2e}{combo\-\_\-encrypt\-\_\-len} (\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, unsigned dlen)
+\item 
+unsigned \hyperlink{px_8c_a046e41acc595f022c9c07efddc45db97}{combo\-\_\-decrypt\-\_\-len} (\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, unsigned dlen)
+\item 
+int \hyperlink{px_8c_ac18df23103f76eb009a135f76eeccec6}{combo\-\_\-init} (\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$key, unsigned klen, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$iv, unsigned ivlen)
+\item 
+int \hyperlink{px_8c_a5a4d9266ebd57cfcca2b601edc977ac5}{combo\-\_\-encrypt} (\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$res, unsigned $\ast$rlen)
+\item 
+int \hyperlink{px_8c_aebcd14b688032b537bf0340063307059}{combo\-\_\-decrypt} (\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx, const \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$data, unsigned dlen, \hyperlink{c_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$res, unsigned $\ast$rlen)
+\item 
+void \hyperlink{px_8c_a26b977606059015658dab969feb1474e}{combo\-\_\-free} (\hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$cx)
+\item 
+int \hyperlink{px_8c_a55ec48988848b161e4fc6e6859ad3884}{parse\-\_\-cipher\-\_\-name} (char $\ast$full, char $\ast$$\ast$cipher, char $\ast$$\ast$pad)
+\item 
+int \hyperlink{px_8c_ae012b1bf856ea75b60a6f1f1e48bb350}{px\-\_\-find\-\_\-combo} (const char $\ast$name, \hyperlink{px_8h_abd783cad3472aca611fab9e231fd8e89}{P\-X\-\_\-\-Combo} $\ast$$\ast$res)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structerror__desc}{error\-\_\-desc} \hyperlink{px_8c_a4a9fd0d8dc536638688ebf45a112bd37}{px\-\_\-err\-\_\-list} \mbox{[}$\,$\mbox{]}
+\item 
+void($\ast$ \hyperlink{px_8c_a33fcc434b07e171679daa7b7d877e200}{debug\-\_\-handler} )(const char $\ast$) = N\-U\-L\-L
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{px_8c_aebcd14b688032b537bf0340063307059}{\index{px.\-c@{px.\-c}!combo\-\_\-decrypt@{combo\-\_\-decrypt}}
+\index{combo\-\_\-decrypt@{combo\-\_\-decrypt}!px.c@{px.\-c}}
+\subsubsection[{combo\-\_\-decrypt}]{\setlength{\rightskip}{0pt plus 5cm}int combo\-\_\-decrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf P\-X\-\_\-\-Combo} $\ast$}]{cx, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{dlen, }
+\item[{{\bf uint8} $\ast$}]{res, }
+\item[{unsigned $\ast$}]{rlen}
+\end{DoxyParamCaption}
+)}}\label{px_8c_aebcd14b688032b537bf0340063307059}
+\hypertarget{px_8c_a046e41acc595f022c9c07efddc45db97}{\index{px.\-c@{px.\-c}!combo\-\_\-decrypt\-\_\-len@{combo\-\_\-decrypt\-\_\-len}}
+\index{combo\-\_\-decrypt\-\_\-len@{combo\-\_\-decrypt\-\_\-len}!px.c@{px.\-c}}
+\subsubsection[{combo\-\_\-decrypt\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}unsigned combo\-\_\-decrypt\-\_\-len (
+\begin{DoxyParamCaption}
+\item[{{\bf P\-X\-\_\-\-Combo} $\ast$}]{cx, }
+\item[{unsigned}]{dlen}
+\end{DoxyParamCaption}
+)}}\label{px_8c_a046e41acc595f022c9c07efddc45db97}
+\hypertarget{px_8c_a5a4d9266ebd57cfcca2b601edc977ac5}{\index{px.\-c@{px.\-c}!combo\-\_\-encrypt@{combo\-\_\-encrypt}}
+\index{combo\-\_\-encrypt@{combo\-\_\-encrypt}!px.c@{px.\-c}}
+\subsubsection[{combo\-\_\-encrypt}]{\setlength{\rightskip}{0pt plus 5cm}int combo\-\_\-encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf P\-X\-\_\-\-Combo} $\ast$}]{cx, }
+\item[{const {\bf uint8} $\ast$}]{data, }
+\item[{unsigned}]{dlen, }
+\item[{{\bf uint8} $\ast$}]{res, }
+\item[{unsigned $\ast$}]{rlen}
+\end{DoxyParamCaption}
+)}}\label{px_8c_a5a4d9266ebd57cfcca2b601edc977ac5}
+\hypertarget{px_8c_aa843360f8a69dc7717a6ea5f5bd22b2e}{\index{px.\-c@{px.\-c}!combo\-\_\-encrypt\-\_\-len@{combo\-\_\-encrypt\-\_\-len}}
+\index{combo\-\_\-encrypt\-\_\-len@{combo\-\_\-encrypt\-\_\-len}!px.c@{px.\-c}}
+\subsubsection[{combo\-\_\-encrypt\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}unsigned combo\-\_\-encrypt\-\_\-len (
+\begin{DoxyParamCaption}
+\item[{{\bf P\-X\-\_\-\-Combo} $\ast$}]{cx, }
+\item[{unsigned}]{dlen}
+\end{DoxyParamCaption}
+)}}\label{px_8c_aa843360f8a69dc7717a6ea5f5bd22b2e}
+\hypertarget{px_8c_a26b977606059015658dab969feb1474e}{\index{px.\-c@{px.\-c}!combo\-\_\-free@{combo\-\_\-free}}
+\index{combo\-\_\-free@{combo\-\_\-free}!px.c@{px.\-c}}
+\subsubsection[{combo\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void combo\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{{\bf P\-X\-\_\-\-Combo} $\ast$}]{cx}
+\end{DoxyParamCaption}
+)}}\label{px_8c_a26b977606059015658dab969feb1474e}
+\hypertarget{px_8c_ac18df23103f76eb009a135f76eeccec6}{\index{px.\-c@{px.\-c}!combo\-\_\-init@{combo\-\_\-init}}
+\index{combo\-\_\-init@{combo\-\_\-init}!px.c@{px.\-c}}
+\subsubsection[{combo\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int combo\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf P\-X\-\_\-\-Combo} $\ast$}]{cx, }
+\item[{const {\bf uint8} $\ast$}]{key, }
+\item[{unsigned}]{klen, }
+\item[{const {\bf uint8} $\ast$}]{iv, }
+\item[{unsigned}]{ivlen}
+\end{DoxyParamCaption}
+)}}\label{px_8c_ac18df23103f76eb009a135f76eeccec6}
+\hypertarget{px_8c_a55ec48988848b161e4fc6e6859ad3884}{\index{px.\-c@{px.\-c}!parse\-\_\-cipher\-\_\-name@{parse\-\_\-cipher\-\_\-name}}
+\index{parse\-\_\-cipher\-\_\-name@{parse\-\_\-cipher\-\_\-name}!px.c@{px.\-c}}
+\subsubsection[{parse\-\_\-cipher\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}int parse\-\_\-cipher\-\_\-name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{full, }
+\item[{char $\ast$$\ast$}]{cipher, }
+\item[{char $\ast$$\ast$}]{pad}
+\end{DoxyParamCaption}
+)}}\label{px_8c_a55ec48988848b161e4fc6e6859ad3884}
+\hypertarget{px_8c_a9e38bbbe6962d668f9ba2a0d9664fd8e}{\index{px.\-c@{px.\-c}!px\-\_\-debug@{px\-\_\-debug}}
+\index{px\-\_\-debug@{px\-\_\-debug}!px.c@{px.\-c}}
+\subsubsection[{px\-\_\-debug}]{\setlength{\rightskip}{0pt plus 5cm}void px\-\_\-debug (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fmt, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}\label{px_8c_a9e38bbbe6962d668f9ba2a0d9664fd8e}
+\hypertarget{px_8c_ae012b1bf856ea75b60a6f1f1e48bb350}{\index{px.\-c@{px.\-c}!px\-\_\-find\-\_\-combo@{px\-\_\-find\-\_\-combo}}
+\index{px\-\_\-find\-\_\-combo@{px\-\_\-find\-\_\-combo}!px.c@{px.\-c}}
+\subsubsection[{px\-\_\-find\-\_\-combo}]{\setlength{\rightskip}{0pt plus 5cm}int px\-\_\-find\-\_\-combo (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{{\bf P\-X\-\_\-\-Combo} $\ast$$\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{px_8c_ae012b1bf856ea75b60a6f1f1e48bb350}
+\hypertarget{px_8c_a78f3e05d08b1715000f5b2c4b2cca430}{\index{px.\-c@{px.\-c}!px\-\_\-resolve\-\_\-alias@{px\-\_\-resolve\-\_\-alias}}
+\index{px\-\_\-resolve\-\_\-alias@{px\-\_\-resolve\-\_\-alias}!px.c@{px.\-c}}
+\subsubsection[{px\-\_\-resolve\-\_\-alias}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ px\-\_\-resolve\-\_\-alias (
+\begin{DoxyParamCaption}
+\item[{const {\bf P\-X\-\_\-\-Alias} $\ast$}]{list, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{px_8c_a78f3e05d08b1715000f5b2c4b2cca430}
+\hypertarget{px_8c_ac66670a6195d7d4cf0c38fbe9cf127c4}{\index{px.\-c@{px.\-c}!px\-\_\-set\-\_\-debug\-\_\-handler@{px\-\_\-set\-\_\-debug\-\_\-handler}}
+\index{px\-\_\-set\-\_\-debug\-\_\-handler@{px\-\_\-set\-\_\-debug\-\_\-handler}!px.c@{px.\-c}}
+\subsubsection[{px\-\_\-set\-\_\-debug\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void px\-\_\-set\-\_\-debug\-\_\-handler (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(const char $\ast$)}]{handler}
+\end{DoxyParamCaption}
+)}}\label{px_8c_ac66670a6195d7d4cf0c38fbe9cf127c4}
+\hypertarget{px_8c_a8854840a061ae6a05f223128b3d61f32}{\index{px.\-c@{px.\-c}!px\-\_\-strerror@{px\-\_\-strerror}}
+\index{px\-\_\-strerror@{px\-\_\-strerror}!px.c@{px.\-c}}
+\subsubsection[{px\-\_\-strerror}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ px\-\_\-strerror (
+\begin{DoxyParamCaption}
+\item[{int}]{err}
+\end{DoxyParamCaption}
+)}}\label{px_8c_a8854840a061ae6a05f223128b3d61f32}
+
+
+\subsection{Variable Documentation}
+\hypertarget{px_8c_a33fcc434b07e171679daa7b7d877e200}{\index{px.\-c@{px.\-c}!debug\-\_\-handler@{debug\-\_\-handler}}
+\index{debug\-\_\-handler@{debug\-\_\-handler}!px.c@{px.\-c}}
+\subsubsection[{debug\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ debug\-\_\-handler)(const char $\ast$) = N\-U\-L\-L}}\label{px_8c_a33fcc434b07e171679daa7b7d877e200}
+\hypertarget{px_8c_a4a9fd0d8dc536638688ebf45a112bd37}{\index{px.\-c@{px.\-c}!px\-\_\-err\-\_\-list@{px\-\_\-err\-\_\-list}}
+\index{px\-\_\-err\-\_\-list@{px\-\_\-err\-\_\-list}!px.c@{px.\-c}}
+\subsubsection[{px\-\_\-err\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf error\-\_\-desc} px\-\_\-err\-\_\-list\mbox{[}$\,$\mbox{]}}}\label{px_8c_a4a9fd0d8dc536638688ebf45a112bd37}
